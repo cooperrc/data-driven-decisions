@@ -28,3 +28,4 @@ chapters:
 - file: module_04/README
   sections:
     - file: module_04/report
+    - file: module_04/compliant_fatigue
