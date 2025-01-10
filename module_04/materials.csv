@@ -1,0 +1,6 @@
+material,method,youngs_modulus_MPa,yield_strength_MPa,porosity_range
+Steel,Casting,210000,550,"0.02,0.05"
+Aluminum,3D Printing,70000,250,"0.05,0.15"
+Titanium,Machining,116000,880,"0.01,0.03"
+Polymer,Injection Molding,2500,50,"0.02,0.04"
+Composite,3D Printing,70000,600,"0.03,0.1"
