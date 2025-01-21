@@ -28,8 +28,5 @@ chapters:
 - file: module_04/README
   sections:
     - file: module_04/report
-<<<<<<< HEAD
     - file: module_04/wind-turbine-impact
-=======
     - file: module_04/compliant_fatigue
->>>>>>> 2c70b98dde618a72b1bffe2762c501fbbcd577af
