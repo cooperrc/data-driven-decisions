@@ -61,7 +61,7 @@ By the end of this course, students will be able to:
 ## Course Information
 __Course Title:__ ME3256 - Data Driven Decisions: Monte Carlo Analysis for Technical Communications
 
-__Format:__ Online
+__Format:__ Hybrid
 
 __Instructor__: Prof. Ryan C. Cooper __<ryan.c.cooper@uconn.edu>__
 
@@ -208,7 +208,6 @@ The software/technical requirements for this course include:
 * Google Apps ([Google Apps Accessibility](https://www.google.com/accessibility/), [Google for Education Privacy Policy](https://www.google.com/edu/trust/)
 * Dedicated access to high-speed internet with a minimum speed of 1.5
   Mbps (recommend 4 Mbps or higher).
-* [JupyterHub at compmech.uconn.edu](https://compmech.uconn.edu)
 
 __NOTE:__ This course was not tested or designed for mobile devices. 
 
