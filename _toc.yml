@@ -30,3 +30,4 @@ chapters:
     - file: module_04/report
     - file: module_04/wind-turbine-impact
     - file: module_04/compliant_fatigue
+    - file: module_04/turbine_reliability
