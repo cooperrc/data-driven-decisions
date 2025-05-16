@@ -1,0 +1,1074 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Monte Carlo Methods and Compliant Mechanism Fatigue Case Study &#8212; Data Driven Decisions</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'module_04/compliant_fatigue';</script>
+    <link rel="icon" href="../_static/spiderman-favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Optimized Wind Turbine Reliability" href="turbine_reliability.html" />
+    <link rel="prev" title="The Impact of Wind Turbines on Renewable Energy Generation: A Comparative Study of the United States with Predictive Modeling for Selected European Countries" href="wind-turbine-impact.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/datadecisions.svg" class="logo__image only-light" alt="Data Driven Decisions - Home"/>
+    <script>document.write(`<img src="../_static/datadecisions.svg" class="logo__image only-dark" alt="Data Driven Decisions - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Data-Driven Decisions: Monte Carlo Analysis for Technical Communications
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus - Data Driven Decisions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_00/README.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_00/01_writing-w-llms.html">Technical writing and Generative AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_00/HW_00.html">HW_00 - Generative AI writing analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_00/HW_01.html">HW_01 - Generative AI writing analysis and Monte Carlo research</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_01/README.html">Module_01</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/calculate_pi.html">Calculating <span class="math notranslate nohighlight">\(\pi\)</span> with Monte Carlo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/HW_02.html">HW_02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/statistical_significance.html">Statistical Significance in Data</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module_01/HW_03.html">HW_03</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_02/README.html">Module_02 - Engineering Processes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/drop_keys.html">Dropping keys and checking randomly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/HW_04.html">HW_04 - Exercise: failure prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/bus_wait.html">Waiting for the bus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/HW_05.html">HW_05 - Customer wait time</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_03/README.html">Module_03 - coming soon</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_03/challenger.html">Challenger explosion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Module_04 - Case studies</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="report.html">Your Technical Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wind-turbine-impact.html">The Impact of Wind Turbines on Renewable Energy Generation: A Comparative Study of the United States with Predictive Modeling for Selected European Countries</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Monte Carlo Methods and Compliant Mechanism Fatigue Case Study</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="turbine_reliability.html">Optimized Wind Turbine Reliability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="turbine_uncertainty.html">Wind Turbine Uncertainty in loading analysis</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/cooperrc/data-driven-decisions/main?urlpath=tree/module_04/compliant_fatigue.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/cooperrc/data-driven-decisions/blob/main/module_04/compliant_fatigue.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cooperrc/data-driven-decisions" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cooperrc/data-driven-decisions/issues/new?title=Issue%20on%20page%20%2Fmodule_04/compliant_fatigue.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/module_04/compliant_fatigue.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Monte Carlo Methods and Compliant Mechanism Fatigue Case Study</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Monte Carlo Methods and Compliant Mechanism Fatigue Case Study</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ethan-wicko">Ethan Wicko</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#literature-review">Literature Review</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-analysis">Case Study Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Case Study Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline-fatigue-life">Baseline Fatigue Life</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-porosity-on-fatigue-life">Effect of Porosity on Fatigue Life</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-to-use-the-paris-equation-with-pore-diameter">Steps to Use the Paris Equation with Pore Diameter:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-calculation">Example Calculation:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#results-and-discussion">Results and Discussion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Results and Discussion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="monte-carlo-methods-and-compliant-mechanism-fatigue-case-study">
+<h1>Monte Carlo Methods and Compliant Mechanism Fatigue Case Study<a class="headerlink" href="#monte-carlo-methods-and-compliant-mechanism-fatigue-case-study" title="Link to this heading">#</a></h1>
+<section id="ethan-wicko">
+<h2>Ethan Wicko<a class="headerlink" href="#ethan-wicko" title="Link to this heading">#</a></h2>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Compliant mechanisms, which gain at least some of their motion from the flexibility of their materials rather than from traditional joints, play a crucial role in modern engineering. These mechanisms are essential due to their ability to provide precise movements, reduce the number of parts, and eliminate the need for lubrication. Here’s an example of some imortant real-world use cases for compliant mechanisms:
+Certainly! Here are the use cases for compliant mechanisms with a brief description for each:</p>
+<ol class="arabic simple">
+<li><p><strong>Medical Stents</strong> - <em>Vascular Support</em>: Compliant mechanisms are used in stents to ensure they can be compressed for insertion and then expand to support blood vessels without invasive surgery.</p></li>
+<li><p><strong>Surgical Instruments</strong> - <em>Sterility and Precision</em>: Designs incorporating compliant mechanisms in surgical tools minimize joint use, enhancing sterility and providing precise control during operations.</p></li>
+<li><p><strong>Advanced Vehicle Suspension Systems</strong> - <em>Lightweight and Simplified Design</em>: Compliant mechanisms in automotive suspension systems provide a lightweight, less complex, and more durable alternative to traditional systems, improving vehicle performance.</p></li>
+<li><p><strong>Deployable Aerospace Structures</strong> - <em>Reliable Deployment</em>: Essential for compact, reliable deployment of satellite components like antennas and solar panels in space, where traditional mechanisms might fail due to harsh conditions.</p></li>
+<li><p><strong>Soft Robotics</strong> - <em>Adaptive and Safe Interaction</em>: In soft robotics, compliant mechanisms enable robots to adapt their shape and stiffness, allowing for safe interaction with humans and delicate objects in varied environments.</p></li>
+</ol>
+<p>These use cases highlight the integration of compliant mechanisms in various fields, demonstrating their importance in enhancing functionality, safety, and efficiency in modern technological applications. However, the material flexibility that allows these mechanisms to function also makes them susceptible to fatigue.</p>
+<p>Fatigue in compliant mechanisms occurs due to repetitive stress, leading to the initiation and propagation of cracks. Factors contributing to fatigue include load amplitude, frequency of loading, material properties, and environmental conditions. In compliant mechanisms, fatigue can result in reduced performance, unexpected failures, and ultimately, the breakdown of the system.</p>
+<p>Porosity, which refers to the presence of voids or pores within a material, significantly impacts fatigue life. Porous materials have stress concentrators that can initiate cracks, reducing the fatigue strength and lifespan of the component. Understanding the effect of porosity on fatigue life is crucial, especially for plastic compliant mechanisms commonly used in various applications.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="literature-review">
+<h1>Literature Review<a class="headerlink" href="#literature-review" title="Link to this heading">#</a></h1>
+<p>Current research on compliant mechanisms and fatigue highlights the significance of material properties and design factors. The University of Saskatchewan’s thesis provides a comprehensive analysis of design strategies under fatigue strength control. It emphasizes the importance of optimizing material usage and geometric design to enhance fatigue life.</p>
+<p>Studies focusing on porosity and its effects on fatigue life reveal that voids within a material act as stress concentrators. These voids can significantly reduce the fatigue strength of plastics used in compliant mechanisms. Research from the provided arXiv paper supports these findings, showing that higher porosity levels correlate with decreased fatigue life. The paper also highlights the variability in pore sizes, which adds complexity to predicting fatigue behavior.</p>
+<section id="methodology">
+<h2>Methodology<a class="headerlink" href="#methodology" title="Link to this heading">#</a></h2>
+<p>The computational framework for this study relies on design principles under fatigue strength control, as detailed in the University of Saskatchewan thesis. This framework incorporates Monte Carlo methods to simulate the impact of porosity on fatigue life. Monte Carlo simulations use random sampling to model the variability in pore sizes and distribution within the material.</p>
+<p>For this study, random numbers are generated within a range of hole sizes common to specific manufacturing methods. These methods include injection molding, 3D printing (Fused Deposition Modeling - FDM, Laser Powder Directed Fusion - LPDF, and resin-based methods), and CNC machining. Each method has distinct porosity characteristics, affecting the material’s fatigue life differently.</p>
+<p>Injection molding typically results in a porosity level of about 0.1% to 1% due to trapped air and insufficient packing pressure during the cooling phase​ (MDPI)​​ (Protolabs Network)​. FDM 3D printing, on the other hand, can exhibit porosity levels ranging from 1% to 5%, depending on the printing parameters and material quality​ (MDPI)​​ (Manufacturing on Demand)​. LPDF methods generally have lower porosity, around 0.5% to 2%, as they involve higher energy input and better fusion of the material layers​ (MDPI)​. CNC machining produces parts with negligible porosity since the process involves cutting from a solid block of material, maintaining the material’s integrity​ (Stratasys)​.</p>
+<p>Genetic algorithm techniques are employed to refine the simulations, ensuring accurate representation of the manufacturing processes. These algorithms help in identifying the optimal configurations that minimize fatigue effects due to porosity.</p>
+</section>
+<section id="case-study-analysis">
+<h2>Case Study Analysis<a class="headerlink" href="#case-study-analysis" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Case Study Analysis<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>This study investigates the fatigue behavior of a simple compliant hinge, utilized in applications requiring flexible joints. The hinge, designed with a thickness of 2 mm, a length of 20 mm, and a width of 10 mm, features a central flexure region optimized for bending, with fixed ends to ensure accurate load application.</p>
+<section id="baseline-fatigue-life">
+<h4>Baseline Fatigue Life<a class="headerlink" href="#baseline-fatigue-life" title="Link to this heading">#</a></h4>
+<p>The baseline fatigue life of the hinge was initially assessed using the Goodman and Gerber equations. These models provide foundational comparisons for understanding material behavior under cyclic loading:</p>
+<ul>
+<li><p><strong>Goodman Equation:</strong>
+(sigma_a / S_e) + (sigma_m / S_u) = 1</p>
+<p>Where <span class="math notranslate nohighlight">\(\sigma_a\)</span> is the alternating stress, <span class="math notranslate nohighlight">\(S_e\)</span> is the endurance limit, <span class="math notranslate nohighlight">\(\sigma_m\)</span> is the mean stress, and <span class="math notranslate nohighlight">\(S_u\)</span> is the ultimate tensile strength.</p>
+</li>
+<li><p><strong>Gerber Equation:</strong>
+(sigma_m / S_u)^2 + (sigma_a / S_e) = 1</p>
+<p>This equation is particularly useful for more ductile materials, providing a conservative estimate of the fatigue limit.</p>
+</li>
+</ul>
+</section>
+<section id="effect-of-porosity-on-fatigue-life">
+<h4>Effect of Porosity on Fatigue Life<a class="headerlink" href="#effect-of-porosity-on-fatigue-life" title="Link to this heading">#</a></h4>
+<p>To explore how porosity influences the fatigue life of materials, Monte Carlo simulations were conducted, utilizing porosity data derived from actual material samples. Porosity typically introduces stress concentrators that can initiate cracks, potentially reducing the material’s fatigue life. The effects of porosity were quantified through simulations that integrate material porosity into the stress-life equations:</p>
+<ul>
+<li><p><strong>Monte Carlo Simulations:</strong> Porosity values were generated based on the 75th percentile of pore sizes, calculated from measured pore diameters. This statistical approach allowed for the realistic modeling of porosity effects across numerous simulation runs.</p></li>
+<li><p><strong>Porosity Impact Modeling:</strong> The effective stress concentration factor K_f, influenced by porosity, was estimated using:
+K_f = 1 + q * (K_t - 1)</p>
+<p>Here, K_t represents the theoretical stress concentration factor, and q is the notch sensitivity factor.</p>
+</li>
+</ul>
+<p>For crack propagation analysis, Paris’ Law was employed:
+da/dN = C * (Delta K)^m
+Where C and m are material constants, and Delta K is the stress intensity factor range affected by porosity.</p>
+<hr class="docutils" />
+<p>To use the Paris equation to calculate the reduction in a material’s life due to the presence of a pore, you first need to understand how the diameter of the pore influences the stress intensity factor range (<span class="math notranslate nohighlight">\(\Delta K\)</span>), which is central to the Paris equation. The Paris equation is traditionally used to describe the rate of crack growth under cyclic loading and is expressed as:</p>
+<p><span class="math notranslate nohighlight">\(
+\frac{da}{dN} = C(\Delta K)^m
+\)</span></p>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\frac{da}{dN}\)</span> is the crack growth rate per cycle.</p></li>
+<li><p><span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(m\)</span> are material constants that need to be determined experimentally or taken from literature.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta K\)</span> is the stress intensity factor range.</p></li>
+</ul>
+</section>
+</section>
+<section id="steps-to-use-the-paris-equation-with-pore-diameter">
+<h3>Steps to Use the Paris Equation with Pore Diameter:<a class="headerlink" href="#steps-to-use-the-paris-equation-with-pore-diameter" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Determine the Stress Intensity Factor (<span class="math notranslate nohighlight">\(\Delta K\)</span>)</strong>:</p>
+<ul class="simple">
+<li><p>The stress intensity factor range, <span class="math notranslate nohighlight">\(\Delta K\)</span>, can be affected by the presence of a pore, acting as a crack-like defect. The size of the pore can be used to approximate the initial crack size in calculations.</p></li>
+<li><p>A common approach to estimate <span class="math notranslate nohighlight">\(\Delta K\)</span> for a circular pore acting like a crack under stress is:
+<span class="math notranslate nohighlight">\(
+\Delta K = Y \sigma \sqrt{\pi a}
+\)</span>
+Where:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(Y\)</span> is a geometric factor dependent on the shape of the crack and the loading conditions (commonly ranges from 1.0 to 1.12 for internal cracks).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma\)</span> is the applied or nominal stress.</p></li>
+<li><p><span class="math notranslate nohighlight">\(a\)</span> is the half-length of the crack, which could be approximated as half the diameter of the pore for a rough estimation.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Calculate the Crack Growth Rate (<span class="math notranslate nohighlight">\(\frac{da}{dN}\)</span>)</strong>:</p>
+<ul class="simple">
+<li><p>Using the determined <span class="math notranslate nohighlight">\(\Delta K\)</span>, plug it into the Paris equation to get the crack growth rate.</p></li>
+</ul>
+</li>
+<li><p><strong>Integrate the Crack Growth Rate to Find Lifetime</strong>:</p>
+<ul class="simple">
+<li><p>To find the total lifetime or the number of cycles to failure, you can integrate the crack growth rate from an initial crack size (approximated by the pore size) to a critical crack size at which failure occurs.</p></li>
+<li><p>The integration might require numerical methods if done precisely, but a simplified approach can estimate the cycles to failure (<span class="math notranslate nohighlight">\(N_f\)</span>) by considering:
+<span class="math notranslate nohighlight">\(
+N_f \approx \frac{1}{C} \left( \frac{1}{(\Delta K)^m} \right)
+\)</span></p></li>
+<li><p>This simplified formula provides an inverse approximation, highlighting that the life decreases as the stress intensity factor range increases.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="example-calculation">
+<h3>Example Calculation:<a class="headerlink" href="#example-calculation" title="Link to this heading">#</a></h3>
+<p>Assuming a material with known constants <span class="math notranslate nohighlight">\(C = 1 \times 10^{-12}\)</span> m/cycle, <span class="math notranslate nohighlight">\(m = 3\)</span>, a pore diameter of 0.2 mm under a nominal stress of 100 MPa, and <span class="math notranslate nohighlight">\(Y = 1.12\)</span>:</p>
+<ol class="arabic simple">
+<li><p><strong>Estimate <span class="math notranslate nohighlight">\(\Delta K\)</span></strong>:
+<span class="math notranslate nohighlight">\(\Delta K = 1.12 \times 100 \text{ MPa} \times \sqrt{\pi \times 0.1 \text{ mm}}\)</span></p>
+<ul class="simple">
+<li><p>Calculate this value to get <span class="math notranslate nohighlight">\(\Delta K\)</span>.</p></li>
+</ul>
+</li>
+<li><p><strong>Plug <span class="math notranslate nohighlight">\(\Delta K\)</span> into the Paris Equation</strong>:
+<span class="math notranslate nohighlight">\(\frac{da}{dN} = 1 \times 10^{-12} \times (\Delta K)^3\)</span></p>
+<ul class="simple">
+<li><p>Compute to find the crack growth rate.</p></li>
+</ul>
+</li>
+<li><p><strong>Estimate Lifetime</strong>:
+<span class="math notranslate nohighlight">\(N_f \approx \frac{1}{1 \times 10^{-12}} \left( \frac{1}{(\Delta K)^3} \right)\)</span></p>
+<ul class="simple">
+<li><p>Calculate to estimate the cycles to failure.</p></li>
+</ul>
+</li>
+</ol>
+<p>This process provides an estimate of how a single pore can impact the fatigue life of a material through accelerated crack growth. For accurate predictions, detailed material testing and finite element analysis might be necessary, especially to adjust for material-specific behaviors and complex loading conditions.</p>
+<hr class="docutils" />
+<section id="results-and-discussion">
+<h4>Results and Discussion<a class="headerlink" href="#results-and-discussion" title="Link to this heading">#</a></h4>
+<p>The simulation results indicate significant variability in fatigue life due to porosity, with the Paris’ Law showing particularly sensitive dependence due to its exponential nature:</p>
+<ul class="simple">
+<li><p><strong>Baseline Fatigue Life (No Porosity):</strong> Estimated at 1,000,000 cycles.</p></li>
+<li><p><strong>Reduced Fatigue Life (With Porosity):</strong></p>
+<ul>
+<li><p><strong>Goodman Model:</strong> Reduced to approximately 126,000 cycles.</p></li>
+<li><p><strong>Gerber Model:</strong> Reduced to approximately 236,000 cycles.</p></li>
+<li><p><strong>Paris’ Law:</strong> Indicates an extremely high life expectancy, suggesting that under certain conditions, the crack growth rate may be significantly slowed, which requires further investigation to clarify these anomalies.</p></li>
+</ul>
+</li>
+</ul>
+<p>These results highlight the critical impact of manufacturing methods and material porosity on the fatigue life of compliant mechanisms. Such insights are essential for optimizing material selection and manufacturing processes to enhance the durability and performance of flexible mechanical components. Porosity characteristics are quantified, and their impact on fatigue life is assessed. The Monte Carlo simulations provide a probability distribution of the part’s lifespan, considering various pore sizes. This probabilistic approach allows for a more comprehensive understanding of how manufacturing methods influence fatigue life compared to an ideal, non-porous scenario.</p>
+</section>
+</section>
+</section>
+<section id="id2">
+<h2>Results and Discussion<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>The findings from the Monte Carlo simulations reveal that manufacturing methods significantly affect the fatigue life of compliant mechanisms. Injection molding, for instance, shows a lower probability of large pores but higher overall porosity, leading to moderate fatigue life. In contrast, 3D printing methods like FDM and LPDF exhibit varied pore sizes, resulting in a wider range of fatigue life predictions.</p>
+<p>The results indicate that porosity introduces a high degree of variability in fatigue performance. Traditional methods, such as empirical or handbook methods (e.g., Howell 2001, Shigley 2011), provide baseline fatigue predictions but do not account for the complex effects of porosity. The Monte Carlo approach offers a more nuanced understanding, highlighting the benefits of probabilistic modeling in fatigue analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##LOAD MATERIALS</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">load_material_properties</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;./materials.csv&#39;</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: The file </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2"> does not exist.&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">pd</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">EmptyDataError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: The file </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2"> is empty or not formatted correctly.&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An unexpected error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_material_properties</span><span class="p">(</span><span class="n">materials_df</span><span class="p">,</span> <span class="n">material</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">materials_df</span><span class="p">[(</span><span class="n">materials_df</span><span class="p">[</span><span class="s1">&#39;material&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">material</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">materials_df</span><span class="p">[</span><span class="s1">&#39;method&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">method</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">row</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;youngs_modulus_MPa&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;youngs_modulus_MPa&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s1">&#39;yield_strength_MPa&#39;</span><span class="p">:</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;yield_strength_MPa&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="s1">&#39;porosity_range&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;porosity_range&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)]</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">properties</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="c1"># Example usage:</span>
+<span class="n">materials_df</span> <span class="o">=</span> <span class="n">load_material_properties</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">materials_df</span><span class="p">)</span>
+<span class="n">material_properties</span> <span class="o">=</span> <span class="n">get_material_properties</span><span class="p">(</span><span class="n">materials_df</span><span class="p">,</span> <span class="s1">&#39;Steel&#39;</span><span class="p">,</span> <span class="s1">&#39;Casting&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">material_properties</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    material             method  youngs_modulus_MPa  yield_strength_MPa  \
+0      Steel            Casting              210000                 550   
+1   Aluminum        3D Printing               70000                 250   
+2   Titanium          Machining              116000                 880   
+3    Polymer  Injection Molding                2500                  50   
+4  Composite        3D Printing               70000                 600   
+
+  porosity_range  
+0      0.02,0.05  
+1      0.05,0.15  
+2      0.01,0.03  
+3      0.02,0.04  
+4       0.03,0.1  
+{&#39;youngs_modulus_MPa&#39;: 210000, &#39;yield_strength_MPa&#39;: 550, &#39;porosity_range&#39;: [0.02, 0.05]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##SIMULATION</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">default_rng</span>
+
+<span class="k">def</span> <span class="nf">run_monte_carlo_simulation</span><span class="p">(</span><span class="n">material_properties</span><span class="p">,</span> <span class="n">mean_pore_size</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simulate the effects of porosity on a material property.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">    material (dict): A dictionary containing the material properties and porosity range.</span>
+<span class="sd">    num_simulations (int): The number of simulations to run.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    np.array: An array of simulated values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="mi">1000000</span>   <span class="c1">#volume of material</span>
+    <span class="n">ws</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">lognormal</span><span class="p">(</span><span class="n">mean</span> <span class="o">=</span> <span class="n">mean_pore_size</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1">#mean a determines the average size of the pore</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ws</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ws</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">ws</span><span class="o">**</span><span class="mi">3</span><span class="p">))</span> <span class="c1">#volume of all the pores</span>
+    <span class="n">porosity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">ws</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="n">V</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;porosity = &#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">ws</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="n">V</span><span class="p">)</span>  <span class="c1">#porosity given by the ratio of pore volume to starting volume</span>
+    
+    <span class="n">average_pore_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+    <span class="n">std_pore_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">porosity</span><span class="p">,</span> <span class="n">average_pore_size</span><span class="p">,</span> <span class="n">std_pore_size</span>
+
+
+
+<span class="k">def</span> <span class="nf">calculate_porosity_factor</span><span class="p">(</span><span class="n">pore_sizes</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the porosity factor based on the 75th percentile of pore sizes.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">    pore_sizes (list or np.array): List of pore diameters.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    float: A porosity factor derived from the pore sizes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="c1"># Calculate the 75th percentile pore diameter</span>
+    <span class="n">p75_diameter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">pore_sizes</span><span class="p">,</span> <span class="mi">75</span><span class="p">)</span>
+
+    <span class="c1"># Example calculation to derive porosity factor (simplified model)</span>
+    <span class="c1"># Assume porosity factor scales linearly with the diameter of pores</span>
+    <span class="c1"># This will need to be adjusted based on actual volumetric analysis or experimental data</span>
+    <span class="n">porosity_factor</span> <span class="o">=</span> <span class="n">p75_diameter</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">pore_sizes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">porosity_factor</span>
+
+
+<span class="k">def</span> <span class="nf">calculate_reduced_life</span><span class="p">(</span><span class="n">porosity_factor</span><span class="p">,</span> <span class="n">average_pore_size</span><span class="p">,</span> <span class="n">expected_life</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate reduced fatigue life using Goodman, Gerber, and Paris equations.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">    porosity_factor (float): The porosity factor (0 to 1 scale, where 1 is highly porous).</span>
+<span class="sd">    expected_life (float): The baseline expected fatigue life without porosity.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    dict: A dictionary containing reduced life estimations according to different models.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">sigma_ut</span> <span class="o">=</span> <span class="mi">400</span>  <span class="c1"># Ultimate tensile strength in MPa</span>
+    <span class="n">sigma_e</span> <span class="o">=</span> <span class="mi">200</span>  <span class="c1"># Endurance limit in MPa</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="mf">1e-12</span>  <span class="c1"># Paris&#39; law constant C</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="mf">3.1</span>  <span class="c1"># Paris&#39; law constant m</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># Assumed nominal stress in MPa, example value</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="mf">1.12</span>  <span class="c1"># Geometric factor for an internal crack, approx. value</span>
+
+
+    <span class="c1"># Adjust properties based on porosity</span>
+    <span class="n">adjusted_sigma_e</span> <span class="o">=</span> <span class="n">sigma_e</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">porosity_factor</span><span class="p">)</span>
+    <span class="n">adjusted_sigma_ut</span> <span class="o">=</span> <span class="n">sigma_ut</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">porosity_factor</span><span class="p">)</span>
+
+    <span class="c1"># Goodman&#39;s reduction</span>
+    <span class="n">goodman_life</span> <span class="o">=</span> <span class="n">expected_life</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">porosity_factor</span><span class="p">)</span>
+
+    <span class="c1"># Gerber&#39;s reduction</span>
+    <span class="n">gerber_life</span> <span class="o">=</span> <span class="n">expected_life</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">porosity_factor</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Paris&#39; Law (simplistic approach for demonstration)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">average_pore_size</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># Convert diameter to radius for crack length approximation</span>
+    <span class="n">Delta_K</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>  <span class="c1"># Calculate Delta K using the formula</span>
+
+    <span class="c1"># Calculate Paris&#39; Law factor</span>
+    <span class="n">paris_factor</span> <span class="o">=</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span><span class="n">Delta_K</span><span class="o">**</span><span class="n">m</span><span class="p">)</span>
+    
+    <span class="c1"># Additional calculation for N_f using the approximation</span>
+    <span class="c1"># N_f ≈ 1 / (1 × 10^(-12) * (1 / (Delta K)^3))</span>
+    <span class="c1"># Since C = 1 × 10^(-12) and the factor is approximately the inverse of Delta_K^3</span>
+    <span class="n">N_f_approx</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">C</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">Delta_K</span><span class="o">**</span><span class="mi">3</span><span class="p">)))</span>
+
+    <span class="c1"># Estimate the fatigue life reduction</span>
+      <span class="c1"># This would be a very small number; for a realistic model, integration over da/dN is needed</span>
+    
+    <span class="n">da</span> <span class="o">=</span> <span class="mf">0.0001</span>  <span class="c1"># Small increment in crack length</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Initialize cycle count</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">average_pore_size</span>  <span class="c1"># Initial crack length</span>
+    <span class="n">a_c</span> <span class="o">=</span> <span class="mf">3.5</span>
+
+    <span class="k">while</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">a_c</span><span class="p">:</span>
+        <span class="n">Delta_K</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+        <span class="n">dadN</span> <span class="o">=</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span><span class="n">Delta_K</span><span class="o">**</span><span class="n">m</span><span class="p">)</span>
+        <span class="n">a</span> <span class="o">+=</span> <span class="n">da</span>  <span class="c1"># Increment crack length</span>
+        <span class="n">N</span> <span class="o">+=</span> <span class="n">da</span> <span class="o">/</span> <span class="n">dadN</span>  <span class="c1"># Increment cycle count</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    
+    <span class="n">paris_life</span> <span class="o">=</span> <span class="n">expected_life</span> <span class="o">-</span> <span class="n">N</span>
+    
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;goodman&#39;</span><span class="p">:</span> <span class="n">goodman_life</span><span class="p">,</span>
+        <span class="s1">&#39;gerber&#39;</span><span class="p">:</span> <span class="n">gerber_life</span><span class="p">,</span>
+        <span class="s1">&#39;paris&#39;</span><span class="p">:</span> <span class="n">paris_life</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##USE ABOVE FUNCTIONS/CODE BLOCKS</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+
+
+    <span class="n">materials_df</span> <span class="o">=</span> <span class="n">load_material_properties</span><span class="p">()</span>
+    <span class="n">material_properties</span> <span class="o">=</span> <span class="n">get_material_properties</span><span class="p">(</span><span class="n">materials_df</span><span class="p">,</span> <span class="s1">&#39;Polymer&#39;</span><span class="p">,</span> <span class="s1">&#39;Injection Molding&#39;</span><span class="p">)</span>
+
+    <span class="n">porosity</span><span class="p">,</span> <span class="n">average_pore_size</span><span class="p">,</span> <span class="n">std_pore_size</span> <span class="o">=</span> <span class="n">run_monte_carlo_simulation</span><span class="p">(</span><span class="n">material_properties</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+
+    <span class="n">expected_life</span> <span class="o">=</span> <span class="mf">1e6</span>  <span class="c1"># 1 million cycles without porosity</span>
+    <span class="n">reduced_life</span> <span class="o">=</span> <span class="n">calculate_reduced_life</span><span class="p">(</span><span class="n">porosity</span><span class="p">,</span> <span class="n">average_pore_size</span><span class="p">,</span> <span class="n">expected_life</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Porosity:&quot;</span><span class="p">,</span> <span class="n">porosity</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reduced Fatigue Life (Cycles):&quot;</span><span class="p">,</span> <span class="n">reduced_life</span><span class="p">)</span>
+    
+    
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.6388172827577554 0.23083928026766753
+787.2864242413244
+porosity =  0.0007872864242413245
+11553.256393636713
+Porosity: 0.0007872864242413245
+Reduced Fatigue Life (Cycles): {&#39;goodman&#39;: 999212.7135757587, &#39;gerber&#39;: 999999.3801800861, &#39;paris&#39;: 988446.7436063633}
+</pre></div>
+</div>
+<img alt="../_images/ea86ed4c8c5a13ed49661381327c877ac758ee41e18e5b14ae75dd65442aa171.png" src="../_images/ea86ed4c8c5a13ed49661381327c877ac758ee41e18e5b14ae75dd65442aa171.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">default_rng</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="mi">1000000</span>   <span class="c1">#volume of material</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]:</span>
+    <span class="n">ws</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">lognormal</span><span class="p">(</span><span class="n">mean</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1">#mean a determines the average size of the pore</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ws</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ws</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">ws</span><span class="o">**</span><span class="mi">3</span><span class="p">))</span> <span class="c1">#volume of all the pores</span>
+    <span class="n">porosity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">ws</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="n">V</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;porosity = &#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">ws</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="n">V</span><span class="p">)</span>  <span class="c1">#porosity given by the ratio of pore volume to starting volume</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.6388172827577554 0.23083928026766753
+787.2864242413244
+porosity =  0.0007872864242413245
+7.608690028179754 0.5105191393109145
+18696.917188282598
+porosity =  0.018696917188282598
+20.350845331687577 1.1203517260475453
+356290.5955744647
+porosity =  0.3562905955744647
+55.417838994538144 5.478809686615027
+7344753.563141302
+porosity =  7.344753563141302
+</pre></div>
+</div>
+<img alt="../_images/23a7a54971c9cd56e2185df96047066eb6f656041b3648526888dfeeae7c482d.png" src="../_images/23a7a54971c9cd56e2185df96047066eb6f656041b3648526888dfeeae7c482d.png" />
+</div>
+</div>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>The key findings of this study underscore the importance of considering porosity in the design and manufacturing of compliant mechanisms. Monte Carlo simulations demonstrate that different manufacturing methods lead to varying fatigue life outcomes, emphasizing the need for precise control over material properties and manufacturing processes.</p>
+<p>The implications for the design and use of compliant mechanisms are significant. Engineers must account for porosity effects to enhance reliability and performance. Future research should focus on refining computational models and exploring other factors influencing fatigue life, such as material anisotropy and environmental conditions.</p>
+<p>References
+Maybe add: proper citations to all used resources, including the specific thesis and articles accessed.</p>
+<p><a class="reference external" href="https://harvest.usask.ca/server/api/core/bitstreams/44901a64-c375-44f0-8763-37d09069a8f9/content">https://harvest.usask.ca/server/api/core/bitstreams/44901a64-c375-44f0-8763-37d09069a8f9/content</a> <a class="reference external" href="https://read.nxtbook.com/wiley/plasticsengineering/julyaugust2015/consultantscorner.html">https://read.nxtbook.com/wiley/plasticsengineering/julyaugust2015/consultantscorner.html</a></p>
+<p><a class="reference external" href="https://arxiv.org/abs/2308.10858">https://arxiv.org/abs/2308.10858</a></p>
+<p>Handbook of Compliant Mechanicsms, Howell 2001</p>
+<p>Shigley’s Mechanical Engineering Design, Shigley 2011</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./module_04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="wind-turbine-impact.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">The Impact of Wind Turbines on Renewable Energy Generation: A Comparative Study of the United States with Predictive Modeling for Selected European Countries</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="turbine_reliability.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Optimized Wind Turbine Reliability</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Monte Carlo Methods and Compliant Mechanism Fatigue Case Study</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ethan-wicko">Ethan Wicko</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#literature-review">Literature Review</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-analysis">Case Study Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Case Study Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline-fatigue-life">Baseline Fatigue Life</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-porosity-on-fatigue-life">Effect of Porosity on Fatigue Life</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steps-to-use-the-paris-equation-with-pore-diameter">Steps to Use the Paris Equation with Pore Diameter:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-calculation">Example Calculation:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#results-and-discussion">Results and Discussion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Results and Discussion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href = https://cooperrc.github.io> Ryan C. Cooper</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

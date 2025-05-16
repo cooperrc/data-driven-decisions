@@ -1,0 +1,895 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>HW_00 - Generative AI writing analysis &#8212; Data Driven Decisions</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'module_00/HW_00';</script>
+    <link rel="icon" href="../_static/spiderman-favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HW_01 - Generative AI writing analysis and Monte Carlo research" href="HW_01.html" />
+    <link rel="prev" title="Technical writing and Generative AI" href="01_writing-w-llms.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/datadecisions.svg" class="logo__image only-light" alt="Data Driven Decisions - Home"/>
+    <script>document.write(`<img src="../_static/datadecisions.svg" class="logo__image only-dark" alt="Data Driven Decisions - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Data-Driven Decisions: Monte Carlo Analysis for Technical Communications
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus - Data Driven Decisions</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Getting Started</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_writing-w-llms.html">Technical writing and Generative AI</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">HW_00 - Generative AI writing analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HW_01.html">HW_01 - Generative AI writing analysis and Monte Carlo research</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_01/README.html">Module_01</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/calculate_pi.html">Calculating <span class="math notranslate nohighlight">\(\pi\)</span> with Monte Carlo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/HW_02.html">HW_02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/statistical_significance.html">Statistical Significance in Data</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module_01/HW_03.html">HW_03</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_02/README.html">Module_02 - Engineering Processes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/drop_keys.html">Dropping keys and checking randomly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/HW_04.html">HW_04 - Exercise: failure prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/bus_wait.html">Waiting for the bus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/HW_05.html">HW_05 - Customer wait time</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_03/README.html">Module_03 - coming soon</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_03/challenger.html">Challenger explosion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_04/README.html">Module_04 - Case studies</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_04/report.html">Your Technical Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_04/wind-turbine-impact.html">The Impact of Wind Turbines on Renewable Energy Generation: A Comparative Study of the United States with Predictive Modeling for Selected European Countries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_04/compliant_fatigue.html">Monte Carlo Methods and Compliant Mechanism Fatigue Case Study</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module_04/turbine_reliability.html">Optimized Wind Turbine Reliability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_04/turbine_uncertainty.html">Wind Turbine Uncertainty in loading analysis</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/cooperrc/data-driven-decisions/main?urlpath=tree/module_00/HW_00.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/cooperrc/data-driven-decisions/blob/main/module_00/HW_00.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cooperrc/data-driven-decisions" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cooperrc/data-driven-decisions/issues/new?title=Issue%20on%20page%20%2Fmodule_00/HW_00.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/module_00/HW_00.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>HW_00 - Generative AI writing analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prompt-input-and-output">Prompt Input and Output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revised-document">Revised document</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#document-analysis">Document analysis</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="hw-00-generative-ai-writing-analysis">
+<h1>HW_00 - Generative AI writing analysis<a class="headerlink" href="#hw-00-generative-ai-writing-analysis" title="Link to this heading">#</a></h1>
+<p>In this assignment, you will generate instructions on brushing your teeth. You can use <a class="reference external" href="https://chatgpt.com/">ChatGPT</a></p>
+<p>Some metrics to add to the generated instructions:</p>
+<ul class="simple">
+<li><p>number of strokes per minute</p></li>
+<li><p>total brushing time</p></li>
+<li><p>time spent per tooth</p></li>
+<li><p>number of teeth or total area to brush on teeth</p></li>
+<li><p>deflection of brush bristles for proper cleaning</p></li>
+<li><p>what else can you think of?</p></li>
+</ul>
+<section id="prompt-input-and-output">
+<h2>Prompt Input and Output<a class="headerlink" href="#prompt-input-and-output" title="Link to this heading">#</a></h2>
+<p>-&gt; <em>copy-paste your prompts and outputs here</em></p>
+</section>
+<section id="revised-document">
+<h2>Revised document<a class="headerlink" href="#revised-document" title="Link to this heading">#</a></h2>
+<p>-&gt; <em>copy-paste the document here, then edit the output to remove passive phrasing and add specific ideas from your own research or experience (try quantifying any phrases such as ‘many’, ‘fewer’, ‘more important’, etc.</em></p>
+</section>
+<section id="document-analysis">
+<h2>Document analysis<a class="headerlink" href="#document-analysis" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Make a list of all the improvements and changes you made to document</p></li>
+<li><p>use the <code class="docutils literal notranslate"><span class="pre">tf_idf.cosineSimilarity</span></code> function to compare the AI version to your own</p></li>
+</ul>
+<p>Write a report on your intellectual property  in the ‘revised document’.</p>
+<ul class="simple">
+<li><p>How much can you claim as yours?</p></li>
+<li><p>How many ideas came from AI?</p></li>
+<li><p>How many ideas came from you?</p></li>
+<li><p>Is this a <em>new</em> document?</p></li>
+<li><p>If this work was made by you and another person-not AI-would you need to credit this person as a coauthor?</p></li>
+<li><p>What else can you discuss about this comparison and this process?</p></li>
+</ul>
+<p><em>run the cell below to get your <code class="docutils literal notranslate"><span class="pre">tf_idf</span></code> functions ready to run</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>tf-idf-cosimm<span class="o">==</span><span class="m">0</span>.0.2
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: tf-idf-cosimm==0.0.2 in /home/ryan/miniconda3/lib/python3.12/site-packages (0.0.2)
+Requirement already satisfied: numpy in /home/ryan/miniconda3/lib/python3.12/site-packages (from tf-idf-cosimm==0.0.2) (1.26.4)
+Requirement already satisfied: pandas in /home/ryan/miniconda3/lib/python3.12/site-packages (from tf-idf-cosimm==0.0.2) (2.2.2)
+Requirement already satisfied: nltk in /home/ryan/miniconda3/lib/python3.12/site-packages (from tf-idf-cosimm==0.0.2) (3.8.1)
+Requirement already satisfied: scikit-learn in /home/ryan/miniconda3/lib/python3.12/site-packages (from tf-idf-cosimm==0.0.2) (1.5.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: click in /home/ryan/miniconda3/lib/python3.12/site-packages (from nltk-&gt;tf-idf-cosimm==0.0.2) (8.1.7)
+Requirement already satisfied: joblib in /home/ryan/miniconda3/lib/python3.12/site-packages (from nltk-&gt;tf-idf-cosimm==0.0.2) (1.4.2)
+Requirement already satisfied: regex&gt;=2021.8.3 in /home/ryan/miniconda3/lib/python3.12/site-packages (from nltk-&gt;tf-idf-cosimm==0.0.2) (2024.5.15)
+Requirement already satisfied: tqdm in /home/ryan/miniconda3/lib/python3.12/site-packages (from nltk-&gt;tf-idf-cosimm==0.0.2) (4.66.2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: python-dateutil&gt;=2.8.2 in /home/ryan/miniconda3/lib/python3.12/site-packages (from pandas-&gt;tf-idf-cosimm==0.0.2) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /home/ryan/miniconda3/lib/python3.12/site-packages (from pandas-&gt;tf-idf-cosimm==0.0.2) (2024.1)
+Requirement already satisfied: tzdata&gt;=2022.7 in /home/ryan/miniconda3/lib/python3.12/site-packages (from pandas-&gt;tf-idf-cosimm==0.0.2) (2024.1)
+Requirement already satisfied: scipy&gt;=1.6.0 in /home/ryan/miniconda3/lib/python3.12/site-packages (from scikit-learn-&gt;tf-idf-cosimm==0.0.2) (1.13.1)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /home/ryan/miniconda3/lib/python3.12/site-packages (from scikit-learn-&gt;tf-idf-cosimm==0.0.2) (3.5.0)
+Requirement already satisfied: six&gt;=1.5 in /home/ryan/miniconda3/lib/python3.12/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas-&gt;tf-idf-cosimm==0.0.2) (1.16.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tf_idf.core</span> <span class="k">as</span> <span class="nn">tf_idf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /home/ryan/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AI</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;text from chatGPT&#39;&#39;&#39;</span>
+<span class="n">compare</span> <span class="o">=</span> <span class="n">tf_idf</span><span class="o">.</span><span class="n">preprocess_text</span><span class="p">(</span><span class="n">AI</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">LookupError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">AI</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;text from chatGPT&#39;&#39;&#39;</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">compare</span> <span class="o">=</span> <span class="n">tf_idf</span><span class="o">.</span><span class="n">preprocess_text</span><span class="p">(</span><span class="n">AI</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/nbdev/lib/python3.10/site-packages/tf_idf/core.py:33,</span> in <span class="ni">preprocess_text</span><span class="nt">(text)</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="n">remove_white_space</span> <span class="o">=</span> <span class="n">remove_punctuation</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="c1"># Tokenization = Breaking down each sentence into an array</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span> <span class="c1"># from nltk.tokenize import word_tokenize</span>
+<span class="ne">---&gt; </span><span class="mi">33</span> <span class="n">tokenized_text</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">remove_white_space</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="c1"># Stop Words/filtering = Removing irrelevant words</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="c1"># from nltk.corpus import stopwords</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="c1"># stopwords = set(stopwords.words(&#39;english&#39;))</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span> <span class="n">stopwords_removed</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tokenized_text</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">()]</span>
+
+<span class="nn">File ~/miniconda3/envs/nbdev/lib/python3.10/site-packages/nltk/tokenize/__init__.py:142,</span> in <span class="ni">word_tokenize</span><span class="nt">(text, language, preserve_line)</span>
+<span class="g g-Whitespace">    </span><span class="mi">127</span> <span class="k">def</span> <span class="nf">word_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="s2">&quot;english&quot;</span><span class="p">,</span> <span class="n">preserve_line</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">128</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">129</span><span class="sd">     Return a tokenized copy of *text*,</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span><span class="sd">     using NLTK&#39;s recommended word tokenizer</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span><span class="sd">     :type preserve_line: bool</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">142</span>     <span class="n">sentences</span> <span class="o">=</span> <span class="p">[</span><span class="n">text</span><span class="p">]</span> <span class="k">if</span> <span class="n">preserve_line</span> <span class="k">else</span> <span class="n">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">language</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span>     <span class="k">return</span> <span class="p">[</span>
+<span class="nn">    144         token for sent in sentences for token</span> in <span class="ni">_treebank_word_tokenizer.tokenize</span><span class="nt">(sent)</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span>     <span class="p">]</span>
+
+<span class="nn">File ~/miniconda3/envs/nbdev/lib/python3.10/site-packages/nltk/tokenize/__init__.py:119,</span> in <span class="ni">sent_tokenize</span><span class="nt">(text, language)</span>
+<span class="g g-Whitespace">    </span><span class="mi">109</span> <span class="k">def</span> <span class="nf">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="s2">&quot;english&quot;</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span><span class="sd">     Return a sentence-tokenized copy of *text*,</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span><span class="sd">     using NLTK&#39;s recommended sentence tokenizer</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">117</span><span class="sd">     :param language: the model name in the Punkt corpus</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">119</span>     <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">_get_punkt_tokenizer</span><span class="p">(</span><span class="n">language</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span>     <span class="k">return</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/nbdev/lib/python3.10/site-packages/nltk/tokenize/__init__.py:105,</span> in <span class="ni">_get_punkt_tokenizer</span><span class="nt">(language)</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span> <span class="nd">@functools</span><span class="o">.</span><span class="n">lru_cache</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span> <span class="k">def</span> <span class="nf">_get_punkt_tokenizer</span><span class="p">(</span><span class="n">language</span><span class="o">=</span><span class="s2">&quot;english&quot;</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span><span class="sd">     A constructor for the PunktTokenizer that utilizes</span>
+<span class="g g-Whitespace">    </span><span class="mi">100</span><span class="sd">     a lru cache for performance.</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span><span class="sd">     :type language: str</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">105</span>     <span class="k">return</span> <span class="n">PunktTokenizer</span><span class="p">(</span><span class="n">language</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/nbdev/lib/python3.10/site-packages/nltk/tokenize/punkt.py:1744,</span> in <span class="ni">PunktTokenizer.__init__</span><span class="nt">(self, lang)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1742</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;english&quot;</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1743</span>     <span class="n">PunktSentenceTokenizer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1744</span>     <span class="bp">self</span><span class="o">.</span><span class="n">load_lang</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span>
+
+<span class="nn">File ~/miniconda3/envs/nbdev/lib/python3.10/site-packages/nltk/tokenize/punkt.py:1749,</span> in <span class="ni">PunktTokenizer.load_lang</span><span class="nt">(self, lang)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1746</span> <span class="k">def</span> <span class="nf">load_lang</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;english&quot;</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1747</span>     <span class="kn">from</span> <span class="nn">nltk.data</span> <span class="kn">import</span> <span class="n">find</span>
+<span class="ne">-&gt; </span><span class="mi">1749</span>     <span class="n">lang_dir</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;tokenizers/punkt_tab/</span><span class="si">{</span><span class="n">lang</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1750</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_params</span> <span class="o">=</span> <span class="n">load_punkt_params</span><span class="p">(</span><span class="n">lang_dir</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1751</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_lang</span> <span class="o">=</span> <span class="n">lang</span>
+
+<span class="nn">File ~/miniconda3/envs/nbdev/lib/python3.10/site-packages/nltk/data.py:579,</span> in <span class="ni">find</span><span class="nt">(resource_name, paths)</span>
+<span class="g g-Whitespace">    </span><span class="mi">577</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span> <span class="o">*</span> <span class="mi">70</span>
+<span class="g g-Whitespace">    </span><span class="mi">578</span> <span class="n">resource_not_found</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">sep</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">sep</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">579</span> <span class="k">raise</span> <span class="ne">LookupError</span><span class="p">(</span><span class="n">resource_not_found</span><span class="p">)</span>
+
+<span class="ne">LookupError</span>: 
+<span class="o">**********************************************************************</span>
+  <span class="n">Resource</span> <span class="n">punkt_tab</span> <span class="ow">not</span> <span class="n">found</span><span class="o">.</span>
+  <span class="n">Please</span> <span class="n">use</span> <span class="n">the</span> <span class="n">NLTK</span> <span class="n">Downloader</span> <span class="n">to</span> <span class="n">obtain</span> <span class="n">the</span> <span class="n">resource</span><span class="p">:</span>
+
+  <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">nltk</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt_tab&#39;</span><span class="p">)</span>
+  
+  <span class="n">For</span> <span class="n">more</span> <span class="n">information</span> <span class="n">see</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">nltk</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">data</span><span class="o">.</span><span class="n">html</span>
+
+  <span class="n">Attempted</span> <span class="n">to</span> <span class="n">load</span> <span class="n">tokenizers</span><span class="o">/</span><span class="n">punkt_tab</span><span class="o">/</span><span class="n">english</span><span class="o">/</span>
+
+  <span class="n">Searched</span> <span class="ow">in</span><span class="p">:</span>
+    <span class="o">-</span> <span class="s1">&#39;/home/ryan/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/home/ryan/miniconda3/envs/nbdev/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/home/ryan/miniconda3/envs/nbdev/share/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/home/ryan/miniconda3/envs/nbdev/lib/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/share/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/local/share/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/lib/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/local/lib/nltk_data&#39;</span>
+<span class="o">**********************************************************************</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ME</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;my edited text&#39;&#39;&#39;</span>
+<span class="n">compare</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">compare</span><span class="p">,</span> <span class="n">tf_idf</span><span class="o">.</span><span class="n">preprocess_text</span><span class="p">(</span><span class="n">ME</span><span class="p">)],</span> 
+                    <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">compare</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DOCUMENT</th>
+      <th>LOWERCASE</th>
+      <th>CLEANING</th>
+      <th>TOKENIZATION</th>
+      <th>STOP-WORDS</th>
+      <th>STEMMING</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>text from chatGPT</td>
+      <td>text from chatgpt</td>
+      <td>text from chatgpt</td>
+      <td>[text, from, chatgpt]</td>
+      <td>[text, chatgpt]</td>
+      <td>[text, chatgpt]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>my edited text</td>
+      <td>my edited text</td>
+      <td>my edited text</td>
+      <td>[my, edited, text]</td>
+      <td>[edited, text]</td>
+      <td>[edit, text]</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf_idf</span><span class="o">.</span><span class="n">cosineSimilarity</span><span class="p">(</span><span class="n">compare</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DOCUMENT</th>
+      <th>STEMMING</th>
+      <th>COSIM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>text from chatGPT</td>
+      <td>[text, chatgpt]</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>my edited text</td>
+      <td>[edit, text]</td>
+      <td>0.336097</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./module_00"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_writing-w-llms.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Technical writing and Generative AI</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="HW_01.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">HW_01 - Generative AI writing analysis and Monte Carlo research</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prompt-input-and-output">Prompt Input and Output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revised-document">Revised document</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#document-analysis">Document analysis</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href = https://cooperrc.github.io> Ryan C. Cooper</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

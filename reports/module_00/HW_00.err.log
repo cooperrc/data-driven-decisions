@@ -1,0 +1,114 @@
+Traceback (most recent call last):
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 173, in wrapped
+    return loop.run_until_complete(inner)
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+AI = '''text from chatGPT'''
+compare = tf_idf.preprocess_text(AI)
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mLookupError[0m                               Traceback (most recent call last)
+Cell [0;32mIn[4], line 2[0m
+[1;32m      1[0m AI [38;5;241m=[39m [38;5;124m'''[39m[38;5;124mtext from chatGPT[39m[38;5;124m'''[39m
+[0;32m----> 2[0m compare [38;5;241m=[39m [43mtf_idf[49m[38;5;241;43m.[39;49m[43mpreprocess_text[49m[43m([49m[43mAI[49m[43m)[49m
+
+File [0;32m~/miniconda3/envs/nbdev/lib/python3.10/site-packages/tf_idf/core.py:33[0m, in [0;36mpreprocess_text[0;34m(text)[0m
+[1;32m     29[0m remove_white_space [38;5;241m=[39m remove_punctuation[38;5;241m.[39mstrip()
+[1;32m     31[0m [38;5;66;03m# Tokenization = Breaking down each sentence into an array[39;00m
+[1;32m     32[0m [38;5;66;03m# from nltk.tokenize import word_tokenize[39;00m
+[0;32m---> 33[0m tokenized_text [38;5;241m=[39m [43mword_tokenize[49m[43m([49m[43mremove_white_space[49m[43m)[49m
+[1;32m     35[0m [38;5;66;03m# Stop Words/filtering = Removing irrelevant words[39;00m
+[1;32m     36[0m [38;5;66;03m# from nltk.corpus import stopwords[39;00m
+[1;32m     37[0m [38;5;66;03m# stopwords = set(stopwords.words('english'))[39;00m
+[1;32m     38[0m stopwords_removed [38;5;241m=[39m [word [38;5;28;01mfor[39;00m word [38;5;129;01min[39;00m tokenized_text [38;5;28;01mif[39;00m word [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m stopwords[38;5;241m.[39mwords()]
+
+File [0;32m~/miniconda3/envs/nbdev/lib/python3.10/site-packages/nltk/tokenize/__init__.py:142[0m, in [0;36mword_tokenize[0;34m(text, language, preserve_line)[0m
+[1;32m    127[0m [38;5;28;01mdef[39;00m [38;5;21mword_tokenize[39m(text, language[38;5;241m=[39m[38;5;124m"[39m[38;5;124menglish[39m[38;5;124m"[39m, preserve_line[38;5;241m=[39m[38;5;28;01mFalse[39;00m):
+[1;32m    128[0m [38;5;250m    [39m[38;5;124;03m"""[39;00m
+[1;32m    129[0m [38;5;124;03m    Return a tokenized copy of *text*,[39;00m
+[1;32m    130[0m [38;5;124;03m    using NLTK's recommended word tokenizer[39;00m
+[0;32m   (...)[0m
+[1;32m    140[0m [38;5;124;03m    :type preserve_line: bool[39;00m
+[1;32m    141[0m [38;5;124;03m    """[39;00m
+[0;32m--> 142[0m     sentences [38;5;241m=[39m [text] [38;5;28;01mif[39;00m preserve_line [38;5;28;01melse[39;00m [43msent_tokenize[49m[43m([49m[43mtext[49m[43m,[49m[43m [49m[43mlanguage[49m[43m)[49m
+[1;32m    143[0m     [38;5;28;01mreturn[39;00m [
+[1;32m    144[0m         token [38;5;28;01mfor[39;00m sent [38;5;129;01min[39;00m sentences [38;5;28;01mfor[39;00m token [38;5;129;01min[39;00m _treebank_word_tokenizer[38;5;241m.[39mtokenize(sent)
+[1;32m    145[0m     ]
+
+File [0;32m~/miniconda3/envs/nbdev/lib/python3.10/site-packages/nltk/tokenize/__init__.py:119[0m, in [0;36msent_tokenize[0;34m(text, language)[0m
+[1;32m    109[0m [38;5;28;01mdef[39;00m [38;5;21msent_tokenize[39m(text, language[38;5;241m=[39m[38;5;124m"[39m[38;5;124menglish[39m[38;5;124m"[39m):
+[1;32m    110[0m [38;5;250m    [39m[38;5;124;03m"""[39;00m
+[1;32m    111[0m [38;5;124;03m    Return a sentence-tokenized copy of *text*,[39;00m
+[1;32m    112[0m [38;5;124;03m    using NLTK's recommended sentence tokenizer[39;00m
+[0;32m   (...)[0m
+[1;32m    117[0m [38;5;124;03m    :param language: the model name in the Punkt corpus[39;00m
+[1;32m    118[0m [38;5;124;03m    """[39;00m
+[0;32m--> 119[0m     tokenizer [38;5;241m=[39m [43m_get_punkt_tokenizer[49m[43m([49m[43mlanguage[49m[43m)[49m
+[1;32m    120[0m     [38;5;28;01mreturn[39;00m tokenizer[38;5;241m.[39mtokenize(text)
+
+File [0;32m~/miniconda3/envs/nbdev/lib/python3.10/site-packages/nltk/tokenize/__init__.py:105[0m, in [0;36m_get_punkt_tokenizer[0;34m(language)[0m
+[1;32m     96[0m [38;5;129m@functools[39m[38;5;241m.[39mlru_cache
+[1;32m     97[0m [38;5;28;01mdef[39;00m [38;5;21m_get_punkt_tokenizer[39m(language[38;5;241m=[39m[38;5;124m"[39m[38;5;124menglish[39m[38;5;124m"[39m):
+[1;32m     98[0m [38;5;250m    [39m[38;5;124;03m"""[39;00m
+[1;32m     99[0m [38;5;124;03m    A constructor for the PunktTokenizer that utilizes[39;00m
+[1;32m    100[0m [38;5;124;03m    a lru cache for performance.[39;00m
+[0;32m   (...)[0m
+[1;32m    103[0m [38;5;124;03m    :type language: str[39;00m
+[1;32m    104[0m [38;5;124;03m    """[39;00m
+[0;32m--> 105[0m     [38;5;28;01mreturn[39;00m [43mPunktTokenizer[49m[43m([49m[43mlanguage[49m[43m)[49m
+
+File [0;32m~/miniconda3/envs/nbdev/lib/python3.10/site-packages/nltk/tokenize/punkt.py:1744[0m, in [0;36mPunktTokenizer.__init__[0;34m(self, lang)[0m
+[1;32m   1742[0m [38;5;28;01mdef[39;00m [38;5;21m__init__[39m([38;5;28mself[39m, lang[38;5;241m=[39m[38;5;124m"[39m[38;5;124menglish[39m[38;5;124m"[39m):
+[1;32m   1743[0m     PunktSentenceTokenizer[38;5;241m.[39m[38;5;21m__init__[39m([38;5;28mself[39m)
+[0;32m-> 1744[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mload_lang[49m[43m([49m[43mlang[49m[43m)[49m
+
+File [0;32m~/miniconda3/envs/nbdev/lib/python3.10/site-packages/nltk/tokenize/punkt.py:1749[0m, in [0;36mPunktTokenizer.load_lang[0;34m(self, lang)[0m
+[1;32m   1746[0m [38;5;28;01mdef[39;00m [38;5;21mload_lang[39m([38;5;28mself[39m, lang[38;5;241m=[39m[38;5;124m"[39m[38;5;124menglish[39m[38;5;124m"[39m):
+[1;32m   1747[0m     [38;5;28;01mfrom[39;00m [38;5;21;01mnltk[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdata[39;00m [38;5;28;01mimport[39;00m find
+[0;32m-> 1749[0m     lang_dir [38;5;241m=[39m [43mfind[49m[43m([49m[38;5;124;43mf[39;49m[38;5;124;43m"[39;49m[38;5;124;43mtokenizers/punkt_tab/[39;49m[38;5;132;43;01m{[39;49;00m[43mlang[49m[38;5;132;43;01m}[39;49;00m[38;5;124;43m/[39;49m[38;5;124;43m"[39;49m[43m)[49m
+[1;32m   1750[0m     [38;5;28mself[39m[38;5;241m.[39m_params [38;5;241m=[39m load_punkt_params(lang_dir)
+[1;32m   1751[0m     [38;5;28mself[39m[38;5;241m.[39m_lang [38;5;241m=[39m lang
+
+File [0;32m~/miniconda3/envs/nbdev/lib/python3.10/site-packages/nltk/data.py:579[0m, in [0;36mfind[0;34m(resource_name, paths)[0m
+[1;32m    577[0m sep [38;5;241m=[39m [38;5;124m"[39m[38;5;124m*[39m[38;5;124m"[39m [38;5;241m*[39m [38;5;241m70[39m
+[1;32m    578[0m resource_not_found [38;5;241m=[39m [38;5;124mf[39m[38;5;124m"[39m[38;5;130;01m\n[39;00m[38;5;132;01m{[39;00msep[38;5;132;01m}[39;00m[38;5;130;01m\n[39;00m[38;5;132;01m{[39;00mmsg[38;5;132;01m}[39;00m[38;5;130;01m\n[39;00m[38;5;132;01m{[39;00msep[38;5;132;01m}[39;00m[38;5;130;01m\n[39;00m[38;5;124m"[39m
+[0;32m--> 579[0m [38;5;28;01mraise[39;00m [38;5;167;01mLookupError[39;00m(resource_not_found)
+
+[0;31mLookupError[0m: 
+**********************************************************************
+  Resource [93mpunkt_tab[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt_tab')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt_tab/english/[0m
+
+  Searched in:
+    - '/home/ryan/nltk_data'
+    - '/home/ryan/miniconda3/envs/nbdev/nltk_data'
+    - '/home/ryan/miniconda3/envs/nbdev/share/nltk_data'
+    - '/home/ryan/miniconda3/envs/nbdev/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+

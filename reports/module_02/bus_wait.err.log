@@ -1,0 +1,39 @@
+Traceback (most recent call last):
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 173, in wrapped
+    return loop.run_until_complete(inner)
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+for i, bus_time in enumerate(bus_arrival[0,:]):
+    people_on_bus = np.size(people_arrival[
+        np.logical_and(people_arrival>bus_time,
+                       people_arrival<bus_arrival[i+1])])
+    time_wait = np.mean(people_arrival[np.logical_and(people_arrival>bus_time, 
+                                          people_arrival<bus_arrival[i+1])] - bus_time)*60 
+    print('bus {} had {} that waited avg {} min'.format(i, people_on_bus, time_wait))
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mIndexError[0m                                Traceback (most recent call last)
+Cell [0;32mIn[10], line 1[0m
+[0;32m----> 1[0m [38;5;28;01mfor[39;00m i, bus_time [38;5;129;01min[39;00m [38;5;28menumerate[39m([43mbus_arrival[49m[43m[[49m[38;5;241;43m0[39;49m[43m,[49m[43m:[49m[43m][49m):
+[1;32m      2[0m     people_on_bus [38;5;241m=[39m np[38;5;241m.[39msize(people_arrival[
+[1;32m      3[0m         np[38;5;241m.[39mlogical_and(people_arrival[38;5;241m>[39mbus_time,
+[1;32m      4[0m                        people_arrival[38;5;241m<[39mbus_arrival[i[38;5;241m+[39m[38;5;241m1[39m])])
+[1;32m      5[0m     time_wait [38;5;241m=[39m np[38;5;241m.[39mmean(people_arrival[np[38;5;241m.[39mlogical_and(people_arrival[38;5;241m>[39mbus_time, 
+[1;32m      6[0m                                           people_arrival[38;5;241m<[39mbus_arrival[i[38;5;241m+[39m[38;5;241m1[39m])] [38;5;241m-[39m bus_time)[38;5;241m*[39m[38;5;241m60[39m 
+
+[0;31mIndexError[0m: too many indices for array: array is 1-dimensional, but 2 were indexed
+

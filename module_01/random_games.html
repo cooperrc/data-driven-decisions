@@ -1,0 +1,691 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropping keys and checking randomly &#8212; Data Driven Decisions</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/spiderman-favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Calculating \(\pi\) with Monte Carlo" href="calculate_pi.html" />
+    <link rel="prev" title="Module_01" href="README.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/datadecisions.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Driven Decisions</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../README.html">
+   Data-Driven Decisions: Monte Carlo Analysis for Technical Communications
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Syllabus - Data Driven Decisions
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../module_00/README.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_00/01_writing-w-llms.html">
+     Technical writing and Generative AI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_00/HW_00.html">
+     HW_00 - Generative AI writing analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="README.html">
+   Module_01
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Dropping keys and checking randomly
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="calculate_pi.html">
+     Calculating
+     <span class="math notranslate nohighlight">
+      \(\pi\)
+     </span>
+     with Monte Carlo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="statistical_significance.html">
+     Statistical Significance in Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../module_02/README.html">
+   Module_02 - coming soon
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_02/bus_wait.html">
+     Waiting for the bus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_02/dice_game.html">
+     Building your own random numbers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../module_03/README.html">
+   Module_03 - coming soon
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_03/challenger.html">
+     Challenger explosion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../module_04/README.html">
+   Module_04 - Case studies
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_04/report.html">
+     Your Technical Report
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/module_01/random_games.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cooperrc/data-driven-decisions"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cooperrc/data-driven-decisions/issues/new?title=Issue%20on%20page%20%2Fmodule_01/random_games.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cooperrc/data-driven-decisions/main?urlpath=tree/module_01/random_games.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://compmech.uconn.edu/hub/user-redirect/git-pull?repo=https://github.com/cooperrc/data-driven-decisions&urlpath=tree/data-driven-decisions/module_01/random_games.ipynb&branch=main"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/cooperrc/data-driven-decisions/blob/main/module_01/random_games.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Dropping keys and checking randomly
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-failure-prediction">
+   Exercise: failure prediction
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Dropping keys and checking randomly</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Dropping keys and checking randomly
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-failure-prediction">
+   Exercise: failure prediction
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Consider a roulette game that has two possible winning spots: 1 and 2. Choosing 1 or 2 you have a 50% chance of winning the game. If I’m trying to figure out <em>how</em> many times it will take for 1 or 2 to win, naively I might think one spin with 50% chance of winning + one spin at 50% chance of winning means I should win once every two spins.</p>
+<p>We can’t add up random events this way though. In reality, with 2 spins we have a few different outcomes,</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>outcomes 1 first</p></th>
+<th class="head"><p>outcome 2 first</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>21</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>22</p></td>
+</tr>
+</tbody>
+</table>
+<p>Two out of four of these outcomes are what I originally expected, that 1 and 2 will win once, but the other two outcomes are that either 1 never wins or 2 never wins. So there is a 50% chance either 1 or 2 will not win. We can summarize this result by averaging the probabilities that a number <em>does not appear</em>,</p>
+<p><span class="math notranslate nohighlight">\(\frac{\frac{1}{2}[11] + \frac{0}{2}[21] + \frac{0}{2}[12] + \frac{1}{2}[22]}{4~games} = 25\%\)</span></p>
+<p>What happens when we increase the number of outcomes in this game and the number of spins we get to play? For example, if we can choose between 1 and 4 and we get 4 spins, or choose between 1 and 100 and get 100 spins. Will the percent of numbers that do not appear in a game continue to increase or decrease?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">default_rng</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># rng.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">fraction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">my1_e</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">results</span><span class="p">))</span><span class="o">/</span><span class="n">N</span>
+    <span class="n">fraction</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">my1_e</span>
+<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fraction</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2539
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.718281828459045
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dropping-keys-and-checking-randomly">
+<h1>Dropping keys and checking randomly<a class="headerlink" href="#dropping-keys-and-checking-randomly" title="Permalink to this headline">¶</a></h1>
+<p><span class="xref myst">&#64;UpandAtom</span> has a short video that details a counterintuitive probability problem.</p>
+<p>Consider a person that goes to open their door with a key, but can’t remember which one opens the door. They select one of the <span class="math notranslate nohighlight">\(N\)</span> keys on the keyring and then try to open the door. On this first try, the chance that they open the door is 1/N.</p>
+<p>If they drop their keys and randomly select another key, what is the probablity that they pick the right key in this scenario? Naively, I would say the chance is <em>still</em> <span class="math notranslate nohighlight">\(1/N\)</span>. This naive prediction <em>does not</em> take into account the information we know that the keys have been dropped once already. Factoring in this information to my prediction, it changes the probability that the correct key will be selected, its actually</p>
+<p><span class="math notranslate nohighlight">\(P(key~is~correct) = \frac{1}{N}\cdot\frac{1-N}{N}\)</span></p>
+<p>The probability that they select the correct key on the second try is probablity that they select the key correctly on this second try multiplied by the probability that they selected the key <em>incorrectly</em> on the first try.</p>
+<p>This seems wrong, how can the probabilty change in this seemingly random selection of keys?</p>
+<p>Let’s try a Monte Carlo experiment with <span class="math notranslate nohighlight">\(\times 2\)</span> keys,</p>
+<p>We’ll build 1000 virtual people that all try to get into their houses. Each person is given 2 keys, we’ll label them <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code>. If they select key <code class="docutils literal notranslate"><span class="pre">0</span></code>, they get in. If they select key <code class="docutils literal notranslate"><span class="pre">1</span></code>, they drop the keys and select a new one.</p>
+<p><em>Note: because these are virtual people we can be a little mean and leave the keys indistinguishable, so its always a random choice of <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>.</em></p>
+<p>According to our theory above,</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>number of tries</p></th>
+<th class="head"><p>number of people</p></th>
+<th class="head"><p>percent success</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>500</p></td>
+<td><p>50%</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>250</p></td>
+<td><p>25%</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>125</p></td>
+<td><p>12.5%</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>62.5</p></td>
+<td><p>0.0625%</p></td>
+</tr>
+</tbody>
+</table>
+<p>Our random group of 1000 virtual people locked out of the apartment will have 500 people that guess correctly on the first try and only 62-63 people that guess correctly on the 4th try.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">cases</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ncase</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">tries</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="k">while</span> <span class="n">key</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">),</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">tries</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">cases</span><span class="p">[</span><span class="n">ncase</span><span class="p">]</span> <span class="o">=</span> <span class="n">tries</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">cases</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">cases</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([  0., 491., 244., 127.,  66.,  40.,  15.,   8.,   4.,   4.]),
+ array([ 0.,  1.,  2.,  3.,  4.,  5.,  6.,  7.,  8.,  9., 10.]),
+ &lt;BarContainer object of 10 artists&gt;)
+</pre></div>
+</div>
+<img alt="../_images/random_games_7_1.png" src="../_images/random_games_7_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">try_01</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cases</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+<span class="n">try_02</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cases</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+<span class="n">try_03</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cases</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+<span class="n">try_04</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cases</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;success on try 1: </span><span class="si">{}</span><span class="s1">, </span><span class="si">{:1.2f}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">try_01</span><span class="o">*</span><span class="n">N</span><span class="p">,</span> <span class="mi">100</span><span class="o">*</span><span class="n">try_01</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;success on try 2: </span><span class="si">{}</span><span class="s1">, </span><span class="si">{:1.2f}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">try_02</span><span class="o">*</span><span class="n">N</span><span class="p">,</span> <span class="mi">100</span><span class="o">*</span><span class="n">try_02</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;success on try 3: </span><span class="si">{}</span><span class="s1">, </span><span class="si">{:1.2f}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">try_03</span><span class="o">*</span><span class="n">N</span><span class="p">,</span> <span class="mi">100</span><span class="o">*</span><span class="n">try_03</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;success on try 4: </span><span class="si">{}</span><span class="s1">, </span><span class="si">{:1.2f}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">try_04</span><span class="o">*</span><span class="n">N</span><span class="p">,</span> <span class="mi">100</span><span class="o">*</span><span class="n">try_04</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>success on try 1: 491.0, 49.10%
+success on try 2: 244.0, 24.40%
+success on try 3: 127.0, 12.70%
+success on try 4: 66.0, 6.60%
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using a Monte Carlo approach, we built a discrete version of the dropping keys scenario. The results from Monte Carlo support the approach of using the probabilites of guessing correctly <strong>and</strong> the probabilities of previouse <em>incorrect</em> guesses to find that <span class="math notranslate nohighlight">\(\approx60~out~of~1000\)</span> people will guess correctly on their 4th try.</p>
+</div>
+<div class="section" id="exercise-failure-prediction">
+<h1>Exercise: failure prediction<a class="headerlink" href="#exercise-failure-prediction" title="Permalink to this headline">¶</a></h1>
+<p>In the dropping keys experiment, we ended the trials when the virtual person <em>succeeded</em> in entering the room. What would this look like if an engineering process <em>failed</em> when a certain device is used?</p>
+<p>Consider a manufacturing plant that produces uses O-rings in the assembly. The O-rings are the weakest link in the design. Your company needs to use 10 O-rings in every device you manufacture. If one O-ring fails, the whole device fails. Your quality control team knows the O-ringss fail 1-out-of-10 times. When you test a device, if it fails the rings are discarded and ten more used to assemble the device.</p>
+<p>Your manager is trying to understand why it seems like so many devices fail the first time they are tested. Explain the current failure rate to your manager with a Monte Carlo analysis using 10 bolts and 10% failure rate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">cases</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ncase</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">tries</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="k">while</span> <span class="n">key</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">),</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">tries</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">cases</span><span class="p">[</span><span class="n">ncase</span><span class="p">]</span> <span class="o">=</span> <span class="n">tries</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">cases</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">cases</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([  0., 952., 888., 838., 733., 667., 594., 504., 483., 411., 405.,
+        370., 331., 277., 243., 232., 182., 201., 163., 168., 136., 110.,
+        121.,  98.,  83.,  81.,  65.,  62.,  51.,  53.,  41.,  40.,  49.,
+         39.,  34.,  34.,  18.,  23.,  28.,  27.,  14.,  16.,   9.,   9.,
+         13.,  12.,   9.,   9.,  11.,   8.,   8.,   4.,   5.,   6.,   4.,
+          2.,   2.,   2.,   2.,   2.,   2.,   1.,   1.,   1.,   0.,   0.,
+          3.,   0.,   1.,   2.,   0.,   1.,   0.,   2.,   0.,   0.,   0.,
+          0.,   0.,   0.,   2.,   0.,   0.,   1.,   0.]),
+ array([ 0.,  1.,  2.,  3.,  4.,  5.,  6.,  7.,  8.,  9., 10., 11., 12.,
+        13., 14., 15., 16., 17., 18., 19., 20., 21., 22., 23., 24., 25.,
+        26., 27., 28., 29., 30., 31., 32., 33., 34., 35., 36., 37., 38.,
+        39., 40., 41., 42., 43., 44., 45., 46., 47., 48., 49., 50., 51.,
+        52., 53., 54., 55., 56., 57., 58., 59., 60., 61., 62., 63., 64.,
+        65., 66., 67., 68., 69., 70., 71., 72., 73., 74., 75., 76., 77.,
+        78., 79., 80., 81., 82., 83., 84., 85.]),
+ &lt;BarContainer object of 85 artists&gt;)
+</pre></div>
+</div>
+<img alt="../_images/random_games_11_1.png" src="../_images/random_games_11_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">try_01</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cases</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+<span class="n">try_02</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cases</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+<span class="n">try_03</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cases</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+<span class="n">try_04</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cases</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="n">N</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;failure on try 1: </span><span class="si">{}</span><span class="s1">, </span><span class="si">{:1.2f}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">try_01</span><span class="o">*</span><span class="n">N</span><span class="p">,</span> <span class="mi">100</span><span class="o">*</span><span class="n">try_01</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;failure on try 2: </span><span class="si">{}</span><span class="s1">, </span><span class="si">{:1.2f}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">try_02</span><span class="o">*</span><span class="n">N</span><span class="p">,</span> <span class="mi">100</span><span class="o">*</span><span class="n">try_02</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;failure on try 3: </span><span class="si">{}</span><span class="s1">, </span><span class="si">{:1.2f}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">try_03</span><span class="o">*</span><span class="n">N</span><span class="p">,</span> <span class="mi">100</span><span class="o">*</span><span class="n">try_03</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;failure on try 4: </span><span class="si">{}</span><span class="s1">, </span><span class="si">{:1.2f}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">try_04</span><span class="o">*</span><span class="n">N</span><span class="p">,</span> <span class="mi">100</span><span class="o">*</span><span class="n">try_04</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>failure on try 1: 952.0000000000001, 9.52%
+failure on try 2: 888.0, 8.88%
+failure on try 3: 838.0, 8.38%
+failure on try 4: 733.0, 7.33%
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">/</span><span class="mi">10</span><span class="o">*</span><span class="mi">9</span><span class="o">/</span><span class="mi">10</span><span class="o">*</span><span class="mi">9</span><span class="o">/</span><span class="mi">10</span><span class="o">*</span><span class="mi">9</span><span class="o">/</span><span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.07289999999999999
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./module_01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Module_01</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="calculate_pi.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Calculating <span class="math notranslate nohighlight">\(\pi\)</span> with Monte Carlo</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By <a href = https://cooperrc.github.io> Ryan C. Cooper</a><br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

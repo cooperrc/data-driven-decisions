@@ -1,0 +1,1052 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Wind Turbine Uncertainty in loading analysis &#8212; Data Driven Decisions</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'module_04/turbine_uncertainty';</script>
+    <link rel="icon" href="../_static/spiderman-favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Optimized Wind Turbine Reliability" href="turbine_reliability.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/datadecisions.svg" class="logo__image only-light" alt="Data Driven Decisions - Home"/>
+    <script>document.write(`<img src="../_static/datadecisions.svg" class="logo__image only-dark" alt="Data Driven Decisions - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Data-Driven Decisions: Monte Carlo Analysis for Technical Communications
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus - Data Driven Decisions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_00/README.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_00/01_writing-w-llms.html">Technical writing and Generative AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_00/HW_00.html">HW_00 - Generative AI writing analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_00/HW_01.html">HW_01 - Generative AI writing analysis and Monte Carlo research</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_01/README.html">Module_01</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/calculate_pi.html">Calculating <span class="math notranslate nohighlight">\(\pi\)</span> with Monte Carlo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/HW_02.html">HW_02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/statistical_significance.html">Statistical Significance in Data</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module_01/HW_03.html">HW_03</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_02/README.html">Module_02 - Engineering Processes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/drop_keys.html">Dropping keys and checking randomly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/HW_04.html">HW_04 - Exercise: failure prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/bus_wait.html">Waiting for the bus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/HW_05.html">HW_05 - Customer wait time</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_03/README.html">Module_03 - coming soon</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_03/challenger.html">Challenger explosion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Module_04 - Case studies</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="report.html">Your Technical Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wind-turbine-impact.html">The Impact of Wind Turbines on Renewable Energy Generation: A Comparative Study of the United States with Predictive Modeling for Selected European Countries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compliant_fatigue.html">Monte Carlo Methods and Compliant Mechanism Fatigue Case Study</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="turbine_reliability.html">Optimized Wind Turbine Reliability</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Wind Turbine Uncertainty in loading analysis</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/cooperrc/data-driven-decisions/main?urlpath=tree/module_04/turbine_uncertainty.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/cooperrc/data-driven-decisions/blob/main/module_04/turbine_uncertainty.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cooperrc/data-driven-decisions" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cooperrc/data-driven-decisions/issues/new?title=Issue%20on%20page%20%2Fmodule_04/turbine_uncertainty.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/module_04/turbine_uncertainty.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Wind Turbine Uncertainty in loading analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#james-arnold">James Arnold</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-introduction">I.  Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-sources-of-uncertainty-in-wind-turbine-design">II. Sources of Uncertainty in Wind Turbine Design</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iii-methods-to-address-uncertainty">III. Methods to Address Uncertainty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iv-conclusion">IV. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v-references">V.  References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="wind-turbine-uncertainty-in-loading-analysis">
+<h1>Wind Turbine Uncertainty in loading analysis<a class="headerlink" href="#wind-turbine-uncertainty-in-loading-analysis" title="Link to this heading">#</a></h1>
+<section id="james-arnold">
+<h2>James Arnold<a class="headerlink" href="#james-arnold" title="Link to this heading">#</a></h2>
+</section>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<p>The design and analysis of wind turbines involves significant
+uncertainties in materials, loads, and structural performance. These
+uncertainties can affect the reliability and efficiency of wind
+turbines, requiring methods to address this uncertainty. Monte Carlo
+simulation is a statistical tool used to address these uncertainties.
+This report explores the application of Monte Carlo simulation to assess
+the uncertainties in materials, loads, and structural performance of
+wind turbines. This report will feature a study examining the difference
+in the stress distribution and power output of a wind turbine blade at a
+length of 40 meters and 50 meters. The study demonstrates how Monte
+Carlo methods can enhance the understanding and management of these
+uncertainties, ultimately contributing to more reliable and efficient
+wind turbine designs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="i-introduction">
+<h2>I.  Introduction<a class="headerlink" href="#i-introduction" title="Link to this heading">#</a></h2>
+<p>Wind turbines use blades to collect the wind’s kinetic energy. Wind
+flows over the blades creating lift which causes the blades to turn. The
+blades are connected to a drive shaft that turns an electric generator,
+which produces electricity. Wind electricity generation has grown
+significantly in the past 30 years. The three major components of a wind
+turbine are a rotor, nacelle, and tower. The rotor consists of a hub and
+three blades [1]. The hub is the link between the blades and shaft.
+The blades obtain kinetic energy from the wind. This is converted to
+torque and transferred to the gearbox through the shaft [1]. To
+maximize energy capture, the turbine rotates on its vertical axis to
+position the rotor in the direction of the wind using a yawning
+mechanism. The major components in the nacelle include the gearbox and
+generator [1]. The rotor and gearbox are connected using a low-speed
+shaft. The gearbox and generator are connected using a high-speed shaft.
+The rotation of the blades converts a low-speed, high-torque to a
+high-speed, low-torque rotational force transferred to the generator
+using the gearbox. The tower is connected to the ground and the rotor
+and nacelle are connected to the top of the tower [1]. The tower is
+typically 262-360 feet [1]. The types of uncertainty in wind turbine
+design include aleatoric and epistemic uncertainty. Aleatoric
+uncertainty if fixed and includes uncertainty in due to turbulence and
+material yield/fatigue stress [7]. This also includes uncertainty in
+the environment and loads the structure experiences [6]. These
+uncertainties require probabilistic mathematical methods to understand
+the uncertainty involved [6]. Epistemic uncertainty is reducible and
+includes uncertainty in site condition parameters and aerodynamic models
+[7]. Wind turbines utilize many different materials. Steel is often
+used in the tower and nacelle as it has a high tensile strength and
+durability. Fiberglass and carbon fiber composites are often used for
+blades as they have a high strength-to-weight ratio [3]. Aluminum is
+often used for some components because of its lightweight properties and
+corrosion resistance. The materials go through different manufacturing
+processes which leads to differences in material properties.
+Environmental exposure such as UV radiation, moisture, temperature
+fluctuations and salt sprayed in offshore turbines affect the material
+strength over time [3]. Additionally, fatigue cycles are impacted by
+load cycles, geometry, and operational conditions [4]. Stress
+concentration and magnitude of load cycles greatly impact the fatigue
+cycles of the materials in wind turbines [4]. Weibull distribution is
+often used to accurately estimate energy production and wind speed.
+Weibull distribution is commonly used as it predicts wind conditions and
+inverse of wind direction [5]. Weibull distribution uses wind speed
+and shape parameters to create a probability function. Modelling Weibull
+distribution can help accurately estimate uncertainty. Weibull
+distribution is effective for calculating probability of failure. Monte
+Carlo simulations are often used to address uncertainty in wind turbine
+design [5]. Monte Carlo is the most simple sampling technique. Monte
+Carlo methods use random sampling to create a probability distribution.
+Monte Carlo simulations are often used to obtain wind turbine output
+power at each hour [5]. Using Monte Carlo methods, the input variables
+are modelled with associated uncertainty and address the cumulative
+impact on the variables outputted [5]. Monte Carlo simulations are
+simple and easier to develop but often other methods produce more
+accurate results.</p>
+</section>
+<section id="ii-sources-of-uncertainty-in-wind-turbine-design">
+<h2>II. Sources of Uncertainty in Wind Turbine Design<a class="headerlink" href="#ii-sources-of-uncertainty-in-wind-turbine-design" title="Link to this heading">#</a></h2>
+<p>Wind turbine design has a significant amount of uncertainty associated
+with it. Wind turbines utilize many different materials. Steel is often
+used in the tower and nacelle as it has a high tensile strength and
+durability. Steel is used for structural loads as it is a high-strength
+material especially in tension. Steel is durable and versatile however,
+it has poor corrosion resistance which can cause uncertainty and
+decrease reliability. Additionally, steel has strong thermal
+conductivity which can complicate heating, cooling and insulation of
+structures made of steel. Steel has good fatigue strength, so it can
+withstand a higher magnitude of stress than alternate materials
+considered for use. Fiberglass and carbon fiber composites are often
+used for blades as they have a high strength-to-weight ratio. Fiberglass
+is lightweight yet is often stronger than other metals such as steel.
+Fiberglass is non-conductive and durable making it sustainable.
+Fiberglass can degrade over time when it is exposed to prolonged
+sunlight or other weather conditions. This adds uncertainty to the
+system as fiberglass might not be able to be used for long term use such
+as wind turbine design. Lifetime constraints must be considered for
+uncertainty in wind turbine design. Aluminum is often used for some
+components because of its lightweight properties and corrosion
+resistance. Aluminum has a low density and has excellent thermal
+conductivity which makes it a desirable material for design. Aluminum is
+also an excellent reflector of radiant energy, has a high electrical
+conductivity and is resistant to corrosion. Aluminum has a low tensile
+strength compared to other metals. This adds uncertainty as aluminum has
+constraints for the amount of loading that it can handle. The materials
+considered during the design process go through different manufacturing
+processes. As a result, each material has different tolerancing
+restrictions and uncertainty is added through each tolerance and
+constraint involved. Environmental exposure such as UV radiation,
+moisture, temperature fluctuations and salt sprayed in offshore turbines
+affect the material strength over time. Fatigue cycles are impacted by
+load cycles, geometry, and operational conditions. Stress concentration
+and magnitude of load cycles greatly impact the fatigue cycles of the
+materials in wind turbines.</p>
+<p>Various loads are applied onto different components of wind turbines.
+Wind turbine blades experience aerodynamic, gravitational and inertial
+loads [2]. Aerodynamic loads are due to wind pushing up against the
+blades. This load is proportional to the wind speed and the area of the
+blade. Gravitational loads are due to the weight of the blade [2].
+Inertial load is due to rotational motion of the blades, particularly
+during changes in rotational speed or direction. Each load adds
+uncertainty to the system [2]. Wind turbines experience heavy loads
+which adds a significant degree of uncertainty to wind turbines.
+Geometry of wind turbine is an important consideration. Power production
+of a wind turbine blade increases as the area of the blade increases.
+Increasing blade area increases uncertainty. Understanding uncertainty
+in the geometry of a turbine blade produces a more efficient blade
+design. Several methods are available for use to address the uncertainty
+involved in wind turbine design.</p>
+</section>
+<section id="iii-methods-to-address-uncertainty">
+<h2>III. Methods to Address Uncertainty<a class="headerlink" href="#iii-methods-to-address-uncertainty" title="Link to this heading">#</a></h2>
+<p>Monte Carlo simulations are often used to address uncertainty in wind
+turbine design. Monte Carlo is the most simple sampling technique. Monte
+Carlo methods use random sampling to create a probability distribution.
+Monte Carlo simulations are often used to obtain wind turbine output
+power at each hour. Using Monte Carlo methods, the input variables are
+modelled with associated uncertainty and address the cumulative impact
+on the variables outputted. Monte Carlo simulations are simple and
+easier to develop but often other methods produce more accurate results.
+Weibull distribution is often used to accurately estimate power
+production and wind speed. Weibull distribution is commonly used as it
+predicts wind conditions and inverse of wind direction. Weibull
+distribution uses wind speed and shape parameters to create a
+probability function. Modelling Weibull distribution can help accurately
+estimate uncertainty.</p>
+<p>This study focuses on the difference in stress and power production
+between wind turbine blades with a length of 40 meters and 50 meters.
+This study is an example of using Monte Carlo methods to simulate
+uncertainty of materials, loads and structures in wind turbine design is
+shown below. Pseudo-random number generators are used in the simulation
+to create random samples for each uncertain parameter according to their
+probability distributions. The simulation is run to form a distribution
+of the outcome. The blade is assumed to be made out of fiberglass. The
+fiberglass is assumed to have a Young’s Modulus of 70 GPa with a
+standard deviation of 5 GPa.</p>
+<p>The wind speed is assumed to follow a
+Weibull distribution with a shape parameter of k = 9 and a scale
+parameter of 3. The resulting distribution is shown below in the “Weibull distribution of wind speeds”. The average wind speed is 2.8 m/s with a standard deviation of 0.4 m/s.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_simulations</span> <span class="o">=</span> <span class="mi">10000</span> 
+<span class="c1"># Material properties (Young&#39;s modulus in GPa) </span>
+<span class="n">E_mean</span> <span class="o">=</span> <span class="mi">70</span>
+<span class="n">E_std</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">E_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">E_mean</span><span class="p">,</span> <span class="n">E_std</span><span class="p">,</span> <span class="n">num_simulations</span><span class="p">)</span> 
+<span class="c1"># Wind speed (m/s) </span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">9</span> 
+<span class="n">lam</span> <span class="o">=</span> <span class="mi">3</span> 
+<span class="n">wind_speed_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">weibull</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">num_simulations</span><span class="p">)</span> <span class="o">*</span> <span class="n">lam</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">wind_speed_samples</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Weibull distribution of wind speeds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;wind speed in (m/s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;frequency&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wind_speed_samples</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">wind_speed_samples</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.8461940171445894 0.3764522177570118
+</pre></div>
+</div>
+<img alt="../_images/a6d661c811d74101d9a5b3e63a7954d1960d5db99f6a5231b1733c07958fae6b.png" src="../_images/a6d661c811d74101d9a5b3e63a7954d1960d5db99f6a5231b1733c07958fae6b.png" />
+</div>
+</div>
+<p>The length of the blade is assumed to be 40 m with a
+standard deviation of 0.1 m in the first simulation. The second
+simulation assumes the length of the blade to be 50 meters with a
+standard deviation of 0.1 m. The formula for the stress of the blade is:</p>
+<p><span class="math notranslate nohighlight">\(\sigma_{b,~max} = \frac{Mc}{I_c} = \frac{F_D L^2}{2}\frac{c}{I_c}\)</span> (1)</p>
+<p><a class="reference external" href="https://mechanicalc.com/reference/beam-analysis">beam analysis</a></p>
+<p>where v is the wind speed velocity, E is the Young’s modulus value, and
+L is the length of the blade.</p>
+<p>The formula for the power output of the wind turbine blade is:</p>
+<p><span class="math notranslate nohighlight">\(P = 0.5 \rho A_{turbine} v^{3} c_{p}\)</span> (2)</p>
+<p>where P is the power output, ρ is the air density which is 1.225
+kg/m^3^, <span class="math notranslate nohighlight">\(A_{turbine}\)</span> is the turbine blade swept area, and <span class="math notranslate nohighlight">\(c_p\)</span> is the
+power coefficient. The power coefficient is 0.4 for this simulation. The
+code and results of the simulation is provided below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Blade length (m) </span>
+<span class="n">w</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># width of blade</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># thickness of blade</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">t</span><span class="o">/</span><span class="mi">2</span> <span class="c1"># centroidal distance</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">w</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">3</span><span class="o">/</span><span class="mi">12</span>
+<span class="n">Cd</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># drag coefficient</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># kg/m^3 density of air</span>
+<span class="k">for</span> <span class="n">L_mean</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">]:</span> 
+    <span class="n">L_std</span> <span class="o">=</span> <span class="mf">0.1</span> 
+    <span class="n">L_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">L_mean</span><span class="p">,</span> <span class="n">L_std</span><span class="p">,</span> <span class="n">num_simulations</span><span class="p">)</span> 
+    <span class="c1"># Placeholder for results </span>
+    <span class="n">stress_samples</span> <span class="o">=</span> <span class="p">[]</span> 
+    <span class="n">Power_samples</span> <span class="o">=</span> <span class="p">[]</span> 
+    <span class="c1"># Perform simulations </span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_simulations</span><span class="p">):</span> 
+        <span class="n">E</span> <span class="o">=</span> <span class="n">E_samples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> 
+        <span class="n">V</span> <span class="o">=</span> <span class="n">wind_speed_samples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> 
+        <span class="n">L</span> <span class="o">=</span> <span class="n">L_samples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> 
+        <span class="c1"># Simplified stress calculation (example) </span>
+        <span class="c1"># Stress = function(E, V, L) </span>
+        <span class="n">stress</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span><span class="n">Cd</span><span class="o">*</span><span class="n">rho</span><span class="o">*</span> <span class="n">V</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">L</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">c</span><span class="o">/</span><span class="n">I</span> <span class="c1"># Simplified example </span>
+        <span class="n">stress_samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stress</span><span class="p">)</span>
+        <span class="c1"># Power Output in MW </span>
+            
+        <span class="c1"># Air Density in kg/m^3 </span>
+        <span class="n">den</span> <span class="o">=</span> <span class="mf">1.225</span> 
+        <span class="c1"># Area of the Turbine Swept </span>
+        <span class="n">A</span> <span class="o">=</span> <span class="mf">3.14</span> <span class="o">*</span> <span class="n">L</span><span class="o">**</span><span class="mi">2</span> 
+        <span class="n">Power</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">den</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="n">V</span> <span class="o">*</span> <span class="mf">0.4</span> 
+        <span class="n">Power_samples</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Power</span><span class="p">)</span> 
+    <span class="c1"># Convert results to a NumPy array </span>
+    <span class="n">stress_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">stress_samples</span><span class="p">)</span> 
+    <span class="c1"># Convert results to a NumPy array </span>
+    <span class="n">Power_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Power_samples</span><span class="p">)</span> 
+
+    
+    
+    <span class="c1"># Analyze results </span>
+    <span class="n">mean_stress</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">stress_samples</span><span class="p">)</span> 
+    <span class="n">std_stress</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">stress_samples</span><span class="p">)</span> 
+    <span class="n">Power_result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Power_samples</span><span class="p">)</span> 
+    <span class="c1"># Print results </span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Stress at </span><span class="si">{</span><span class="n">L_mean</span><span class="si">}</span><span class="s2"> meters: </span><span class="si">{</span><span class="n">mean_stress</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2"> Pa&quot;</span><span class="p">)</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Standard Deviation of Stress at </span><span class="si">{</span><span class="n">L_mean</span><span class="si">}</span><span class="s2"> meters: </span><span class="si">{</span><span class="n">std_stress</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2"> Pa&quot;</span><span class="p">)</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Power at </span><span class="si">{</span><span class="n">L_mean</span><span class="si">}</span><span class="s2"> meters: </span><span class="si">{</span><span class="n">Power_result</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2"> W&quot;</span><span class="p">)</span> 
+    
+    <span class="c1"># Plot results</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">stress_samples</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span> 
+             <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> 
+             <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+             <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;length = </span><span class="si">{:0.0f}</span><span class="s1"> m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">L</span><span class="p">))</span><span class="c1">#, color=&#39;g&#39;) </span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of Stress Distribution&#39;</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Stress (MPa)&#39;</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Power_samples</span><span class="p">,</span> 
+             <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> 
+             <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+             <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;length = </span><span class="si">{:0.0f}</span><span class="s1"> m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">L</span><span class="p">))</span><span class="c1">#, color=&#39;g&#39;) </span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of Power outputs for wind speeds&#39;</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Power (MW)&#39;</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stress_samples</span><span class="o">/</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">Power_samples</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> 
+             <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;length = </span><span class="si">{:0.0f}</span><span class="s1"> m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">L</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;relation between power and max stress&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Power (MW)&#39;</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Stress (MPa)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Stress at 40 meters: 19781.57596 Pa
+Standard Deviation of Stress at 40 meters: 4981.54793 Pa
+Power at 40 meters: 3503.23805 W
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Stress at 50 meters: 30910.68075 Pa
+Standard Deviation of Stress at 50 meters: 7786.16776 Pa
+Power at 50 meters: 5474.08402 W
+</pre></div>
+</div>
+<img alt="../_images/9c5182a942bce31f6552459897f3aa7fec8b867796ec679f8fdec9836fefaf0b.png" src="../_images/9c5182a942bce31f6552459897f3aa7fec8b867796ec679f8fdec9836fefaf0b.png" />
+<img alt="../_images/358d5b570c1677047d65f63ed908676243bb6f0802bd68203136a3244746b801.png" src="../_images/358d5b570c1677047d65f63ed908676243bb6f0802bd68203136a3244746b801.png" />
+<img alt="../_images/34f354b9414873d1674362446737ca08f49e164360579fd1a391b57e21b1471d.png" src="../_images/34f354b9414873d1674362446737ca08f49e164360579fd1a391b57e21b1471d.png" />
+</div>
+</div>
+<p><em>Figure 1: Stress results for turbine blades of 40-m and 50-m and below are the power outputs comparing the 40-m and 50-m turbine blades.</em></p>
+<p><em>Figure 2: The Mean Stress, Standard Deviation of Stress, and Histogram
+of the Stress Distribution of the Monte Carlo Simulation and the Power
+Developed By the Turbine Blade of the Wind Turbine With a Length of 40
+and 50 Meters</em></p>
+<p><em>Figure 3: There is a correlation between max stress and power output due to the combined loading of lift and drag on the wind turbine blades. The 50-m blades have higher power and higher stress as wind speeds increase.</em></p>
+<p>This figure shows that mean stress on the wind turbine blade is 0.00147
+Pa while the standard deviation is 0.00038 Pa for a blade with a length
+of 40 meters. The power developed by the turbine blade is 3038.90 W. The
+shape of the histogram of the stress distribution of the turbine blade
+is as expected. The middle of the blade experiences more stress than the
+edges so the most stress is applied at the halfway point of the length
+on the blade.</p>
+<p>This figure shows that mean stress on the wind turbine blade is 0.00118
+Pa while the standard deviation is 0.00031 Pa for a blade with a length
+of 50 meters. The power developed by the turbine blade is 4753.36 W. The
+shape of the histogram of the stress distribution of the turbine blade
+is as expected. The middle of the blade experiences more stress than the
+edges so the most stress is applied at the halfway point of the length
+on the blade.</p>
+<p>The Monte Carlo simulations are often used to address uncertainty in
+wind turbine design. Monte Carlo is the most simple sampling technique.
+Monte Carlo methods use random sampling to create a probability
+distribution. Monte Carlo simulations are often used to obtain wind
+turbine output power at each hour. Using Monte Carlo methods, the input
+variables are modelled with associated uncertainty and address the
+cumulative impact on the variables outputted. Monte Carlo simulations
+are simple and easier to develop but often other methods produce more
+accurate results.</p>
+<p>Miner’s rules is used to plot the number of cycles to failure to the
+stress applied. Miner’s rule is often used in fatigue analysis. The code
+output of Miner’s rule is:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lifetime</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
+<span class="n">stress</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">43</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">14</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">stress</span><span class="o">*</span><span class="mf">6.89476</span><span class="p">,</span> <span class="n">lifetime</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">stress</span><span class="o">*</span><span class="mf">6.89476</span><span class="p">,</span>
+            <span class="mi">10</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">stress</span><span class="o">*</span><span class="mf">6.89476</span><span class="p">,</span> <span class="n">stress</span><span class="o">*</span><span class="mf">6.89476</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">lifetime</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Stress (MPa)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Cycles&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Number of Cycles&#39;)
+</pre></div>
+</div>
+<img alt="../_images/c080c83c3aa5761a54938ae0e73a665e19ad9a2817adfcbeae399b3c6c7f8156.png" src="../_images/c080c83c3aa5761a54938ae0e73a665e19ad9a2817adfcbeae399b3c6c7f8156.png" />
+</div>
+</div>
+<p><em>Figure 3: Code and Output Using Miner’s Rule</em></p>
+<p>This figure shows that the number of cycles before failure is 10^9. The selected material can endure loading for a long period of time as this turbine blades endure in this simulation.
+This means that the selected material is reliable. Fiberglass was a good material to be selected as it is reliable and can endure the applied load. The turbine blades can survive
+the load applied by the wind.</p>
+</section>
+<section id="iv-conclusion">
+<h2>IV. Conclusion<a class="headerlink" href="#iv-conclusion" title="Link to this heading">#</a></h2>
+<p>This case study focused on the difference in stress and power production
+between wind turbine blades with a length of 40 meters and 50 meters.
+This study is an example of using Monte Carlo methods to simulate
+uncertainty of materials, loads and structures in wind turbine design.
+Pseudo-random number generators are used in the simulation to create
+random samples for each uncertain parameter according to their
+probability distributions. The simulation is run to form a distribution
+of the outcome. The mean stress on the wind turbine blade with a length
+of 40 meters is 0.00147 Pa while the standard deviation is 0.00038 Pa.
+The power developed by the turbine blade is 3038.90 W. The mean stress
+on the wind turbine blade with a length of 50 meters is 0.00118 Pa while
+the standard deviation is 0.00031 Pa. The power developed by the turbine
+blade is 4753.36 W.</p>
+<p>This study validates the idea that with increasing length on turbine
+blades the stress decreases. The 50-meter blade endured four
+ten-thousands Pa less than the 40-meter blade. Both simulations
+outputted the same standard deviation of stress. The range of the stress
+distribution was roughly the same, however the 40-meter blade is subject
+to more stress. This can reduce the sustainability of the blade. This
+study proved that stress of a wind turbine blade decreases when the
+length increases.</p>
+<p>This study validated that the longer the turbine blade, the more power
+will be produced. The 50-meter blade produced 1714.46 W more than the
+40-meter blade. The power production of the second simulation was
+substantially greater than the first simulation. Power production
+increased as the area of the turbine swept increased. The area increased
+significantly in the second simulation due to the blade being 10 meters
+longer, which increased the power production by the blade. The wind
+speed remained constant for both experiments, proving that the increased
+area contributed to the higher power production. This study proved that
+power production of a wind turbine blade increases when the length
+increases. Additionally, this study showed that the number of cycles
+before failure is 10^9^. This means that the material is reliable. The
+turbine blades can survive the load applied by the wind.</p>
+<p>Stress distribution and power production are important considerations
+for wind turbine blades however other considerations are needed.
+Sourcing a longer blade requires financial considerations as well as
+efficiency considerations. Longer blades require more material,
+increasing product cost. Each project has a budget and requiring more
+material can exceed budget limits. Additionally, longer blades create
+more concerns and uncertainties. Longer blades increase vibrations and
+require complex control requirements. Designing longer blades can be
+impractical as the blades become heavier. Uncertainty increases with
+longer blades. Wind turbine blades 50 meters long are the perfect
+length. Stress and power production are optimized, and uncertainty is
+simpler. Blades 60 meters or longer produce higher uncertainties and are
+often impractical. Blades 50 meters in length produce high power
+production while maintaining a low stress distribution. This study
+proved that a 50-meter turbine blade produces more power and less stress
+than a 40-meter blade. Understanding uncertainties in wind turbine blade
+design helps examine how to efficiently design a wind turbine blade.</p>
+</section>
+<section id="v-references">
+<h2>V.  References<a class="headerlink" href="#v-references" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>“How a Wind Turbine Works - Text Version | Department of Energy.”
+<em>Wind Energy Technologies Office</em>, Office of Energy Efficiency &amp;
+Renewable Energy,
+<a class="reference external" href="http://www.energy.gov/eere/wind/how-wind-turbine-works-text-version">www.energy.gov/eere/wind/how-wind-turbine-works-text-version</a>.
+Accessed 21 June 2024.</p></li>
+<li><p>Madsen, Peter. <em>Predicting Ultimate Loads for Wind Turbine Design</em>,
+National Renewable Energy Labratory, Nov. 1998,
+<a class="reference external" href="http://www.nrel.gov/docs/fy99osti/25787.pdf">www.nrel.gov/docs/fy99osti/25787.pdf</a>.</p></li>
+<li><p>Murphy, Patrick, et al. “How Wind Speed Shear and Directional Veer
+Affect the Power Production of a Megawatt-Scale Operational Wind
+Turbine.” <em>Wind Earth Science</em>, European Academy of Wind Energy, 11
+Sept. 2020, <a class="reference external" href="http://www.nrel.gov/docs/fy20osti/78107.pdf">www.nrel.gov/docs/fy20osti/78107.pdf</a>.</p></li>
+<li><p>Nijssen, R.P.L. “Fatigue Life Prediction and Strength Degradation of
+Wind Turbine Rotor Blade Composites.” <em>Unlimited Release</em>, Sandia,
+Oct. 2007,
+<a class="reference external" href="http://energy.sandia.gov/wp-content/gallery/uploads/SAND-2006-7810p.pdf">energy.sandia.gov/wp-content/gallery/uploads/SAND-2006-7810p.pdf</a>.</p></li>
+<li><p>Sanderse, Benjamn. <em>Uncertainty Quantification for Wind Energy
+Applications - Literature Review</em>, Research Gate, Aug. 2017,
+<a class="reference external" href="http://www.researchgate.net/publication/319209260_Uncertainty_quantification_for_wind_energy_applications">www.researchgate.net/publication/319209260_Uncertainty_quantification_for_wind_energy_applications</a>_-_Literature_review.</p></li>
+<li><p>Stieng, Lars Einar S., and Michael Muskulus. “Reliability-Based
+Design Optimization of Offshore Wind Turbine Support Structures
+Using Analytical Sensitivities and Factorized Uncertainty Modeling.”
+<em>Wind Energy Science</em>, Copernicus GmbH, 29 Jan. 2020,
+<a class="reference external" href="http://wes.copernicus.org/articles/5/171/2020/">wes.copernicus.org/articles/5/171/2020/</a>.</p></li>
+<li><p>Witcher, David. “Uncertainty Quantification Techniques in Wind
+Turbine Design.” <em>DNV GL – RENEWABLES ADVISORY</em> , DNV-GL,
+<a class="reference external" href="http://www.nrel.gov/wind/assets/pdfs/se17-2-uncertainty-in-wind-turbine-design-process.pdf">www.nrel.gov/wind/assets/pdfs/se17-2-uncertainty-in-wind-turbine-design-process.pdf</a>.
+Accessed 22 June 2024.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./module_04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="turbine_reliability.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Optimized Wind Turbine Reliability</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#james-arnold">James Arnold</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-introduction">I.  Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-sources-of-uncertainty-in-wind-turbine-design">II. Sources of Uncertainty in Wind Turbine Design</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iii-methods-to-address-uncertainty">III. Methods to Address Uncertainty</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iv-conclusion">IV. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v-references">V.  References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href = https://cooperrc.github.io> Ryan C. Cooper</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

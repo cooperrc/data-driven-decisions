@@ -1,0 +1,929 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Statistical Significance in Data &#8212; Data Driven Decisions</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'module_01/statistical_significance';</script>
+    <link rel="icon" href="../_static/spiderman-favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HW_03" href="HW_03.html" />
+    <link rel="prev" title="HW_02" href="HW_02.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/datadecisions.svg" class="logo__image only-light" alt="Data Driven Decisions - Home"/>
+    <script>document.write(`<img src="../_static/datadecisions.svg" class="logo__image only-dark" alt="Data Driven Decisions - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Data-Driven Decisions: Monte Carlo Analysis for Technical Communications
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus - Data Driven Decisions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_00/README.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_00/01_writing-w-llms.html">Technical writing and Generative AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_00/HW_00.html">HW_00 - Generative AI writing analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_00/HW_01.html">HW_01 - Generative AI writing analysis and Monte Carlo research</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Module_01</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="calculate_pi.html">Calculating <span class="math notranslate nohighlight">\(\pi\)</span> with Monte Carlo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HW_02.html">HW_02</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Statistical Significance in Data</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="HW_03.html">HW_03</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_02/README.html">Module_02 - Engineering Processes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/drop_keys.html">Dropping keys and checking randomly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/HW_04.html">HW_04 - Exercise: failure prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/bus_wait.html">Waiting for the bus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/HW_05.html">HW_05 - Customer wait time</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_03/README.html">Module_03 - coming soon</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_03/challenger.html">Challenger explosion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_04/README.html">Module_04 - Case studies</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_04/report.html">Your Technical Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_04/wind-turbine-impact.html">The Impact of Wind Turbines on Renewable Energy Generation: A Comparative Study of the United States with Predictive Modeling for Selected European Countries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_04/compliant_fatigue.html">Monte Carlo Methods and Compliant Mechanism Fatigue Case Study</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module_04/turbine_reliability.html">Optimized Wind Turbine Reliability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_04/turbine_uncertainty.html">Wind Turbine Uncertainty in loading analysis</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/cooperrc/data-driven-decisions/main?urlpath=tree/module_01/statistical_significance.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/cooperrc/data-driven-decisions/blob/main/module_01/statistical_significance.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cooperrc/data-driven-decisions" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cooperrc/data-driven-decisions/issues/new?title=Issue%20on%20page%20%2Fmodule_01/statistical_significance.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/module_01/statistical_significance.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Statistical Significance in Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Statistical Significance in Data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-some-data-we-know-is-different">Generate some data we <em>know</em> is different</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#are-these-measurements-different">Are these measurements different?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t-test-and-the-p-value-for-reporting-significance">T-test and the <em>p-value</em> for reporting significance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-is-the-p-value-0-05">When is the p-value &lt; 0.05?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-cant-we-tell-the-difference-between-means-now">Why can’t we tell the difference between means now?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#throwing-distance">Throwing distance</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">default_rng</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="statistical-significance-in-data">
+<h1>Statistical Significance in Data<a class="headerlink" href="#statistical-significance-in-data" title="Link to this heading">#</a></h1>
+<p>How many measurements do you need to <em>prove</em> two measurements are different?</p>
+<p>This is a problem of constant debate with many different approaches,</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Student%27s_t-test">Student t-test</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Analysis_of_variance">Analysis of Variance (ANOVA)</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Analysis_of_covariance">Analysis of Covariance (ANCOVA)</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Permutation_test">Permutation test</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)">Bootstrapping test</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test">Wilcoxon test</a></p></li>
+</ul>
+<p>In all of these approaches, scientists and engineers create a quantitative test to accept or reject the hypothesis that two set of data are <em>not</em> significantly different. This concept was <em>very</em> strange to me at first. How can two different measurements be considered the same? It wasn’t until I started practicing, building, and applying engineering concepts that this question started to make sense.</p>
+<section id="generate-some-data-we-know-is-different">
+<h2>Generate some data we <em>know</em> is different<a class="headerlink" href="#generate-some-data-we-know-is-different" title="Link to this heading">#</a></h2>
+<p>Monte Carlo experiments are a great way to start understanding this difficult question, lets build x2 100-value data sets. Consider a case where two people, Pat and Jim, are going to throw the same size ball as far as possible. We know Pat is stronger than Jim. Pat creates an average of 68 J of work throwing a ball, and Jim creates an average of 65 J.</p>
+<p>Pat is <em>on average</em> <span class="math notranslate nohighlight">\(\frac{38 - 35}{35} = \frac{3}{35} = 8.6\%\)</span> stronger than Jim. Let’s assume both Pat and Jim can sometimes throw a little faster and sometimes a little slower so the actual values are <span class="math notranslate nohighlight">\(68\pm 3~J\)</span> and <span class="math notranslate nohighlight">\(65\pm 2~J\)</span>. Now, we have a statistical comparison</p>
+<ul class="simple">
+<li><p>normal distribution at <span class="math notranslate nohighlight">\(38 \pm 3~J\)</span></p></li>
+<li><p>normal distribution at <span class="math notranslate nohighlight">\(35 \pm 2~J\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">Pat</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">38</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">Jim</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">35</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Pat</span><span class="p">,</span>
+        <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span>
+        <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+         <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Pat&#39;</span><span class="p">,</span>
+         <span class="n">density</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,)</span>
+        <span class="c1">#bins = np.linspace(50,80, 31))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Jim</span><span class="p">,</span> 
+        <span class="n">histtype</span> <span class="o">=</span> <span class="s1">&#39;step&#39;</span><span class="p">,</span>
+        <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+         <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Jim&#39;</span><span class="p">,</span>
+         <span class="n">density</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,)</span>
+        <span class="c1">#bins =np.linspace(50, 80, 41))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;avg work of throw&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;relative number of throws&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9b63d5ae1889f3e715018a5b692e3ded45dacbaa94809fccf380e5ead0460940.png" src="../_images/9b63d5ae1889f3e715018a5b692e3ded45dacbaa94809fccf380e5ead0460940.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;set01 = </span><span class="si">{:1.2f}</span><span class="s1"> +/- </span><span class="si">{:1.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Pat</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">Pat</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;set02 = </span><span class="si">{:1.2f}</span><span class="s1"> +/- </span><span class="si">{:1.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Jim</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">Jim</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>set01 = 37.85 +/- 2.32
+set02 = 34.98 +/- 1.95
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="are-these-measurements-different">
+<h1>Are these measurements different?<a class="headerlink" href="#are-these-measurements-different" title="Link to this heading">#</a></h1>
+<p>The two histograms are different, but many of the values throws between Pat and Jim are the same. For example, both throwers had work of 66 J 10-15% of the throws. If we only consider the reported means, 67.9 and 65, there is a significant difference between the two results, but how accurate is this value of mean?</p>
+<p>Lets calculate more data sets and see how much the much the mean can change.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">set_01</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">38</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">set_02</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">35</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+
+<span class="n">mean_01</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">set_01</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">mean_02</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">set_02</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span><span class="n">mean_01</span><span class="p">,</span> <span class="n">mean_02</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Pat avg&#39;</span><span class="p">,</span> <span class="s1">&#39;Jim Avg&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;range of means using x50 sets of 100 data points&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;range of means using x50 sets of 100 data points&#39;)
+</pre></div>
+</div>
+<img alt="../_images/1c5073c9fd0e22bebac722c07a43033fa050c73159cd167f763f83b939df5abc.png" src="../_images/1c5073c9fd0e22bebac722c07a43033fa050c73159cd167f763f83b939df5abc.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mean_01</span><span class="p">,</span>
+        <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span>
+        <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,)</span>
+        <span class="c1">#bins = np.linspace(-0.5,1.5, 31))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mean_02</span><span class="p">,</span> 
+        <span class="n">histtype</span> <span class="o">=</span> <span class="s1">&#39;step&#39;</span><span class="p">,</span>
+        <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,)</span>
+        <span class="c1">#bins =np.linspace(-0.5, 1.5, 31))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([4., 3., 9., 8., 9., 7., 2., 3., 2., 3.]),
+ array([34.60260574, 34.69393174, 34.78525773, 34.87658373, 34.96790973,
+        35.05923573, 35.15056173, 35.24188772, 35.33321372, 35.42453972,
+        35.51586572]),
+ [&lt;matplotlib.patches.Polygon at 0x7ddafc29f2b0&gt;])
+</pre></div>
+</div>
+<img alt="../_images/ee734edfbfd8844473a01205f2255e1c5534743a5673ae598f1ebf1b55e0cd15.png" src="../_images/ee734edfbfd8844473a01205f2255e1c5534743a5673ae598f1ebf1b55e0cd15.png" />
+</div>
+</div>
+<p>In the first, <code class="docutils literal notranslate"><span class="pre">boxplot</span></code> we see that for all sets of 100 throws Pat’s average work is higher than Jim’s average work. In the second histogram, we see the same information as the boxplot, but also the number of times the average was measured over the 50 trial sets. For example, the most likely average for Jim happened 9 times out of 50 at 35 J while Pat’s average happened 11 times just over 38 J.</p>
+<section id="t-test-and-the-p-value-for-reporting-significance">
+<h2>T-test and the <em>p-value</em> for reporting significance<a class="headerlink" href="#t-test-and-the-p-value-for-reporting-significance" title="Link to this heading">#</a></h2>
+<p>This process is the same idea that William Gossett proposed in the formulation of the Student t-test. Rather than trying to prove that the two data sets are different, he built a test to see if the 2 means of the data sets were different <em>assuming the mean is calculated from randomly sampled normally distributed data sets</em>.</p>
+<p>The <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html">T-test</a> is now a standard way for scientists and engineers to discuss “how likely it is that any observed difference between groups is due to chance. Being a probability, P can take any value between 0 and 1” <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4111019/">What does the P-value mean? Dahiru and Dip 2008</a>. Let’s look at the p-value for 5 of the 50 data sets we made</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">ttest_ind</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">set_01</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">set_02</span><span class="p">[</span><span class="n">i</span><span class="p">,:]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=7.312243316551024, pvalue=6.360006381351198e-12, df=198.0)
+TtestResult(statistic=7.287116791592907, pvalue=7.36799888979028e-12, df=198.0)
+TtestResult(statistic=8.310616638454743, pvalue=1.4971760525056898e-14, df=198.0)
+TtestResult(statistic=9.126645222590865, pvalue=8.222918423054348e-17, df=198.0)
+TtestResult(statistic=10.319980173376308, pvalue=2.962493630516092e-20, df=198.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>In all 5 data sets, the p-value is much less than 1%. The largest is 7.4e-12%. With 100 data points, and a standard deviation of equal to the difference between the means, we can be almost certain that the difference in the means is <em>not</em> by chance. Thus we reject this null hypothesis.</p>
+<blockquote>
+<div><p>Pat is stronger than Jim</p>
+</div></blockquote>
+</section>
+<section id="when-is-the-p-value-0-05">
+<h2>When is the p-value &lt; 0.05?<a class="headerlink" href="#when-is-the-p-value-0-05" title="Link to this heading">#</a></h2>
+<p>Now, lets decrease the number of times we measure Pat and Jim’s throwing work. We will only create 5 measurements of work from the normal distributions, but do the same experiment 50 times again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">set_01</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">38</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">set_02</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">35</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">mean_01</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">set_01</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">mean_02</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">set_02</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span><span class="n">mean_01</span><span class="p">,</span> <span class="n">mean_02</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Pat avg&#39;</span><span class="p">,</span> <span class="s1">&#39;Jim Avg&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;range of means using x50 sets of 5 data points</span><span class="se">\n</span><span class="s1">located at 0 and 1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;range of means using x50 sets of 5 data points\nlocated at 0 and 1&#39;)
+</pre></div>
+</div>
+<img alt="../_images/daf160121bedec361637dab013c8cc0d0b915d8116ee8a0cba1def65d3059a5b.png" src="../_images/daf160121bedec361637dab013c8cc0d0b915d8116ee8a0cba1def65d3059a5b.png" />
+</div>
+</div>
+<p>The <em>population</em> means are still where we expect them, at 68 and 65, but each set has a <em>sample</em> mean that varies from 65 to 71 and 63 to 67 for the <span class="math notranslate nohighlight">\(\times 5\)</span> data points.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">set_01</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">set_02</span><span class="p">[</span><span class="n">i</span><span class="p">,:]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=1.152311308480025, pvalue=0.28246157139879224, df=8.0)
+TtestResult(statistic=2.980630022687678, pvalue=0.017583498894211423, df=8.0)
+TtestResult(statistic=1.7210662829147845, pvalue=0.12354561386016819, df=8.0)
+TtestResult(statistic=-0.1759509471479071, pvalue=0.8647047810857478, df=8.0)
+TtestResult(statistic=0.47500445800359664, pvalue=0.6474812142027704, df=8.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the case of using 5 randomly sampled values from the normal distributions, the chance that the means are equal is as high as 86% and as low as 1.7%. This means we cannot claim the results are <em>statistically significant</em> even though we <em>know</em> that Pat’s <code class="docutils literal notranslate"><span class="pre">set_01</span></code> has a mean of 68 J and Jim’s <code class="docutils literal notranslate"><span class="pre">set_02</span></code> has a mean of 65 J.</p>
+<blockquote>
+<div><p>The data does <em>not</em> support that Pat is stronger than Jim.</p>
+</div></blockquote>
+</section>
+<section id="why-cant-we-tell-the-difference-between-means-now">
+<h2>Why can’t we tell the difference between means now?<a class="headerlink" href="#why-cant-we-tell-the-difference-between-means-now" title="Link to this heading">#</a></h2>
+<p>This might seem strange that we built 2 random numbers with different means and <em>sometimes</em> we can tell the difference and other times we can’t. The main thing we changed in these two mini experiments with Pat and Jim was the <strong>number of measurements</strong>. Just like how we had a better <a class="reference internal" href="calculate_pi.html"><span class="std std-doc">estimate of <span class="math notranslate nohighlight">\(\pi\)</span></span></a> with more data points we get a better estimate of the means with more measurements.</p>
+<p>So, if we have two measurements, <code class="docutils literal notranslate"><span class="pre">Pat</span></code> and <code class="docutils literal notranslate"><span class="pre">Jim</span></code> that seem the same we have two options:</p>
+<ul class="simple">
+<li><p>shrug our shoulders and say <code class="docutils literal notranslate"><span class="pre">Pat</span> <span class="pre">==</span> <span class="pre">Jim</span></code></p></li>
+<li><p>keep taking measurements until we can say <code class="docutils literal notranslate"><span class="pre">Pat</span> <span class="pre">&gt;</span> <span class="pre">Jim</span></code></p></li>
+</ul>
+<p>The <strong>very important</strong> point of using a statistical comparison is that it does not <em>prove</em> two random measurements are the same or different. We can only say that there is a chance that the sample measurements we made are from different random distributions.</p>
+</section>
+<section id="throwing-distance">
+<h2>Throwing distance<a class="headerlink" href="#throwing-distance" title="Link to this heading">#</a></h2>
+<p>Enough of this talk of strength and work, let’s get Pat and Jim out in the field and start throwing some baseballs. How far can they throw the ball?</p>
+<p>work is energy, so we can say W = kinetic energy</p>
+<p><span class="math notranslate nohighlight">\(W = \frac{1}{2}mv^2\rightarrow v = \sqrt{\frac{2 W}{m}}\)</span></p>
+<p>where a baseball is</p>
+<p>and farthest distance thrown is <span class="math notranslate nohighlight">\(\theta=45^o\pm5^o\)</span></p>
+<p>so our distance, x, and height, y, are now:</p>
+<p><span class="math notranslate nohighlight">\(x(t) = v\cos(\theta)t\)</span></p>
+<p><span class="math notranslate nohighlight">\(y(t) = 1.5 + v\sin(\theta)t -\frac{g}{2}t^2\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N_throws</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">Pat_W</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">38</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="n">N_throws</span><span class="p">,))</span>
+<span class="n">Jim_W</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">35</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="n">N_throws</span><span class="p">,))</span>
+
+<span class="n">Pat_angle</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="mi">5</span><span class="o">/</span><span class="mi">180</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="n">N_throws</span><span class="p">,))</span>
+<span class="n">Jim_angle</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="mi">5</span><span class="o">/</span><span class="mi">180</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="n">N_throws</span><span class="p">,))</span>
+
+<span class="n">Pat_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">Pat_W</span><span class="o">/</span><span class="mf">0.15</span><span class="p">)</span>
+<span class="n">Jim_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">Jim_W</span><span class="o">/</span><span class="mf">0.15</span><span class="p">)</span>
+
+<span class="n">t_N</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># number of timesteps for path results</span>
+<span class="n">Pat_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">t_N</span><span class="p">,</span> <span class="n">N_throws</span><span class="p">))</span>
+<span class="n">Pat_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">t_N</span><span class="p">,</span> <span class="n">N_throws</span><span class="p">))</span>
+<span class="n">Jim_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">t_N</span><span class="p">,</span> <span class="n">N_throws</span><span class="p">))</span>
+<span class="n">Jim_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">t_N</span><span class="p">,</span> <span class="n">N_throws</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_throws</span><span class="p">):</span>
+    <span class="n">Pat_tmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roots</span><span class="p">([</span><span class="o">-</span><span class="mf">9.81</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">Pat_v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">Pat_angle</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="mf">1.5</span><span class="p">])</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">Jim_tmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roots</span><span class="p">([</span><span class="o">-</span><span class="mf">9.81</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">Jim_v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">Jim_angle</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="mf">1.5</span><span class="p">])</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Pat_tmax</span><span class="p">,</span> <span class="n">t_N</span><span class="p">)</span>
+    <span class="n">Pat_x</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Pat_v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Pat_angle</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">*</span><span class="n">t</span>
+    <span class="n">Pat_y</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">+</span> <span class="n">Pat_v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">Pat_angle</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">*</span><span class="n">t</span> <span class="o">-</span> <span class="mf">9.81</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span>
+
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Jim_tmax</span><span class="p">,</span> <span class="n">t_N</span><span class="p">)</span>
+    <span class="n">Jim_x</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Jim_v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Jim_angle</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">*</span><span class="n">t</span>
+    <span class="n">Jim_y</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">+</span> <span class="n">Jim_v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">Jim_angle</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">*</span><span class="n">t</span> <span class="o">-</span> <span class="mf">9.81</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Pat_x</span><span class="p">,</span> <span class="n">Pat_y</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Jim_x</span><span class="p">,</span> <span class="n">Jim_y</span><span class="p">,</span> <span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x-distance (m)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;height (m)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ee8fdccdae5bac50000dcac07fa9659babe2ffbdb7d304ee961fc1bee34de000.png" src="../_images/ee8fdccdae5bac50000dcac07fa9659babe2ffbdb7d304ee961fc1bee34de000.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">Pat_x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:],</span> <span class="n">Jim_x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=2.259841261689777, pvalue=0.03646659879452726, df=18.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Pat_x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:],</span>
+        <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span>
+        <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+         <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Pat&#39;</span><span class="p">,</span>
+         <span class="n">density</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,)</span>
+        <span class="c1">#bins = np.linspace(50,80, 31))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Jim_x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:],</span> 
+        <span class="n">histtype</span> <span class="o">=</span> <span class="s1">&#39;step&#39;</span><span class="p">,</span>
+        <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+         <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Jim&#39;</span><span class="p">,</span>
+         <span class="n">density</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pat throws </span><span class="si">{:1.1f}</span><span class="s1"> m farther than Jim</span><span class="se">\n</span><span class="s1">after </span><span class="si">{}</span><span class="s1"> throws&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Pat_x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span> <span class="n">Jim_x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]),</span> <span class="n">N_throws</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Pat throws 3.5 m farther than Jim\nafter 10 throws&#39;)
+</pre></div>
+</div>
+<img alt="../_images/75536c8f94d1482b7a65c0be30b8999226d5e37e77cb25d7a3446d378a42bd9e.png" src="../_images/75536c8f94d1482b7a65c0be30b8999226d5e37e77cb25d7a3446d378a42bd9e.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./module_01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="HW_02.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">HW_02</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="HW_03.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">HW_03</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Statistical Significance in Data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-some-data-we-know-is-different">Generate some data we <em>know</em> is different</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#are-these-measurements-different">Are these measurements different?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t-test-and-the-p-value-for-reporting-significance">T-test and the <em>p-value</em> for reporting significance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-is-the-p-value-0-05">When is the p-value &lt; 0.05?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-cant-we-tell-the-difference-between-means-now">Why can’t we tell the difference between means now?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#throwing-distance">Throwing distance</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href = https://cooperrc.github.io> Ryan C. Cooper</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

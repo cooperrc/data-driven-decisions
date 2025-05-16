@@ -1,0 +1,860 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Syllabus - Data Driven Decisions &#8212; Data Driven Decisions</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'syllabus';</script>
+    <link rel="icon" href="_static/spiderman-favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started" href="module_00/README.html" />
+    <link rel="prev" title="Data-Driven Decisions: Monte Carlo Analysis for Technical Communications" href="README.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/datadecisions.svg" class="logo__image only-light" alt="Data Driven Decisions - Home"/>
+    <script>document.write(`<img src="_static/datadecisions.svg" class="logo__image only-dark" alt="Data Driven Decisions - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="README.html">
+                    Data-Driven Decisions: Monte Carlo Analysis for Technical Communications
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Syllabus - Data Driven Decisions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="module_00/README.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="module_00/01_writing-w-llms.html">Technical writing and Generative AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_00/HW_00.html">HW_00 - Generative AI writing analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_00/HW_01.html">HW_01 - Generative AI writing analysis and Monte Carlo research</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="module_01/README.html">Module_01</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="module_01/calculate_pi.html">Calculating <span class="math notranslate nohighlight">\(\pi\)</span> with Monte Carlo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_01/HW_02.html">HW_02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_01/statistical_significance.html">Statistical Significance in Data</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="module_01/HW_03.html">HW_03</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="module_02/README.html">Module_02 - Engineering Processes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="module_02/drop_keys.html">Dropping keys and checking randomly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_02/HW_04.html">HW_04 - Exercise: failure prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_02/bus_wait.html">Waiting for the bus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_02/HW_05.html">HW_05 - Customer wait time</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="module_04/README.html">Case studies</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="module_04/report.html">Your Technical Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_04/wind-turbine-impact.html">The Impact of Wind Turbines on Renewable Energy Generation: A Comparative Study of the United States with Predictive Modeling for Selected European Countries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_04/compliant_fatigue.html">Monte Carlo Methods and Compliant Mechanism Fatigue Case Study</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="module_04/turbine_reliability.html">Optimized Wind Turbine Reliability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module_04/turbine_uncertainty.html">Wind Turbine Uncertainty in loading analysis</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cooperrc/data-driven-decisions" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cooperrc/data-driven-decisions/issues/new?title=Issue%20on%20page%20%2Fsyllabus.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/syllabus.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Syllabus - Data Driven Decisions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-analysis-for-technical-communications">Monte Carlo Analysis for Technical Communications</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-goal">Course Goal:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-outcomes">Course Outcomes:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-information">Course Information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment-methods">Assessment Methods:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grading-policy">Grading Policy:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#academic-integrity">Academic Integrity:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-resources">Required Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-technical-skills">Minimum Technical Skills:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grading-scale">Grading Scale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#due-dates-and-late-policy">Due Dates and Late Policy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback-and-grades">Feedback and Grades</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#student-responsibilities-and-resources">Student Responsibilities and Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#students-with-disabilities">Students with Disabilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-technical-requirements-with-accessibility-and-privacy-information">Software/Technical Requirements (with Accessibility and Privacy Information)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#help">Help</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="syllabus-data-driven-decisions">
+<h1>Syllabus - Data Driven Decisions<a class="headerlink" href="#syllabus-data-driven-decisions" title="Link to this heading">#</a></h1>
+<section id="monte-carlo-analysis-for-technical-communications">
+<h2>Monte Carlo Analysis for Technical Communications<a class="headerlink" href="#monte-carlo-analysis-for-technical-communications" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>GitHub page:</strong> <a class="reference external" href="https://github.com/cooperrc/data-driven-decisions">cooperrc/data-driven-decisions</a></p></li>
+<li><p><strong>ME3256 - Discussions</strong>: <a class="reference external" href="https://github.com/cooperrc/data-driven-decisions/discussions">GitHub Discussion</a></p></li>
+</ul>
+<p><strong>Course Description</strong>: This course explores the integration of Monte Carlo
+analysis—a powerful probabilistic modeling technique—with technical
+communication. Students will learn how to effectively communicate results from
+Monte Carlo methods for both technical and non-technical audiences. Topics
+covered include probability modeling, Monte Carlo simulation, statistical
+analysis, and the creation of technical reports and presentations.</p>
+</section>
+<section id="course-goal">
+<h2>Course Goal:<a class="headerlink" href="#course-goal" title="Link to this heading">#</a></h2>
+<p>Appreciate the intersection of quantitative engineering and
+social design. As engineers, we are humans designing for other humans.
+The questions we ignore are often more detrimental than the questions we
+ask. Our goal is to discuss how engineering design affects people,
+communities, and history.</p>
+</section>
+<section id="course-outcomes">
+<h2>Course Outcomes:<a class="headerlink" href="#course-outcomes" title="Link to this heading">#</a></h2>
+<p>By the end of this course, students will be able to:</p>
+<ol class="arabic simple">
+<li><p><strong>Criticize and edit generative AI outcomes</strong></p>
+<ul class="simple">
+<li><p>Identify and revise passive voice constructions in technical writing</p></li>
+<li><p>Improve technical documents for conciseness by eliminating unnecessary words and redundancies</p></li>
+<li><p>Proof read work to identify and improve technical communications</p></li>
+<li><p>Quantify generalizations made by generative AI claims</p></li>
+<li><p>Quantify changes in a doument to attribute authorship and
+intellectual property</p></li>
+</ul>
+</li>
+<li><p><strong>Discuss Uncertainty in Design:</strong></p>
+<ul class="simple">
+<li><p>Perform statistical analysis of simulation data to extract meaningful insights</p></li>
+<li><p>Present clear and concise statistical findings</p></li>
+<li><p>Distinguish between qualitative (social) and quantitative
+(engineering) uncertainty in technical documents</p></li>
+<li><p>Illustrate the importance of social uncertainty in engineering
+design</p></li>
+</ul>
+</li>
+<li><p><strong>Monte Carlo Simulation:</strong></p>
+<ul class="simple">
+<li><p>Create Monte Carlo simulations using software tools (e.g., Python, R) to analyze complex systems and scenarios</p></li>
+<li><p>Interpret and communicate the results of Monte Carlo simulations</p></li>
+<li><p>Explain the principles and applications of Monte Carlo simulation in data-driven decision-making</p></li>
+<li><p>Develop probabilistic models for real-world scenarios</p></li>
+</ul>
+</li>
+<li><p><strong>Create Visualizations of Data:</strong></p>
+<ul class="simple">
+<li><p>Generate effective and informative visual representations of engineering data using appropriate tools (e.g., Excel, Python, or MATLAB)</p></li>
+<li><p>Select suitable visualizations  for different data sets and e.g. plots, bar charts, scatter
+plots, histograms, contour plots,
+communication purposes</p></li>
+</ul>
+</li>
+<li><p><strong>Research Engineering Designs and Processes</strong></p>
+<ul class="simple">
+<li><p>Find, review, and cite reliable sources of information (textbooks,
+articles, journals, news sources)</p></li>
+<li><p>Contextualize technical and social information to validate a design or process</p></li>
+<li><p>Compose a unique case study in engineering decisions using data
+from models and sources</p></li>
+</ul>
+</li>
+<li><p><strong>Compose Writing According to Audiences:</strong></p>
+<ul class="simple">
+<li><p>Identify and analyze the needs and expectations of different audiences</p></li>
+<li><p>Edit technical writing to communicate with audiences</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="course-information">
+<h2>Course Information<a class="headerlink" href="#course-information" title="Link to this heading">#</a></h2>
+<p><strong>Course Title:</strong> ME3256 - Data Driven Decisions: Monte Carlo Analysis for Technical Communications</p>
+<p>__Format:__Online</p>
+<p><strong>Instructor</strong>: Prof. Ryan C. Cooper <strong><a class="reference external" href="mailto:ryan&#46;c&#46;cooper&#37;&#52;&#48;uconn&#46;edu">ryan<span>&#46;</span>c<span>&#46;</span>cooper<span>&#64;</span>uconn<span>&#46;</span>edu</a></strong></p>
+<p><strong>Prerequisites</strong>: Basic understanding of probability and statistics is
+recommended. Familiarity with programming languages such as Python or R is
+beneficial but not required. I will provide example code and resources.
+We are coding to learn, not learning to code.</p>
+<p><strong>Office Hours/Availability:</strong> by appointment
+<a class="reference external" href="https://cooperrc.github.io">https://cooperrc.github.io</a></p>
+<p><strong>Preferred Contact:</strong> Post questions and comments to
+<a class="reference external" href="https://github.com/cooperrc/data-driven-decisions/discussions">Discussions</a></p>
+</section>
+<section id="assessment-methods">
+<h2>Assessment Methods:<a class="headerlink" href="#assessment-methods" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Writing Assignments:</strong> Write 500-word technical documents</p></li>
+<li><p><strong>Technical Report:</strong> Present a Monte Carlo solution to an
+engineering design problem in a 3000-word technical report</p></li>
+<li><p><strong>Peer Review and Feedback:</strong> Evaluate peers’ technical communication, specifically revisions on the main technical report project</p></li>
+<li><p><strong>Online Activities and Discussions:</strong> Actively participate in online
+activities and revisions</p></li>
+</ol>
+</section>
+<section id="grading-policy">
+<h2>Grading Policy:<a class="headerlink" href="#grading-policy" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Written Assignments: 30%</p></li>
+<li><p>Technical Report: 30%</p></li>
+<li><p>Online Activities and Participation: 20%</p></li>
+<li><p>Peer Review: 20%</p></li>
+</ul>
+<p><strong>Note on Writing assignments:</strong> Each written assignment will ask you to
+explain a technical result to a given audience. You will get comments on the
+assignment and a current grade. You can increase your grade by addressing the
+comments and resubmitting the work.</p>
+<p><strong>Note on Technical Report:</strong> The project is a longer technical document for other
+entry-level engineers. You will outline the report and share your
+proposed figures and images and communicate your findings throughout
+the course. You should plan to give and receive feedback on each stage of the writing process:</p>
+<ul class="simple">
+<li><p>outline</p></li>
+<li><p>first draft</p></li>
+<li><p>final draft</p></li>
+</ul>
+</section>
+<section id="academic-integrity">
+<h2>Academic Integrity:<a class="headerlink" href="#academic-integrity" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The instructors encourage you to use a wide variety of resources
+including peers, online research, instructors, textbooks, articles,
+and even generative AI. <strong>Be sure you properly cite your sources and
+explain your own intellectual contributions.</strong> You should not let
+resources substitute any of our course learning objectives.</p></li>
+<li><p>Read and understand <a class="reference external" href="http://www.community.uconn.edu/student_code.html" title="The Student Code for Academic Integrity">The UConn Student Code of Conduct</a>. Students will follow all University regulations concerning the final exam.</p></li>
+</ul>
+</section>
+<section id="required-resources">
+<h2>Required Resources<a class="headerlink" href="#required-resources" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Downey, Allen B. <a class="reference external" href="https://www.degruyter.com/document/doi/10.7208/chicago/9780226822594/html#MLA">Probably Overthinking It</a>: How to Use Data to Answer
+Questions, Avoid Statistical Traps, and Make Better Decisions,
+Chicago: University of Chicago Press, 2023.
+<a class="reference external" href="https://doi.org/10.7208/chicago/9780226822594">https://doi.org/10.7208/chicago/9780226822594</a></p></li>
+<li><p>Gross <em>et al.</em> (2017). <a class="reference external" href="https://openoregon.pressbooks.pub/technicalwriting/">Technical Writing</a>. Open Oregon Educational Resources.</p></li>
+</ul>
+</section>
+<section id="minimum-technical-skills">
+<h2>Minimum Technical Skills:<a class="headerlink" href="#minimum-technical-skills" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Ability to follow coding tutorials</p></li>
+<li><p>Comfortable executing code in a prompt</p></li>
+<li><p>Comfortable working in a web browser</p></li>
+<li><p>Ability to search for answers and references in Google, Wikipedia  and
+news sources</p></li>
+</ul>
+</section>
+<section id="grading-scale">
+<h2>Grading Scale<a class="headerlink" href="#grading-scale" title="Link to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Explanation</p></th>
+<th class="head"><p>Letter Grade</p></th>
+<th class="head"><p>GPA</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Excellent</p></td>
+<td><p>A</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>A-</p></td>
+<td><p>3.7</p></td>
+</tr>
+<tr class="row-even"><td><p>Very Good</p></td>
+<td><p>B+</p></td>
+<td><p>3.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Good</p></td>
+<td><p>B</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>B-</p></td>
+<td><p>2.7</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>C+</p></td>
+<td><p>2.3</p></td>
+</tr>
+<tr class="row-even"><td><p>Average</p></td>
+<td><p>C</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fair</p></td>
+<td><p>C-</p></td>
+<td><p>1.7</p></td>
+</tr>
+<tr class="row-even"><td><p>Poor</p></td>
+<td><p>D+</p></td>
+<td><p>1.3</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>D</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>Merely Passing</p></td>
+<td><p>D-</p></td>
+<td><p>0.7</p></td>
+</tr>
+<tr class="row-odd"><td><p>Failure</p></td>
+<td><p>F</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="due-dates-and-late-policy">
+<h2>Due Dates and Late Policy<a class="headerlink" href="#due-dates-and-late-policy" title="Link to this heading">#</a></h2>
+<p>The course calendar identifies course due dates.
+Deadlines are based on Eastern Time; if you are in a different time zone, please
+adjust your submittal times accordingly. The instructor reserves the right to
+change dates accordingly as the course progresses.  <em>I will
+communicate changes via the calendar or another appropriate notification.</em></p>
+<p><strong>Late Policy</strong>: You must submit
+<em>something</em> for every due date. You can resubmit any assignment to get
+points back, but if you miss the submission date, its a 0. If you are
+stuck on a topic or requirement submit some questions you have about the
+assignment and we can revise and improve the work.</p>
+</section>
+<section id="feedback-and-grades">
+<h2>Feedback and Grades<a class="headerlink" href="#feedback-and-grades" title="Link to this heading">#</a></h2>
+<p>We will make every effort to provide feedback and grades within 2
+business days.  To keep track of your performance in the course, refer
+to grades in HuskyCT.  You can resubmit any assignment with
+improvements. Add a private comment to your submission when you have
+incorporated comments.</p>
+</section>
+<section id="student-responsibilities-and-resources">
+<h2>Student Responsibilities and Resources<a class="headerlink" href="#student-responsibilities-and-resources" title="Link to this heading">#</a></h2>
+<p>As a member of the University of Connecticut student community, you are held to
+certain standards and academic policies. In addition, there are numerous
+resources available to help you succeed in your academic work. Review these
+important <a class="reference external" href="http://ecampus.uconn.edu/policies.html">standards, policies and
+resources</a>, which include:</p>
+<ul class="simple">
+<li><p>The Student Code</p>
+<ul>
+<li><p>Academic Integrity</p></li>
+<li><p>Resources on Avoiding Cheating and Plagiarism</p></li>
+</ul>
+</li>
+<li><p>Copyrighted Materials</p></li>
+<li><p>Netiquette and Communication</p></li>
+<li><p>Adding or Dropping a Course</p></li>
+<li><p>Academic Calendar</p></li>
+<li><p>Policy Against Discrimination, Harassment and Inappropriate Romantic</p></li>
+<li><p>Relationships</p></li>
+<li><p>Sexual Assault Reporting Policy</p></li>
+</ul>
+</section>
+<section id="students-with-disabilities">
+<h2>Students with Disabilities<a class="headerlink" href="#students-with-disabilities" title="Link to this heading">#</a></h2>
+<p>The University of Connecticut is committed to protecting the rights of
+individuals with disabilities and assuring that the learning environment is
+accessible.  If you anticipate or experience physical or academic barriers based
+on disability or pregnancy, please let me know immediately so that we can
+discuss options. Students who require accommodations should contact the Center
+for Students with Disabilities, Wilbur Cross Building Room 204, (860) 486-2020
+or <a class="reference external" href="http://csd.uconn.edu/">http://csd.uconn.edu/</a>.</p>
+</section>
+<section id="software-technical-requirements-with-accessibility-and-privacy-information">
+<h2>Software/Technical Requirements (with Accessibility and Privacy Information)<a class="headerlink" href="#software-technical-requirements-with-accessibility-and-privacy-information" title="Link to this heading">#</a></h2>
+<p>The software/technical requirements for this course include:</p>
+<ul class="simple">
+<li><p>Modern, up-to-date web browser e.g. <a class="reference external" href="https://www.google.com/chrome/">Chrome</a>, <a class="reference external" href="https://www.mozilla.org/en-US/">Firefox</a>, <a class="reference external" href="https://www.apple.com/safari/">Safari (Mac OS)</a>, or <a class="reference external" href="https://www.microsoft.com/en-us/edge">Microsoft Edge</a></p></li>
+<li><p>HuskyCT</p></li>
+<li><p>Adobe Acrobat Reader (Adobe Reader Accessibility Statement, Adobe Reader Privacy Policy)</p></li>
+<li><p>Google Apps (<a class="reference external" href="https://www.google.com/accessibility/">Google Apps Accessibility</a>, <a class="reference external" href="https://www.google.com/edu/trust/">Google for Education Privacy Policy</a></p></li>
+<li><p>Dedicated access to high-speed internet with a minimum speed of 1.5
+Mbps (recommend 4 Mbps or higher).</p></li>
+</ul>
+<p><strong>NOTE:</strong> This course was not tested or designed for mobile devices.</p>
+</section>
+<section id="help">
+<h2>Help<a class="headerlink" href="#help" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="http://ecampus.uconn.edu/help.html">Technical and Academic Help</a> provides a guide to technical and academic assistance.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="README.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data-Driven Decisions: Monte Carlo Analysis for Technical Communications</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="module_00/README.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Getting Started</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-analysis-for-technical-communications">Monte Carlo Analysis for Technical Communications</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-goal">Course Goal:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-outcomes">Course Outcomes:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-information">Course Information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment-methods">Assessment Methods:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grading-policy">Grading Policy:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#academic-integrity">Academic Integrity:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-resources">Required Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-technical-skills">Minimum Technical Skills:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grading-scale">Grading Scale</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#due-dates-and-late-policy">Due Dates and Late Policy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback-and-grades">Feedback and Grades</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#student-responsibilities-and-resources">Student Responsibilities and Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#students-with-disabilities">Students with Disabilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-technical-requirements-with-accessibility-and-privacy-information">Software/Technical Requirements (with Accessibility and Privacy Information)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#help">Help</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href = https://cooperrc.github.io> Ryan C. Cooper</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

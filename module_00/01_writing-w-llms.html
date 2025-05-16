@@ -1,0 +1,995 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Technical writing and Generative AI &#8212; Data Driven Decisions</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'module_00/01_writing-w-llms';</script>
+    <link rel="icon" href="../_static/spiderman-favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HW_00 - Generative AI writing analysis" href="HW_00.html" />
+    <link rel="prev" title="Getting Started" href="README.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/datadecisions.svg" class="logo__image only-light" alt="Data Driven Decisions - Home"/>
+    <script>document.write(`<img src="../_static/datadecisions.svg" class="logo__image only-dark" alt="Data Driven Decisions - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Data-Driven Decisions: Monte Carlo Analysis for Technical Communications
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus - Data Driven Decisions</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Getting Started</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Technical writing and Generative AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HW_00.html">HW_00 - Generative AI writing analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HW_01.html">HW_01 - Generative AI writing analysis and Monte Carlo research</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_01/README.html">Module_01</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/calculate_pi.html">Calculating <span class="math notranslate nohighlight">\(\pi\)</span> with Monte Carlo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/HW_02.html">HW_02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/statistical_significance.html">Statistical Significance in Data</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module_01/HW_03.html">HW_03</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_02/README.html">Module_02 - Engineering Processes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/drop_keys.html">Dropping keys and checking randomly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/HW_04.html">HW_04 - Exercise: failure prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/bus_wait.html">Waiting for the bus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/HW_05.html">HW_05 - Customer wait time</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_03/README.html">Module_03 - coming soon</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_03/challenger.html">Challenger explosion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_04/README.html">Module_04 - Case studies</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_04/report.html">Your Technical Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_04/wind-turbine-impact.html">The Impact of Wind Turbines on Renewable Energy Generation: A Comparative Study of the United States with Predictive Modeling for Selected European Countries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_04/compliant_fatigue.html">Monte Carlo Methods and Compliant Mechanism Fatigue Case Study</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module_04/turbine_reliability.html">Optimized Wind Turbine Reliability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_04/turbine_uncertainty.html">Wind Turbine Uncertainty in loading analysis</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/cooperrc/data-driven-decisions/main?urlpath=tree/module_00/01_writing-w-llms.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/cooperrc/data-driven-decisions/blob/main/module_00/01_writing-w-llms.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cooperrc/data-driven-decisions" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cooperrc/data-driven-decisions/issues/new?title=Issue%20on%20page%20%2Fmodule_00/01_writing-w-llms.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/module_00/01_writing-w-llms.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Technical writing and Generative AI</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-generative-ai-in-your-work">Using Generative AI in your work</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-a-macaque-affect-ai-copyright-laws">How does a macaque affect AI copyright laws??</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-academic-integrity">Connection to Academic Integrity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-have-i-added-enough-of-my-own-ideas-to-a-written-document">When have I added enough of my own ideas to a written document?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#critical-review-of-generative-ai-output">Critical review of generative AI output</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-this-output-good">Is this output “good”?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-writing-with-cosine-similarity-and-term-frequency-inverse-document-frequency-tf-idf">Compare writing with <em>Cosine Similarity</em> and <em>Term-frequency Inverse-Document Frequency</em> TF-IDF</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-i-change-enough-of-the-sentence-to-make-it-mine">Did I change <em>enough</em> of the sentence to make it mine?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapping-up">Wrapping up</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-readings-on-generative-ai-and-copyright">Further readings on Generative AI and copyright</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="technical-writing-and-generative-ai">
+<h1>Technical writing and Generative AI<a class="headerlink" href="#technical-writing-and-generative-ai" title="Link to this heading">#</a></h1>
+<p>Writing has always been a difficult task <a class="reference external" href="https://what-if.xkcd.com/76/">xkcd-What-if 76</a>. The limit to prodcucing new words on a page, report, email, or other document is often based upon how quickly our brains can translate a story or an idea into words. If we were just transcribing someone else’s words, it <em>should</em> be possible to write up to 70 words per minute. In reality, even the most successful authors with years of experience generate 0.05 words per minute, <em>over their entire lifetimes</em>.</p>
+<p><img alt="XKCD comic showing someone transcribing To Kill a Mockingbird twenty times" src="https://what-if.xkcd.com/imgs/a/76/books_tkamps.png" /></p>
+<p>Generating ideas and stories has become easier with tools such as</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://chatgpt.com/">ChatGPT</a></p></li>
+<li><p><a class="reference external" href="http://copy.ai/">Copy.ai</a></p></li>
+<li><p><a class="reference external" href="https://www.jasper.ai/">Jasper</a></p></li>
+<li><p><a class="reference external" href="https://claude.ai/">Claude</a></p></li>
+<li><p><a class="reference external" href="https://ollama.com/">ollama</a></p></li>
+<li><p>and tons of others</p></li>
+</ul>
+<p>These tools do a great job at <em>synthesizing</em> existing written documents, but they are not <em>creating</em> any new content. The tools work by generating the probability that a word will follow a given set of words, based upon the pretrained data set using a <em>transformer</em> <a class="reference external" href="https://youtu.be/wjZofJX0v4M?si=hkP1Fe1dlLj3UU3k">But what is a GPT? Visual intro to transformers | Chapter 5, Deep Learning</a>. Th</p>
+<section id="using-generative-ai-in-your-work">
+<h2>Using Generative AI in your work<a class="headerlink" href="#using-generative-ai-in-your-work" title="Link to this heading">#</a></h2>
+<p>There have been a number of copyright rejections due to the use of AI in the generation of creative content <a class="reference external" href="https://www.cooley.com/news/insight/2024/2024-01-29-copyright-ownership-of-generative-ai-outputs-varies-around-the-world">Review on Copyright Ownership
+cases+guidance</a>. One of the defining in AI-generated copyright cases is from 2011 <em>before any AI-generated content existed</em> <a class="reference external" href="https://cdn.ca9.uscourts.gov/datastore/opinions/2018/04/23/16-15469.pdf">Naruto vs Slater</a>. In the case, Slater, a photographer, wanted copyright images that a macaque had taken when he left his camera unattended. The court ruled that although Slater owned the equipment and orchestrated the generation of the images, he <strong>could not</strong> copyright the images because the macaque had generated the images.</p>
+<section id="how-does-a-macaque-affect-ai-copyright-laws">
+<h3>How does a macaque affect AI copyright laws??<a class="headerlink" href="#how-does-a-macaque-affect-ai-copyright-laws" title="Link to this heading">#</a></h3>
+<p>This Naruto-vs-Slater case laid the foundation for the copyright office to reject copyrights that had been generated by AI models, whether it was images or text. <strong>You cannot claim to own any AI-generated text, images, or videos,</strong> but</p>
+<p>You can own:</p>
+<ul class="simple">
+<li><p>the AI model</p></li>
+<li><p>data used to train the AI model</p></li>
+<li><p>the prompts that generated the output (prompt-engineering process)</p></li>
+<li><p>creative use of AI-generated content</p></li>
+<li><p>modified AI-generated content, if you can show that you have significantly added your own work and ideas</p></li>
+</ul>
+<p>The US government takes the following stance on using AI for the generation of creative content,</p>
+<p>‘In other cases, however, a work containing AI-generated material will
+also contain sufficient human authorship to support a copyright claim.
+For example, a human may select or arrange AI-generated material in a
+sufficiently creative way that “the resulting work as a whole
+constitutes an original work of authorship.” [33] Or an artist may modify material originally
+generated by AI technology to such a degree that the modifications meet
+the standard for copyright protection.[34]
+In these cases, copyright will only protect the human-authored aspects
+of the work, which are “independent of” and do “not affect” the
+copyright status of the AI-generated material itself.[35]’</p>
+<p><a class="reference external" href="https://www.federalregister.gov/documents/2023/03/16/2023-05321/copyright-registration-guidance-works-containing-material-generated-by-artificial-intelligence#p-52">copyright guidance on AI
+art</a></p>
+</section>
+<section id="connection-to-academic-integrity">
+<h3>Connection to Academic Integrity<a class="headerlink" href="#connection-to-academic-integrity" title="Link to this heading">#</a></h3>
+<p>Academic misconduct is defined as ‘misrepresenting mastery in an academic area (e.g., cheating), failing to properly credit information, research, or ideas to their rightful originators or representing such information, research, or ideas as your own ’ <a class="reference external" href="https://community.uconn.edu/the-student-code/the-student-code-appendix-a/">Student Code of Conduct</a>. AI-generated writing can fall into two categories:</p>
+<ol class="arabic simple">
+<li><p>Misrepresenting mastery in an academic area e.g. if AI-generated content is used to substitute learning objectives in the course</p></li>
+<li><p>Failing to properly credit research or ideas e.g. if AI-generated content is used, but not acknowledged</p></li>
+</ol>
+<p>Anything you produce during your education should be your own creative work and your own ideas. Sometimes that includes the use of software, collaborations, textbooks, and articles, but the work should be appropriately cited so you don’t exclude sources of information and ideas. Your academic work doesn’t <em>need</em> a copyright, but if you wanted to publish any of your ideas, stories, or creative projects you should be able to publish it any way you see fit, for profit or otherwise.</p>
+</section>
+</section>
+<section id="when-have-i-added-enough-of-my-own-ideas-to-a-written-document">
+<h2>When have I added enough of my own ideas to a written document?<a class="headerlink" href="#when-have-i-added-enough-of-my-own-ideas-to-a-written-document" title="Link to this heading">#</a></h2>
+<p>If you’re properly using generative AI models, you will “prompt engineer” to get the results you are looking for. Let’s try an example with ChatGPT,</p>
+<blockquote>
+<div><p>I need you to play the role of a university student studying engineering</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>ChatGPT</strong></p>
+</div></blockquote>
+<p>Sure thing! What aspect of engineering are you interested in?</p>
+<blockquote>
+<div><p>You are creating a 3-paragraph justification for the use of Monte Carlo modeling in engineering. Focus on the use of statistical modeling, failure analysis, and propagation of error use 2 references</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>ChatGPT</strong></p>
+</div></blockquote>
+<p>Monte Carlo modeling is an indispensable tool in engineering due to its robust statistical foundation and versatility in simulating complex systems. By leveraging random sampling techniques, Monte Carlo simulations can effectively analyze the behavior of systems with numerous variables and uncertain parameters. In engineering, where systems are often subjected to various sources of variability and randomness, Monte Carlo modeling provides a powerful framework for understanding the distribution of potential outcomes and assessing the likelihood of different scenarios. For instance, in the design phase of a structural engineering project, Monte Carlo simulations can help evaluate the performance of a proposed design under different loading conditions and material properties, providing valuable insights into its reliability and safety (Fishman, 2013).</p>
+<p>Moreover, Monte Carlo modeling plays a crucial role in failure analysis by enabling engineers to assess the probability of failure under different operating conditions. By incorporating probabilistic distributions for input variables such as material properties, environmental factors, and operational parameters, engineers can simulate the behavior of a system over a large number of iterations to identify potential failure modes and their likelihood of occurrence. This approach is particularly valuable in industries such as aerospace and automotive engineering, where safety and reliability are paramount concerns. Monte Carlo simulations allow engineers to conduct comprehensive risk assessments and make informed decisions to mitigate potential failures before they occur, ultimately enhancing the overall performance and durability of engineered systems (Rubinstein &amp; Kroese, 2017).</p>
+<p>Furthermore, Monte Carlo modeling is instrumental in accurately quantifying the propagation of errors throughout the design and manufacturing process. In engineering, it is essential to understand how uncertainties in input variables propagate through mathematical models to affect the reliability of output predictions. Monte Carlo simulations excel in this regard by systematically sampling from the probability distributions of input parameters and quantifying their impact on the variability of output responses. This capability enables engineers to perform sensitivity analyses, identify critical factors influencing the variability of outcomes, and optimize design parameters to meet desired performance targets while accounting for uncertainty. By incorporating Monte Carlo simulations into the design workflow, engineers can improve the robustness and accuracy of their models, leading to more reliable and cost-effective engineering solutions (Rubinstein &amp; Kroese, 2017).</p>
+<p>In conclusion, Monte Carlo modeling is a powerful and versatile tool that offers significant advantages in engineering applications. From analyzing complex systems with uncertain parameters to conducting failure analyses and quantifying error propagation, Monte Carlo simulations provide engineers with valuable insights into the behavior and performance of engineered systems. By integrating statistical modeling techniques into the engineering design process, practitioners can enhance the reliability, safety, and efficiency of their products while effectively managing risks and uncertainties.</p>
+<p>References:</p>
+<ul class="simple">
+<li><p>Fishman, G. S. (2013). Monte Carlo: Concepts, algorithms, and applications. Springer Science &amp; Business Media.</p></li>
+<li><p>Rubinstein, R. Y., &amp; Kroese, D. P. (2017). Simulation and the Monte Carlo Method. John Wiley &amp; Sons.</p></li>
+</ul>
+</section>
+<section id="critical-review-of-generative-ai-output">
+<h2>Critical review of generative AI output<a class="headerlink" href="#critical-review-of-generative-ai-output" title="Link to this heading">#</a></h2>
+<p>In the above example, I gave ChatGPT a role (engineering student) and requested a specific task (3-paragraph assignment + 2 references + 3 specific ideas). I <strong>cannot</strong> claim that this output is <strong>my work</strong>. This is a combination of lots of other authors works condensed into a machine-generated output. The references happen to be real textbooks, but the copyright dates could be wrong and there is no guarantee that the textbooks support the claims,</p>
+<ul class="simple">
+<li><p>For instance, in the design phase of a structural engineering project, Monte Carlo simulations can help evaluate the performance of a proposed design under different loading conditions and material properties, providing valuable insights into its reliability and safety (Fishman, 2013)</p></li>
+<li><p>This approach is particularly valuable in industries such as aerospace and automotive engineering, where safety and reliability are paramount concerns. Monte Carlo simulations allow engineers to conduct comprehensive risk assessments and make informed decisions to mitigate potential failures before they occur, ultimately enhancing the overall performance and durability of engineered systems (Rubinstein &amp; Kroese, 2017)</p></li>
+<li><p>By incorporating Monte Carlo simulations into the design workflow, engineers can improve the robustness and accuracy of their models, leading to more reliable and cost-effective engineering solutions (Rubinstein &amp; Kroese, 2017)</p></li>
+</ul>
+<section id="is-this-output-good">
+<h3>Is this output “good”?<a class="headerlink" href="#is-this-output-good" title="Link to this heading">#</a></h3>
+<p>The short answer is <em>no, its not “good”</em>.</p>
+<p>The longer answer is that it does a good job at combining the words and maintaining grammar rules, but the machine is not saying anything specific or meaningful. This would be great for an abstract or a summary of another work, but we don’t have any <em>real</em> reason to use Monte Carlo models based upon this summary. As engineers, our job is to innovate using quantitative methods, but this 3-paragraph report doesn’t have <em>any</em> quantitative descriptions. For example,</p>
+<blockquote>
+<div><p>“For instance, in the design phase of a structural engineering project, Monte Carlo simulations can help evaluate the performance of a proposed design under different loading conditions and material properties, providing valuable insights into its reliability and safety (Fishman, 2013).” [first paragraph]</p>
+</div></blockquote>
+<p>This sentence is too long, let’s trim it down to start,</p>
+<blockquote>
+<div><p>“For instance, Monte Carlo simulations evaluate the performance of proposed designs under different loading conditions and material properties; the results demonstrate reliability and safety (Fishman, 2013).”</p>
+</div></blockquote>
+<p>We make the sentence clearer and shorter with <a class="reference internal" href="#"><span class="xref myst">active</span></a> instead of <a class="reference internal" href="#"><span class="xref myst">passive</span></a> phrasing. Now, let’s add some quantitative values,</p>
+<blockquote>
+<div><p>“For instance, Monte Carlo simulations can simulate hundreds or thousands of different combinations of loading conditions and material properties to create statistical predictions of structure stiffness ~~(Fishman, 2013)~~.”</p>
+</div></blockquote>
+<p>At this point, I would claim that the sentence is “mine”. I used the original AI-generated sentence to start with the idea:</p>
+<p>Monte Carlo helps safety in structural design</p>
+<p>and edited the sentence to be more concise, clearer, and added my own domain knowledge about Monte Carlo methods to justify its use.</p>
+</section>
+<section id="compare-writing-with-cosine-similarity-and-term-frequency-inverse-document-frequency-tf-idf">
+<h3>Compare writing with <em>Cosine Similarity</em> and <em>Term-frequency Inverse-Document Frequency</em> TF-IDF<a class="headerlink" href="#compare-writing-with-cosine-similarity-and-term-frequency-inverse-document-frequency-tf-idf" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>e.g. a simplified versiom of a “plagiarism checker” <img alt="Blackboard Safeassign FAQ" src="../_images/blackboard_safe-assign.png" /></p>
+</div></blockquote>
+<p>Now, I have 2 versions of the same sentence,</p>
+<ul class="simple">
+<li><p>For instance, in the design phase of a structural engineering project, Monte Carlo simulations can help evaluate the performance of a proposed design under different loading conditions and material properties, providing valuable insights into its reliability and safety</p></li>
+<li><p>For instance, Monte Carlo simulations can simulate hundreds or thousands of different combinations of loading conditions and material properties to create statistical predictions of structure stiffness</p></li>
+</ul>
+<p>I can compare the relative frequency of words used in each of the sentences compared to the combination of the two documents. This is <em>roughly</em> how plagiarism detectors work <a class="reference external" href="https://files.eric.ed.gov/fulltext/EJ1340053.pdf">Davoodifard 2022</a>. The process to compare two sets of text takes three steps,</p>
+<ol class="arabic simple">
+<li><p>preprocess the text to turn it into a vector of words, one vector per document</p></li>
+<li><p>calculate the relative frequency of the words in the vectors</p></li>
+<li><p>calculate the the <a class="reference external" href="https://medium.com/&#64;mifthulyn07/comparing-text-documents-using-tf-idf-and-cosine-similarity-in-python-311863c74b2c">Cosine Similarity</a> between each vector</p></li>
+</ol>
+<p>The <em>Cosine Similarity</em> result is a relative measure of how close each text is to the reference text a value of 0 means there is almost no similarity and a value of 1 means its basically the same text. Let’s compare our two versions of the same sentence,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tf_idf</span>
+
+<span class="n">AI</span> <span class="o">=</span> <span class="s1">&#39;For instance, in the design phase of a structural engineering project, Monte Carlo simulations can help evaluate the performance of a proposed design under different loading conditions and material properties, providing valuable insights into its reliability and safety&#39;</span>
+<span class="n">ME</span> <span class="o">=</span> <span class="s1">&#39;For instance, Monte Carlo simulations can simulate hundreds or thousands of different combinations of loading conditions and material properties to create statistical predictions of structure stiffness&#39;</span>
+
+<span class="n">compare</span> <span class="o">=</span> <span class="n">tf_idf</span><span class="o">.</span><span class="n">preprocess_text</span><span class="p">(</span><span class="n">AI</span><span class="p">)</span>
+<span class="n">compare</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">compare</span><span class="p">,</span> <span class="n">tf_idf</span><span class="o">.</span><span class="n">preprocess_text</span><span class="p">(</span><span class="n">ME</span><span class="p">)],</span> 
+                    <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">compare</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">AI</span> <span class="o">=</span> <span class="s1">&#39;For instance, in the design phase of a structural engineering project, Monte Carlo simulations can help evaluate the performance of a proposed design under different loading conditions and material properties, providing valuable insights into its reliability and safety&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">ME</span> <span class="o">=</span> <span class="s1">&#39;For instance, Monte Carlo simulations can simulate hundreds or thousands of different combinations of loading conditions and material properties to create statistical predictions of structure stiffness&#39;</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">compare</span> <span class="o">=</span> <span class="n">tf_idf</span><span class="o">.</span><span class="n">preprocess_text</span><span class="p">(</span><span class="n">AI</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">compare</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">compare</span><span class="p">,</span> <span class="n">tf_idf</span><span class="o">.</span><span class="n">preprocess_text</span><span class="p">(</span><span class="n">ME</span><span class="p">)],</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span>                     <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">compare</span>
+
+<span class="ne">AttributeError</span>: module &#39;tf_idf&#39; has no attribute &#39;preprocess_text&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the first preprocessing step, I convert the 2 sentences into the <code class="docutils literal notranslate"><span class="pre">STEMMING</span></code> vector that only considers the roots of important words. It ignores a number of words including ‘for’, ‘in’, ‘the’, etc. as well as punctuation and white space. Next, in the background I calculate the TF-IDF for each <code class="docutils literal notranslate"><span class="pre">STEMMING</span></code> word, then find the Cosine Similarity in the output, <code class="docutils literal notranslate"><span class="pre">COSIM</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf_idf</span><span class="o">.</span><span class="n">cosineSimilarity</span><span class="p">(</span><span class="n">compare</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DOCUMENT</th>
+      <th>STEMMING</th>
+      <th>COSIM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>For instance, in the design phase of a structural engineering project, Monte Carlo simulations can help evaluate the performance of a proposed design under different loading conditions and material properties, providing valuable insights into its reliability and safety</td>
+      <td>[instanc, design, phase, structur, engin, project, mont, carlo, simul, evalu, perform, propos, design, differ, load, condit, materi, properti, provid, valuabl, insight, reliabl, safeti]</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>For instance, Monte Carlo simulations can simulate hundreds or thousands of different combinations of loading conditions and material properties to create statistical predictions of structure stiffness</td>
+      <td>[instanc, mont, carlo, simul, simul, hundr, thousand, differ, combin, load, condit, materi, properti, creat, statist, predict, structur, stiff]</td>
+      <td>0.337359</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">COSIM</span></code> value for input <code class="docutils literal notranslate"><span class="pre">0</span></code> to itself is <code class="docutils literal notranslate"><span class="pre">1.000</span></code>. This makes sense because it is the same text. The <code class="docutils literal notranslate"><span class="pre">COSIM</span></code> between input <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">0</span></code> is <code class="docutils literal notranslate"><span class="pre">0.337359</span></code> which <em>roughly</em> translates to 1 third of the sentence being similar. We can try it on simpler sentences to check this hypothesis, consider the same sentence with an extra word and then a different subject</p>
+<ul class="simple">
+<li><p>‘The frog jumped’</p></li>
+<li><p>‘The frog jumped high’</p></li>
+<li><p>‘The turtle jumped’</p></li>
+</ul>
+<p>We should see a large similarity score for the second sentence and a lower score for the third sentence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text_00</span> <span class="o">=</span> <span class="s1">&#39;The frog jumped&#39;</span>
+<span class="n">text_01</span> <span class="o">=</span> <span class="s1">&#39;The frog jumped high&#39;</span>
+<span class="n">text_02</span> <span class="o">=</span> <span class="s1">&#39;The turtle jumped&#39;</span>
+
+<span class="n">compare_simple</span> <span class="o">=</span> <span class="n">tf_idf</span><span class="o">.</span><span class="n">preprocess_text</span><span class="p">(</span><span class="n">text_00</span><span class="p">)</span>
+<span class="n">compare_simple</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">compare_simple</span><span class="p">,</span> <span class="n">tf_idf</span><span class="o">.</span><span class="n">preprocess_text</span><span class="p">(</span><span class="n">text_01</span><span class="p">)],</span> 
+                    <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">compare_simple</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">compare_simple</span><span class="p">,</span> <span class="n">tf_idf</span><span class="o">.</span><span class="n">preprocess_text</span><span class="p">(</span><span class="n">text_02</span><span class="p">)],</span> 
+                    <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">tf_idf</span><span class="o">.</span><span class="n">cosineSimilarity</span><span class="p">(</span><span class="n">compare_simple</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DOCUMENT</th>
+      <th>STEMMING</th>
+      <th>COSIM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>The frog jumped</td>
+      <td>[frog, jump]</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>The frog jumped high</td>
+      <td>[frog, jump, high]</td>
+      <td>0.693628</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>The turtle jumped</td>
+      <td>[turtl, jump]</td>
+      <td>0.311917</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>When we added ‘high’ to the sentence, it slightly changed the <code class="docutils literal notranslate"><span class="pre">COSIM</span></code> result, but roughly 2 thirds of the text is the same message. When we changed the subject to ‘turtle’ the <code class="docutils literal notranslate"><span class="pre">COSIM</span></code> result dropped to roughly 1 third.</p>
+<blockquote>
+<div><p><em>Note</em>: the Cosine Similarity is a vector multiplication on vectorized texts. It <strong>is not</strong> a measure of how many words are the same. Its also subject to change due to the preprocessing of the vectorized texts.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="did-i-change-enough-of-the-sentence-to-make-it-mine">
+<h2>Did I change <em>enough</em> of the sentence to make it mine?<a class="headerlink" href="#did-i-change-enough-of-the-sentence-to-make-it-mine" title="Link to this heading">#</a></h2>
+<p>Consider the <code class="docutils literal notranslate"><span class="pre">COSIM</span></code> output calculated between the AI-generated sentence and my sentence,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tf_idf</span><span class="o">.</span><span class="n">cosineSimilarity</span><span class="p">(</span><span class="n">compare</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DOCUMENT</th>
+      <th>STEMMING</th>
+      <th>COSIM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>For instance, in the design phase of a structural engineering project, Monte Carlo simulations can help evaluate the performance of a proposed design under different loading conditions and material properties, providing valuable insights into its reliability and safety</td>
+      <td>[instanc, design, phase, structur, engin, project, mont, carlo, simul, evalu, perform, propos, design, differ, load, condit, materi, properti, provid, valuabl, insight, reliabl, safeti]</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>For instance, Monte Carlo simulations can simulate hundreds or thousands of different combinations of loading conditions and material properties to create statistical predictions of structure stiffness</td>
+      <td>[instanc, mont, carlo, simul, simul, hundr, thousand, differ, combin, load, condit, materi, properti, creat, statist, predict, structur, stiff]</td>
+      <td>0.337359</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>the relative score is 33.7%. This is <em>very</em> subjective, but its a data point that I can use to justify my intellectual ownership of this new sentence. I can also point to some key ideas that I added:</p>
+<ul class="simple">
+<li><p>quantify number of combinations of variables</p></li>
+<li><p>specify structural properties for Monte Carlo use</p></li>
+</ul>
+<p>If we claim that this sentence says “Monte Carlo is useful for mechanical engineers because of <em>reasons</em>” I have provided the 2 specific reasons its important in the sentence.</p>
+</section>
+<section id="wrapping-up">
+<h2>Wrapping up<a class="headerlink" href="#wrapping-up" title="Link to this heading">#</a></h2>
+<p>In conclusion, using generative AI fills pages with content, but its not providing any specific expertise. As an engineer (practicing or in-training), its important to add your domain-specific knowledge to any technical writing you create, review, or in this case generate. We can quantify the contributions we make with Cosine Similarity of TF-IDF (Term-Frequency Inverse Document Frequency) measurements, but its subject to how we preprocess the text. Another method we should also consider is identifying the specific and measureable additions we make to the statements. Its <em>always</em> better to give specific examples rather than vague true statements e.g.</p>
+<p>‘I practiced technical writing and coding in this course’</p>
+<p>vs.</p>
+<p>‘I wrote 4 technical documents with three rounds of revisions and wrote 200 lines of Python code.’</p>
+<p>As engineers, we get paid to tell stories with numbers.</p>
+<section id="further-readings-on-generative-ai-and-copyright">
+<h3>Further readings on Generative AI and copyright<a class="headerlink" href="#further-readings-on-generative-ai-and-copyright" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://ecf.dcd.uscourts.gov/cgi-bin/show_public_doc?2022cv1564-24">Thaler’s creativity machine: AI generative art not
+copyrightable</a></p>
+<p><a class="reference external" href="https://www.govinfo.gov/content/pkg/USCODE-2022-title17/pdf/USCODE-2022-title17-chap1-sec103.pdf">35: Subject matter of copyright: Compilations and derivative
+works</a></p>
+<p><a class="reference external" href="https://www.copyright.gov/docs/zarya-of-the-dawn.pdf">Lindberg: Zarya of the Dawn (AI generated comic
+art)</a></p>
+<p>‘This policy does not mean that technological tools cannot be part of
+the creative process. Authors have long used such tools to create their
+works or to recast, transform, or adapt their expressive authorship. For
+example, a visual artist who uses Adobe Photoshop to edit an image
+remains the author of the modified image,[36]</p>
+<p>and a musical artist may use effects such as guitar pedals when creating
+a sound recording. In each case, what matters is the extent to which the
+human had creative control over the work’s expression and “actually
+formed” the traditional elements of authorship.[37]’</p>
+<p><a class="reference external" href="https://www.federalregister.gov/documents/2023/03/16/2023-05321/copyright-registration-guidance-works-containing-material-generated-by-artificial-intelligence#p-56">Copyright
+registration: guidance on AI generated work</a></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./module_00"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="README.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Getting Started</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="HW_00.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">HW_00 - Generative AI writing analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-generative-ai-in-your-work">Using Generative AI in your work</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-a-macaque-affect-ai-copyright-laws">How does a macaque affect AI copyright laws??</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-to-academic-integrity">Connection to Academic Integrity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-have-i-added-enough-of-my-own-ideas-to-a-written-document">When have I added enough of my own ideas to a written document?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#critical-review-of-generative-ai-output">Critical review of generative AI output</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-this-output-good">Is this output “good”?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-writing-with-cosine-similarity-and-term-frequency-inverse-document-frequency-tf-idf">Compare writing with <em>Cosine Similarity</em> and <em>Term-frequency Inverse-Document Frequency</em> TF-IDF</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#did-i-change-enough-of-the-sentence-to-make-it-mine">Did I change <em>enough</em> of the sentence to make it mine?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapping-up">Wrapping up</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-readings-on-generative-ai-and-copyright">Further readings on Generative AI and copyright</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href = https://cooperrc.github.io> Ryan C. Cooper</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

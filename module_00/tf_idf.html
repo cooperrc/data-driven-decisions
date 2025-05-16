@@ -1,0 +1,742 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&lt;no title&gt; &#8212; Data Driven Decisions</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/spiderman-favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/datadecisions.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Driven Decisions</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../README.html">
+   Data-Driven Decisions: Monte Carlo Analysis for Technical Communications
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Syllabus - Data Driven Decisions
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="README.html">
+   Getting Started
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_writing-w-llms.html">
+     Technical writing and Generative AI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="HW_00.html">
+     HW_00 - Generative AI writing analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../module_01/README.html">
+   Module_01
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_01/random_games.html">
+     Dropping keys and checking randomly
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_01/calculate_pi.html">
+     Calculating
+     <span class="math notranslate nohighlight">
+      \(\pi\)
+     </span>
+     with Monte Carlo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_01/statistical_significance.html">
+     Statistical Significance in Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../module_02/README.html">
+   Module_02 - coming soon
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_02/bus_wait.html">
+     Waiting for the bus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_02/dice_game.html">
+     Building your own random numbers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../module_04/README.html">
+   Module_04 - Case studies
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_04/report.html">
+     Your Technical Report
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/module_00/tf_idf.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cooperrc/data-driven-decisions"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cooperrc/data-driven-decisions/issues/new?title=Issue%20on%20page%20%2Fmodule_00/tf_idf.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cooperrc/data-driven-decisions/main?urlpath=tree/module_00/tf_idf.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://compmech.uconn.edu/hub/user-redirect/git-pull?repo=https://github.com/cooperrc/data-driven-decisions&urlpath=tree/data-driven-decisions/module_00/tf_idf.ipynb&branch=main"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/cooperrc/data-driven-decisions/blob/main/module_00/tf_idf.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1><no title></h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">multiprocessing</span> <span class="k">as</span> <span class="nn">mp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="kn">from</span> <span class="nn">nltk.stem</span> <span class="kn">import</span> <span class="n">PorterStemmer</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 6&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_colwidth&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">nltk</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;nltk&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>https://medium.com/&#64;mifthulyn07/comparing-text-documents-using-tf-idf-and-cosine-similarity-in-python-311863c74b2c</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="c1"># lowercasing</span>
+    <span class="n">lowercased_text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="c1"># cleaning </span>
+    <span class="kn">import</span> <span class="nn">re</span> 
+    <span class="n">remove_punctuation</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^\w\s]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">lowercased_text</span><span class="p">)</span>
+    <span class="n">remove_white_space</span> <span class="o">=</span> <span class="n">remove_punctuation</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="c1"># Tokenization = Breaking down each sentence into an array</span>
+    <span class="c1"># from nltk.tokenize import word_tokenize</span>
+    <span class="n">tokenized_text</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">remove_white_space</span><span class="p">)</span>
+
+    <span class="c1"># Stop Words/filtering = Removing irrelevant words</span>
+    <span class="c1"># from nltk.corpus import stopwords</span>
+    <span class="c1"># stopwords = set(stopwords.words(&#39;english&#39;))</span>
+    <span class="n">stopwords_removed</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tokenized_text</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">()]</span>
+
+    <span class="c1"># Stemming = Transforming words into their base form</span>
+    <span class="c1">#from nltk.stem import PorterStemmer</span>
+    <span class="n">ps</span> <span class="o">=</span> <span class="n">PorterStemmer</span><span class="p">()</span>
+    <span class="n">stemmed_text</span> <span class="o">=</span> <span class="p">[</span><span class="n">ps</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">stopwords_removed</span><span class="p">]</span>
+    
+    <span class="c1"># Putting all the results into a dataframe.</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s1">&#39;DOCUMENT&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">text</span><span class="p">],</span>
+        <span class="s1">&#39;LOWERCASE&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="n">lowercased_text</span><span class="p">],</span>
+        <span class="s1">&#39;CLEANING&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">remove_white_space</span><span class="p">],</span>
+        <span class="s1">&#39;TOKENIZATION&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">tokenized_text</span><span class="p">],</span>
+        <span class="s1">&#39;STOP-WORDS&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">stopwords_removed</span><span class="p">],</span>
+        <span class="s1">&#39;STEMMING&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">stemmed_text</span><span class="p">]</span>
+    <span class="p">})</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AI</span> <span class="o">=</span> <span class="s1">&#39;For instance, in the design phase of a structural engineering project, Monte Carlo simulations can help evaluate the performance of a proposed design under different loading conditions and material properties, providing valuable insights into its reliability and safety&#39;</span>
+<span class="n">ME</span> <span class="o">=</span> <span class="s1">&#39;For instance, Monte Carlo simulations can simulate hundreds or thousands of different combinations of loading conditions and material properties to create statistical predictions of structure stiffness&#39;</span>
+<span class="c1"># word_tokenize(AI.lower().split())</span>
+<span class="c1"># preprocess_text(AI)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compare</span> <span class="o">=</span> <span class="n">preprocess_text</span><span class="p">(</span><span class="n">AI</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compare</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">compare</span><span class="p">,</span> <span class="n">preprocess_text</span><span class="p">(</span><span class="n">ME</span><span class="p">)],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">compare</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DOCUMENT</th>
+      <th>LOWERCASE</th>
+      <th>CLEANING</th>
+      <th>TOKENIZATION</th>
+      <th>STOP-WORDS</th>
+      <th>STEMMING</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>For instance, in the design phase of a structural engineering project, Monte Carlo simulations can help evaluate the performance of a proposed design under different loading conditions and material properties, providing valuable insights into its reliability and safety</td>
+      <td>for instance, in the design phase of a structural engineering project, monte carlo simulations can help evaluate the performance of a proposed design under different loading conditions and material properties, providing valuable insights into its reliability and safety</td>
+      <td>for instance in the design phase of a structural engineering project monte carlo simulations can help evaluate the performance of a proposed design under different loading conditions and material properties providing valuable insights into its reliability and safety</td>
+      <td>[for, instance, in, the, design, phase, of, a, structural, engineering, project, monte, carlo, simulations, can, help, evaluate, the, performance, of, a, proposed, design, under, different, loading, conditions, and, material, properties, providing, valuable, insights, into, its, reliability, and, safety]</td>
+      <td>[instance, design, phase, structural, engineering, project, monte, carlo, simulations, evaluate, performance, proposed, design, different, loading, conditions, material, properties, providing, valuable, insights, reliability, safety]</td>
+      <td>[instanc, design, phase, structur, engin, project, mont, carlo, simul, evalu, perform, propos, design, differ, load, condit, materi, properti, provid, valuabl, insight, reliabl, safeti]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>For instance, Monte Carlo simulations can simulate hundreds or thousands of different combinations of loading conditions and material properties to create statistical predictions of structure stiffness</td>
+      <td>for instance, monte carlo simulations can simulate hundreds or thousands of different combinations of loading conditions and material properties to create statistical predictions of structure stiffness</td>
+      <td>for instance monte carlo simulations can simulate hundreds or thousands of different combinations of loading conditions and material properties to create statistical predictions of structure stiffness</td>
+      <td>[for, instance, monte, carlo, simulations, can, simulate, hundreds, or, thousands, of, different, combinations, of, loading, conditions, and, material, properties, to, create, statistical, predictions, of, structure, stiffness]</td>
+      <td>[instance, monte, carlo, simulations, simulate, hundreds, thousands, different, combinations, loading, conditions, material, properties, create, statistical, predictions, structure, stiffness]</td>
+      <td>[instanc, mont, carlo, simul, simul, hundr, thousand, differ, combin, load, condit, materi, properti, creat, statist, predict, structur, stiff]</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_tfidf</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="c1"># Call the preprocessing result</span>
+    <span class="c1">#df = preprocessing(corpus)</span>
+        
+    <span class="c1"># Make each array row from stopwords_removed to be a sentence</span>
+    <span class="n">stemming</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;STEMMING&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">)</span>
+    
+    <span class="c1"># Count TF-IDF</span>
+    <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+    <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">()</span>
+    <span class="n">tfidf_matrix</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">stemming</span><span class="p">)</span>
+    
+    <span class="c1"># Get words from stopwords array to use as headers</span>
+    <span class="n">feature_names</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">()</span>
+
+    <span class="c1"># Combine header titles and weights</span>
+    <span class="n">df_tfidf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tfidf_matrix</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="n">feature_names</span><span class="p">)</span>
+    <span class="n">df_tfidf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">df_tfidf</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_tfidf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compare_tfidf</span> <span class="o">=</span> <span class="n">calculate_tfidf</span><span class="p">(</span><span class="n">compare</span><span class="p">)</span>
+<span class="n">compare_tfidf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DOCUMENT</th>
+      <th>LOWERCASE</th>
+      <th>CLEANING</th>
+      <th>TOKENIZATION</th>
+      <th>STOP-WORDS</th>
+      <th>STEMMING</th>
+      <th>carlo</th>
+      <th>combin</th>
+      <th>condit</th>
+      <th>creat</th>
+      <th>...</th>
+      <th>propos</th>
+      <th>provid</th>
+      <th>reliabl</th>
+      <th>safeti</th>
+      <th>simul</th>
+      <th>statist</th>
+      <th>stiff</th>
+      <th>structur</th>
+      <th>thousand</th>
+      <th>valuabl</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>For instance, in the design phase of a structural engineering project, Monte Carlo simulations can help evaluate the performance of a proposed design under different loading conditions and material properties, providing valuable insights into its reliability and safety</td>
+      <td>for instance, in the design phase of a structural engineering project, monte carlo simulations can help evaluate the performance of a proposed design under different loading conditions and material properties, providing valuable insights into its reliability and safety</td>
+      <td>for instance in the design phase of a structural engineering project monte carlo simulations can help evaluate the performance of a proposed design under different loading conditions and material properties providing valuable insights into its reliability and safety</td>
+      <td>[for, instance, in, the, design, phase, of, a, structural, engineering, project, monte, carlo, simulations, can, help, evaluate, the, performance, of, a, proposed, design, under, different, loading, conditions, and, material, properties, providing, valuable, insights, into, its, reliability, and, safety]</td>
+      <td>[instance, design, phase, structural, engineering, project, monte, carlo, simulations, evaluate, performance, proposed, design, different, loading, conditions, material, properties, providing, valuable, insights, reliability, safety]</td>
+      <td>[instanc, design, phase, structur, engin, project, mont, carlo, simul, evalu, perform, propos, design, differ, load, condit, materi, properti, provid, valuabl, insight, reliabl, safeti]</td>
+      <td>0.158850</td>
+      <td>0.000000</td>
+      <td>0.158850</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.223259</td>
+      <td>0.223259</td>
+      <td>0.223259</td>
+      <td>0.223259</td>
+      <td>0.158850</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.158850</td>
+      <td>0.000000</td>
+      <td>0.223259</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>For instance, Monte Carlo simulations can simulate hundreds or thousands of different combinations of loading conditions and material properties to create statistical predictions of structure stiffness</td>
+      <td>for instance, monte carlo simulations can simulate hundreds or thousands of different combinations of loading conditions and material properties to create statistical predictions of structure stiffness</td>
+      <td>for instance monte carlo simulations can simulate hundreds or thousands of different combinations of loading conditions and material properties to create statistical predictions of structure stiffness</td>
+      <td>[for, instance, monte, carlo, simulations, can, simulate, hundreds, or, thousands, of, different, combinations, of, loading, conditions, and, material, properties, to, create, statistical, predictions, of, structure, stiffness]</td>
+      <td>[instance, monte, carlo, simulations, simulate, hundreds, thousands, different, combinations, loading, conditions, material, properties, create, statistical, predictions, structure, stiffness]</td>
+      <td>[instanc, mont, carlo, simul, simul, hundr, thousand, differ, combin, load, condit, materi, properti, creat, statist, predict, structur, stiff]</td>
+      <td>0.193068</td>
+      <td>0.271351</td>
+      <td>0.193068</td>
+      <td>0.271351</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.386137</td>
+      <td>0.271351</td>
+      <td>0.271351</td>
+      <td>0.193068</td>
+      <td>0.271351</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>2 rows × 35 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cosineSimilarity</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="c1"># Call the TF-IDF result</span>
+    <span class="n">df_tfidf</span> <span class="o">=</span> <span class="n">calculate_tfidf</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    
+    <span class="c1"># Get the TF-IDF vector for the first item (index 0)</span>
+    <span class="n">vector1</span> <span class="o">=</span> <span class="n">df_tfidf</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Get the TF-IDF vector for all items except the first item</span>
+    <span class="n">vectors</span> <span class="o">=</span> <span class="n">df_tfidf</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">6</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span>
+    
+    <span class="c1"># Calculate cosine similarity between the first item and all other items</span>
+    <span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_similarity</span>
+    <span class="n">cosim</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">vector1</span><span class="p">,</span> <span class="n">vectors</span><span class="p">)</span>
+    <span class="n">cosim</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cosim</span><span class="p">)</span>
+    
+    <span class="c1"># Convert the DataFrame into a one-dimensional array</span>
+    <span class="n">cosim</span> <span class="o">=</span> <span class="n">cosim</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+    <span class="c1"># Convert the cosine similarity result into a DataFrame</span>
+    <span class="n">df_cosim</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cosim</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;COSIM&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Combine the TF-IDF array with the cosine similarity result</span>
+    <span class="n">df_cosim</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_tfidf</span><span class="p">,</span> <span class="n">df_cosim</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df_cosim</span><span class="p">[[</span><span class="s1">&#39;DOCUMENT&#39;</span><span class="p">,</span> <span class="s1">&#39;STEMMING&#39;</span><span class="p">,</span> <span class="s1">&#39;COSIM&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cosineSimilarity</span><span class="p">(</span><span class="n">compare</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DOCUMENT</th>
+      <th>STEMMING</th>
+      <th>COSIM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>For instance, in the design phase of a structural engineering project, Monte Carlo simulations can help evaluate the performance of a proposed design under different loading conditions and material properties, providing valuable insights into its reliability and safety</td>
+      <td>[instanc, design, phase, structur, engin, project, mont, carlo, simul, evalu, perform, propos, design, differ, load, condit, materi, properti, provid, valuabl, insight, reliabl, safeti]</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>For instance, Monte Carlo simulations can simulate hundreds or thousands of different combinations of loading conditions and material properties to create statistical predictions of structure stiffness</td>
+      <td>[instanc, mont, carlo, simul, simul, hundr, thousand, differ, combin, load, condit, materi, properti, creat, statist, predict, structur, stiff]</td>
+      <td>0.337359</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./module_00"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By <a href = https://cooperrc.github.io> Ryan C. Cooper</a><br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

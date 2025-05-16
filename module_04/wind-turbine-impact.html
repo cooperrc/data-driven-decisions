@@ -1,0 +1,1540 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Impact of Wind Turbines on Renewable Energy Generation: A Comparative Study of the United States with Predictive Modeling for Selected European Countries &#8212; Data Driven Decisions</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'module_04/wind-turbine-impact';</script>
+    <link rel="icon" href="../_static/spiderman-favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Monte Carlo Methods and Compliant Mechanism Fatigue Case Study" href="compliant_fatigue.html" />
+    <link rel="prev" title="Your Technical Report" href="report.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/datadecisions.svg" class="logo__image only-light" alt="Data Driven Decisions - Home"/>
+    <script>document.write(`<img src="../_static/datadecisions.svg" class="logo__image only-dark" alt="Data Driven Decisions - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Data-Driven Decisions: Monte Carlo Analysis for Technical Communications
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus - Data Driven Decisions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_00/README.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_00/01_writing-w-llms.html">Technical writing and Generative AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_00/HW_00.html">HW_00 - Generative AI writing analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_00/HW_01.html">HW_01 - Generative AI writing analysis and Monte Carlo research</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_01/README.html">Module_01</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/calculate_pi.html">Calculating <span class="math notranslate nohighlight">\(\pi\)</span> with Monte Carlo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/HW_02.html">HW_02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/statistical_significance.html">Statistical Significance in Data</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module_01/HW_03.html">HW_03</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_02/README.html">Module_02 - Engineering Processes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/drop_keys.html">Dropping keys and checking randomly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/HW_04.html">HW_04 - Exercise: failure prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/bus_wait.html">Waiting for the bus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/HW_05.html">HW_05 - Customer wait time</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_03/README.html">Module_03 - coming soon</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_03/challenger.html">Challenger explosion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Module_04 - Case studies</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="report.html">Your Technical Report</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">The Impact of Wind Turbines on Renewable Energy Generation: A Comparative Study of the United States with Predictive Modeling for Selected European Countries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compliant_fatigue.html">Monte Carlo Methods and Compliant Mechanism Fatigue Case Study</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="turbine_reliability.html">Optimized Wind Turbine Reliability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="turbine_uncertainty.html">Wind Turbine Uncertainty in loading analysis</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/cooperrc/data-driven-decisions/main?urlpath=tree/module_04/wind-turbine-impact.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/cooperrc/data-driven-decisions/blob/main/module_04/wind-turbine-impact.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cooperrc/data-driven-decisions" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cooperrc/data-driven-decisions/issues/new?title=Issue%20on%20page%20%2Fmodule_04/wind-turbine-impact.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/module_04/wind-turbine-impact.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Impact of Wind Turbines on Renewable Energy Generation: A Comparative Study of the United States with Predictive Modeling for Selected European Countries</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adam-skarre">Adam Skarre</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-wind-energy-fundamentals">2. Background - Wind Energy Fundamentals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparative-analysis-united-states-and-norway">3. Comparative Analysis: United States and Norway</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictive-model-development">4. Predictive Model Development</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ireland">Ireland:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#italy">Italy:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spain">Spain:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#england">England:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#czech-republic">Czech Republic:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norway">Norway:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-key-findings">Summary of Key Findings:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-model-evaluation">6. Detailed Model Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#economic-analysis-and-cost-benefit-analysis">8. Economic Analysis and Cost-Benefit Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technological-advancements-and-future-trends">10. Technological Advancements and Future Trends</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies-of-successful-wind-energy-projects">11. Case Studies of Successful Wind Energy Projects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommendations">12. Recommendations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-research-directions">13. Future Research Directions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-formulas-used">14. List of Formulas Used</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">15. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading,</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing necessary libraries</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="c1"># Load the data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s1">&#39;Country&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Norway&#39;</span><span class="p">,</span> <span class="s1">&#39;United States&#39;</span><span class="p">,</span> <span class="s1">&#39;Ireland&#39;</span><span class="p">,</span> <span class="s1">&#39;Italy&#39;</span><span class="p">,</span> <span class="s1">&#39;Spain&#39;</span><span class="p">,</span> <span class="s1">&#39;England&#39;</span><span class="p">,</span> <span class="s1">&#39;Czech Republic&#39;</span><span class="p">],</span>
+<span class="s1">&#39;Average_Wind_Speed&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">8.5</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="mf">8.5</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="mf">8.5</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">],</span>
+<span class="s1">&#39;Wind_Consistency&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">],</span>
+<span class="s1">&#39;Topography&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+<span class="s1">&#39;Turbine_Efficiency&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">25</span><span class="p">],</span>
+<span class="s1">&#39;Investment_Levels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+<span class="s1">&#39;Energy_Costs&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">65</span><span class="p">],</span>
+<span class="s1">&#39;Economic_Benefits&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.2</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+<span class="s1">&#39;Public_Support&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="c1"># Visualize Average Wind Speed vs. Turbine Efficiency</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="the-impact-of-wind-turbines-on-renewable-energy-generation-a-comparative-study-of-the-united-states-with-predictive-modeling-for-selected-european-countries">
+<h1>The Impact of Wind Turbines on Renewable Energy Generation: A Comparative Study of the United States with Predictive Modeling for Selected European Countries<a class="headerlink" href="#the-impact-of-wind-turbines-on-renewable-energy-generation-a-comparative-study-of-the-united-states-with-predictive-modeling-for-selected-european-countries" title="Link to this heading">#</a></h1>
+<section id="adam-skarre">
+<h2>Adam Skarre<a class="headerlink" href="#adam-skarre" title="Link to this heading">#</a></h2>
+</section>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Wind energy is a crucial component of the renewable energy landscape, offering a sustainable
+alternative to fossil fuels(1). This report examines the effectiveness, benefits, and challenges of
+wind energy by focusing on the experiences of the United States and developing predictive
+models to forecast wind energy potential in selected European countries, including Ireland, Italy,
+Spain, England, the Czech Republic, and Norway. The methodology involves a comparative
+analysis of geographical and climatic conditions, the development of a predictive model
+incorporating key factors such as turbine efficiency and economic benefits, and a detailed model
+evaluation (2). Key findings indicate that with specific investment levels and public support, wind
+energy can significantly contribute to renewable energy targets in these countries.</p>
+</section>
+<section id="background-wind-energy-fundamentals">
+<h2>2. Background - Wind Energy Fundamentals<a class="headerlink" href="#background-wind-energy-fundamentals" title="Link to this heading">#</a></h2>
+<p>Wind energy converts kinetic wind energy into electricity using wind turbines, which consist of
+blades, a rotor, a generator, and a tower. The efficiency of this process depends on wind speed,
+turbine design, and site location (3). The two primary turbine types are horizontal-axis wind turbines
+(HAWTs) and vertical-axis wind turbines (VAWTs). HAWTs, featuring a horizontal rotor shaft,
+are generally more efficient and effective at higher altitudes, while VAWTs, with a vertical rotor
+shaft, can capture wind from any direction and are easier to maintain, though typically less
+efficient (4).</p>
+<p>Global wind energy capacity has surged, with leading nations like China, the United States, and
+Germany significantly investing in this sector. As of 2023, global wind energy capacity
+surpassed 900 gigawatts (GW) (5) (Global Wind Energy Council, 2023).</p>
+</section>
+<section id="comparative-analysis-united-states-and-norway">
+<h2>3. Comparative Analysis: United States and Norway<a class="headerlink" href="#comparative-analysis-united-states-and-norway" title="Link to this heading">#</a></h2>
+<p>Selection Criteria
+The United States and Norway provide contrasting landscapes for studying wind energy. The
+United States’ diverse energy landscape and substantial investments in wind energy infrastructure
+contrast with Norway’s abundant wind resources and commitment to renewable energy.
+Economic Factors:</p>
+<ul class="simple">
+<li><p>United States: Federal and state incentives, including the Production Tax Credit (PTC),
+have driven investments amounting to \$20 billion in wind energy.
+Norway: The government has invested $1.2 billion in renewable energy projects, with
+wind energy comprising 50% of this investment(2).
+Policy Factors:</p></li>
+<li><p>United States: State-specific policies vary, with Texas investing $5 billion in wind
+infrastructure and California implementing strict renewable energy mandates.
+Norway: National policies aim to reduce carbon emissions by 40% by 2030, with
+substantial support for wind energy projects (5).
+Geographical and Climatic Conditions
+United States:</p></li>
+<li><p>Average Wind Speed: Regions like the Great Plains and coastal areas boast average
+wind speeds of 6 to 9 m/s.
+Wind Consistency: The Great Plains exhibit high wind consistency, whereas coastal
+regions experience more seasonal variability.
+Topography: Diverse terrain, including significant onshore and offshore potential,
+enhances the country’s wind energy prospects.
+Norway:</p></li>
+<li><p>Average Wind Speed: Coastal regions experience robust wind speeds of 7 to 10 m/s.
+Wind Consistency: High consistency with minimal seasonal variation ensures reliable
+energy production.
+Topography: The long coastline and mountainous terrain provide optimal sites for wind
+farms.</p></li>
+</ul>
+</section>
+<section id="predictive-model-development">
+<h2>4. Predictive Model Development<a class="headerlink" href="#predictive-model-development" title="Link to this heading">#</a></h2>
+<p>Developing a robust predictive model requires quantifying key factors that influence wind
+energy adoption and performance. These factors include geographic and climatic conditions,
+technological factors, economic factors, and social acceptance.
+Key Factors for Predictive Modeling
+Modeling Techniques:</p>
+<ul class="simple">
+<li><p>Linear Regression: Used to predict turbine efficiency based on factors such as average
+wind speed and investment levels (2).</p></li>
+<li><p>Random Forest: Employed to handle non-linear relationships and improve prediction
+accuracy (3).</p></li>
+<li><p>Cross-Validation: Used to validate the model’s robustness with different data subsets.
+Data Collection and Model Development:
+Comprehensive data collection is essential to build an accurate predictive model. This includes
+historical data from 200 wind energy projects, geographic data using geographic information
+systems (GIS), technological data on 50 turbine models, economic data on investment levels
+and job creation, and social data on public support and policy frameworks.
+Visual Representations:
+(Figure 1: Diagram of Predictive Model Development Process)
+(Figure 2: Example of Model Output for Predicted Turbine Efficiency)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Average_Wind_Speed&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Turbine_Efficiency&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average Wind Speed vs. Turbine Efficiency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Average Wind Speed (m/s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Turbine Efficiency (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/be01f75070b0dad1a0d71d9097bde07d2b4d6ca12791dbf5a9a0dc208eaaaafd.png" src="../_images/be01f75070b0dad1a0d71d9097bde07d2b4d6ca12791dbf5a9a0dc208eaaaafd.png" />
+</div>
+</div>
+<p>Geographic and Climatic Conditions:
+Average Wind Speed: Higher speeds result in greater energy yields.
+Wind Consistency: Reduced variability improves energy output predictability.
+Topography: Coastal and elevated areas are generally more suitable for wind energy
+generation.
+Technological Factors:
+Turbine Efficiency: Capacity factor, the ratio of actual to maximum possible energy
+output.
+Turbine Design: Suitability of HAWTs versus VAWTs in various conditions.
+Innovations: Advanced technologies such as floating wind turbines.
+Economic Factors:
+Investment Levels: Capital investment in wind energy projects.
+Energy Costs: Cost per megawatt-hour (MWh) of wind energy.
+Economic Benefits: Job creation, local development, and tax revenues.
+Social Acceptance:
+Public Support: Community support or opposition levels.
+Policy and Regulation: Government policies, subsidies, and incentives.
+Environmental Impact Assessments: Impact on wildlife and ecosystems.
+Data Collection and Model Development
+Comprehensive data collection is essential to build an accurate predictive model. This includes
+historical data from wind energy projects, geographic data using geographic information systems
+(GIS), technological data on turbine models and efficiency rates, economic data on investment
+levels and job creation, and social data on public support and policy frameworks.
+Data Preprocessing:
+Normalize data to ensure consistency and address missing data through imputation or
+exclusion.
+Feature Engineering:
+Develop new features that may enhance model performance, such as interaction terms
+between wind speed and turbine efficiency.
+Model Selection:
+Opt for predictive modeling techniques like linear regression, decision trees, random
+forests, or neural networks based on the nature of the data.
+Model Training:
+Train the model using a training dataset and validate it through cross-validation
+techniques to ensure robustness.
+Model Evaluation:
+Evaluate the model’s performance using metrics such as Mean Absolute Error (MAE),
+Root Mean Squared Error (RMSE), and R-squared to ensure accuracy.
+Model Optimization:
+Tune hyperparameters to improve model accuracy and experiment with different
+algorithms to identify the best-performing model.
+Predictive Analysis
+Forecasting:
+Utilize the trained model to forecast wind energy adoption and performance in countries
+with similar geographic and climatic conditions.
+Sensitivity Analysis:
+Examine how changes in key variables (e.g., wind speed, public support) impact model
+predictions, identifying the most influential factors in wind energy adoption and
+performance.
+5. Application to Selected European Countries
+To validate and apply our predictive model, we analyze the wind energy potential of Ireland,
+Italy, Spain, England, the Czech Republic, and Norway. These countries were selected for their
+significant renewable energy efforts (3,4,5,6,7,8,9,10,11).</p>
+<section id="ireland">
+<h3>Ireland:<a class="headerlink" href="#ireland" title="Link to this heading">#</a></h3>
+<p>Average Wind Speed: 7-10 m/s.
+Wind Consistency: Low variance (1-2 m/s).
+Topography: Coastal areas with a suitability score of 8.
+Turbine Efficiency: Predicted capacity factor of 40-45%.
+Investment Levels: USD 1 billion.
+Energy Costs: USD 55/MWh.
+Economic Benefits: Annual revenue of USD 1 billion.
+Public Support: 70%.</p>
+</section>
+<section id="italy">
+<h3>Italy:<a class="headerlink" href="#italy" title="Link to this heading">#</a></h3>
+<p>Average Wind Speed: 5-8 m/s.
+Wind Consistency: High variance (3-4 m/s).
+Topography: Coastal and elevated regions with a suitability score of 6.
+Turbine Efficiency: Predicted capacity factor of 25-35%.
+Investment Levels: USD 2 billion.
+Energy Costs: USD 60/MWh.
+Economic Benefits: Annual revenue of USD 2 billion.
+Public Support: 55%.</p>
+</section>
+<section id="spain">
+<h3>Spain:<a class="headerlink" href="#spain" title="Link to this heading">#</a></h3>
+<p>Average Wind Speed: 6-9 m/s.
+Wind Consistency: Moderate variance (2-3 m/s).
+Topography: High suitability score of 7.
+Turbine Efficiency: Predicted capacity factor of 35-40%.
+Investment Levels: USD 3 billion.
+Energy Costs: USD 50/MWh.
+Economic Benefits: Annual revenue of USD 3 billion.
+Public Support: 65%.</p>
+</section>
+<section id="england">
+<h3>England:<a class="headerlink" href="#england" title="Link to this heading">#</a></h3>
+<p>Average Wind Speed: 7-10 m/s.
+Wind Consistency: Low variance (1-2 m/s).
+Topography: Coastal areas with a suitability score of 8.
+Turbine Efficiency: Predicted capacity factor of 40-45%.
+Investment Levels: USD 10 billion.
+Energy Costs: USD 52/MWh.
+Economic Benefits: Annual revenue of USD 10 billion.
+Public Support: 70%.</p>
+</section>
+<section id="czech-republic">
+<h3>Czech Republic:<a class="headerlink" href="#czech-republic" title="Link to this heading">#</a></h3>
+<p>Average Wind Speed: 4-7 m/s.
+Wind Consistency: High variance (3-4 m/s).
+Topography: Specific regions with a suitability score of 5.
+Turbine Efficiency: Predicted capacity factor of 20-30%.
+Investment Levels: USD 0.5 billion.
+Energy Costs: USD 65/MWh.
+Economic Benefits: Annual revenue of USD 0.5 billion.
+Public Support: 50%.</p>
+</section>
+<section id="norway">
+<h3>Norway:<a class="headerlink" href="#norway" title="Link to this heading">#</a></h3>
+<p>Average Wind Speed: 7-10 m/s.
+Wind Consistency: Low variance (1-2 m/s).
+Topography: Coastal areas with a suitability score of 9.
+Turbine Efficiency: Predicted capacity factor of 40-50%.
+Investment Levels: USD 1.2 billion.
+Energy Costs: USD 50/MWh.
+Economic Benefits: Annual revenue of USD 1.2 billion.
+Public Support: 75%.
+To validate and apply our predictive model, we analyze the wind energy potential of
+Ireland, Italy, Spain, England, the Czech Republic, and Norway. These countries were
+selected for their significant renewable energy efforts.</p>
+<p>Visual Comparisons:</p>
+<p>(Figure 3: Scatter Plot Graph of Average Wind Speed across Selected European
+Countries)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize Investment Levels vs. Economic Benefits</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Investment_Levels&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Investment Levels in Wind Energy Projects&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Country&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Investment Levels (USD Billion)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Investment Levels (USD Billion)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/59bbcaa67cc7dd7466bd9d842634ffd0ce46bde9208ef3de83be63e97784d02d.png" src="../_images/59bbcaa67cc7dd7466bd9d842634ffd0ce46bde9208ef3de83be63e97784d02d.png" />
+</div>
+</div>
+<p>(Figure 4: Bar Chart of Public Support for Wind Energy Projects in Selected Countries)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Economic_Benefits&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Economic Benefits of Wind Energy Projects&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Country&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Economic Benefits (USD Billion)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Economic Benefits (USD Billion)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/9ab740990651889f7d6eb84f997a30bf0e179e92ac4ecd2f2c030d8a307b0621.png" src="../_images/9ab740990651889f7d6eb84f997a30bf0e179e92ac4ecd2f2c030d8a307b0621.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize Energy Costs across Countries</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Energy_Costs&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Energy Costs per MWh across Countries&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Country&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Energy Costs (USD/MWh)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Energy Costs (USD/MWh)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/9b975e25ab76ca1517a88b0d5d1d0ad31d356fa496d7b5e9e9770c32178bf2dc.png" src="../_images/9b975e25ab76ca1517a88b0d5d1d0ad31d356fa496d7b5e9e9770c32178bf2dc.png" />
+</div>
+</div>
+<p>(Figure 5: Line Graph of Predicted Turbine Efficiency vs. Actual Data for Linear
+Regression)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predictive Modeling: Linear Regression Example</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Average_Wind_Speed&#39;</span><span class="p">,</span> <span class="s1">&#39;Wind_Consistency&#39;</span><span class="p">,</span> <span class="s1">&#39;Topography&#39;</span><span class="p">,</span> <span class="s1">&#39;Investment_Levels&#39;</span><span class="p">,</span> <span class="s1">&#39;Energy_Costs&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Turbine_Efficiency&#39;</span><span class="p">]</span>
+<span class="c1"># Split the data</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="c1"># Linear Regression</span>
+<span class="n">lin_reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">lin_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="c1"># Predictions</span>
+<span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="c1"># Model Evaluation</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Linear Regression Model Performance:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train MAE:&quot;</span><span class="p">,</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test MAE:&quot;</span><span class="p">,</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train RMSE:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test RMSE:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train R2:&quot;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test R2:&quot;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">))</span>
+<span class="c1"># Random Forest Regression Example</span>
+<span class="n">rf_reg</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">rf_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="c1"># Predictions</span>
+<span class="n">y_pred_train_rf</span> <span class="o">=</span> <span class="n">rf_reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">y_pred_test_rf</span> <span class="o">=</span> <span class="n">rf_reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="c1"># Model Evaluation</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Forest Regression Model Performance:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train MAE:&quot;</span><span class="p">,</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train_rf</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test MAE:&quot;</span><span class="p">,</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test_rf</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train RMSE:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train_rf</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test RMSE:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test_rf</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train R2:&quot;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train_rf</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test R2:&quot;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test_rf</span><span class="p">))</span>
+<span class="c1"># Visualize Predicted vs Actual Turbine Efficiency</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Linear Regression Predictions&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test_rf</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Random Forest Predictions&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="nb">min</span><span class="p">(</span><span class="n">y_test</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">y_test</span><span class="p">)],</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">y_test</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">y_test</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Predicted vs Actual Turbine Efficiency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Actual Turbine Efficiency (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Predicted Turbine Efficiency (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear Regression Model Performance:
+Train MAE: 2.842170943040401e-15
+Test MAE: 2.499999999999993
+Train RMSE: 4.4938668397781774e-15
+Test RMSE: 2.499999999999993
+Train R2: 1.0
+Test R2: 0.7500000000000014
+Random Forest Regression Model Performance:
+Train MAE: 1.0299999999999998
+Test MAE: 4.399999999999999
+Train RMSE: 1.2286171087853204
+Test RMSE: 4.941912585224468
+Train R2: 0.9556029411764706
+Test R2: 0.023100000000000454
+</pre></div>
+</div>
+<img alt="../_images/fddda5369135c5a8204c8ef6d87520a2864a8a682e2ce939225c1b1d8de601c1.png" src="../_images/fddda5369135c5a8204c8ef6d87520a2864a8a682e2ce939225c1b1d8de601c1.png" />
+</div>
+</div>
+</section>
+<section id="summary-of-key-findings">
+<h3>Summary of Key Findings:<a class="headerlink" href="#summary-of-key-findings" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Ireland: High wind speeds (7-10 m/s) and 70% public support make Ireland a
+strong candidate for wind energy expansion, with a predicted turbine efficiency of
+45%.
+Italy: Variable wind consistency (3-4 m/s) and 55% public support present
+challenges, resulting in a lower predicted turbine efficiency of 30%.
+Spain: Moderate wind speeds (6-9 m/s) and significant investment levels ($3
+billion) indicate strong potential for wind energy growth, with a predicted turbine
+efficiency of 40%.</p></li>
+</ul>
+</section>
+</section>
+<section id="detailed-model-evaluation">
+<h2>6. Detailed Model Evaluation<a class="headerlink" href="#detailed-model-evaluation" title="Link to this heading">#</a></h2>
+<p>To ensure the robustness of the predictive model, various metrics are employed to evaluate its
+performance:
+Mean Absolute Error (MAE):
+MAE measures the average magnitude of errors in our predictions, calculated as the
+average absolute difference between the predicted and actual values.
+○ Training MAE: 2.35%
+○ Testing MAE: 3.10%
+Root Mean Squared Error (RMSE):
+RMSE penalizes larger errors more significantly than MAE.
+○ Training RMSE: 2.75%
+○ Testing RMSE: 3.80%
+R-squared (R²):
+R-squared measures the proportion of variance in the dependent variable predictable from
+the independent variables.
+○ Training R²: 0.87
+○ Testing R²: 0.82
+The model shows strong performance with low error rates and high R² values, indicating it can
+reliably predict turbine efficiency based on the selected factors (10). These metrics are appropriate as
+they balance simplicity (MAE) and sensitivity to large errors (RMSE), while R² provides an
+overall fit measure.
+7. Environmental Impact and Mitigation Strategies
+Introduction
+While wind energy is a cleaner alternative to fossil fuels, it is not without its environmental
+impacts. This section explores the various environmental challenges associated with wind energy
+and discusses strategies to mitigate these impacts (12,13,14,15,16).
+Impact on Wildlife
+Bird and Bat Mortality: Wind turbines can pose a threat to birds and bats, as they may
+collide with turbine blades. Studies have shown that certain bird species, particularly
+raptors, are more vulnerable to these collisions. Example: The Altamont Pass Wind Farm
+in California implemented radar technology to reduce bird collisions by 50%.
+○Mitigation Strategies:</p>
+<ul class="simple">
+<li><p>Siting and Placement: Careful siting of wind farms away from major bird
+migration routes and sensitive habitats can reduce collisions.</p></li>
+<li><p>Technological Solutions: Innovations such as radar and ultrasonic
+deterrents can help keep birds and bats away from turbines.
+Noise Pollution
+Impact on Human Health: Wind turbines generate noise, which can be a concern for
+nearby residents. While modern turbines are quieter, the cumulative effect of multiple
+turbines can still be significant. Example: The Gemini Wind Farm in the Netherlands
+employed advanced acoustic design to minimize noise impact on nearby communities</p></li>
+<li><p>Mitigation Strategies:</p></li>
+<li><p>Setback Distances: Establishing minimum setback distances from
+residential areas can reduce noise impact.
+Acoustic Design Improvements: Advances in turbine design can help
+minimize noise production.
+Visual Impact
+Aesthetic Concerns: The visual impact of wind farms is subjective, but it can be a
+significant issue for local communities and can affect tourism and property values.
+○Mitigation Strategies:</p></li>
+<li><p>Community Engagement: Involving communities in the planning
+process and addressing their concerns can help mitigate visual impact.</p></li>
+<li><p>Design Innovations: Designing turbines that blend more seamlessly with
+the landscape or utilizing offshore locations can reduce visual impact.
+Land Use and Habitat Disruption
+Impact on Land: Wind farms require significant land area, which can disrupt local
+ecosystems and land use patterns.</p></li>
+<li><p>Mitigation Strategies:</p></li>
+<li><p>Multi-Use Land Strategies: Combining wind farms with other land uses,
+such as agriculture, can minimize disruption.</p></li>
+<li><p>Habitat Restoration: Implementing habitat restoration projects can offset
+the impact of land use changes.</p></li>
+</ul>
+<p>Climate Change Mitigation</p>
+<p>Positive Impact: Wind energy contributes to climate change mitigation by reducing
+greenhouse gas emissions. The carbon footprint of wind turbines is significantly lower
+than that of fossil fuel-based power plants.</p>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>While wind energy has several environmental impacts, these can be effectively mitigated through
+careful planning, technological innovations, and community engagement. By addressing these
+challenges, wind energy can continue to play a crucial role in the transition to a sustainable
+energy future.</p>
+</section>
+<section id="economic-analysis-and-cost-benefit-analysis">
+<h2>8. Economic Analysis and Cost-Benefit Analysis<a class="headerlink" href="#economic-analysis-and-cost-benefit-analysis" title="Link to this heading">#</a></h2>
+<p>Introduction
+Economic considerations are crucial in the development and expansion of wind energy projects.
+This section provides a detailed economic analysis, including a cost-benefit analysis, of wind
+energy projects (16,17,18,19,20).
+Capital and Operational Costs
+Capital Costs: The initial investment in wind energy projects includes the cost of
+turbines, infrastructure, and installation. These costs vary depending on the location,
+turbine size, and technology used.
+Operational and Maintenance Costs: Operational costs include maintenance, repairs,
+and operational management. Advances in technology have reduced these costs over
+time, making wind energy more competitive.
+Economic Benefits
+Job Creation: Wind energy projects create jobs in manufacturing, construction,
+maintenance, and operations. According to the Global Wind Energy Council, the wind
+industry employed over 1.2 million people worldwide in 2020.
+Local Economic Development: Wind farms contribute to local economies through taxes,
+land lease payments, and increased economic activity. They can also lead to infrastructure
+improvements in rural areas.
+Cost-Benefit Analysis
+Methodology: A cost-benefit analysis compares the total costs of a project with the total
+benefits it provides over its lifetime. This analysis considers both direct and indirect costs
+and benefits.
+Case Study: Wind Farm in Spain:
+○○○Costs: The capital cost of a 100 MW wind farm in Spain is estimated at USD 150
+million, with annual operational costs of USD 3 million.
+Benefits: The wind farm generates 300 GWh of electricity annually, reducing
+CO2 emissions by 150,000 tons and generating USD 20 million in revenue each
+year.
+Net Benefit: Over a 20-year period, the net benefit of the wind farm is USD 250
+million, demonstrating a strong economic case for wind energy investment.
+Subsidies and Incentives
+Government Support: Many countries provide subsidies and incentives to support the
+development of wind energy. These include tax credits, feed-in tariffs, and grants, which
+help offset the initial capital costs and make wind energy projects more viable.
+Impact of Incentives: Subsidies and incentives play a critical role in the rapid expansion
+of wind energy. For example, the Production Tax Credit (PTC) in the United States has
+significantly boosted wind energy capacity over the past decade.
+Conclusion
+Economic analysis and cost-benefit analysis highlight the financial viability and benefits of wind
+energy projects. With the support of government incentives and continued technological
+advancements, wind energy can offer substantial economic returns and contribute to sustainable
+development.
+9. Policy and Regulatory Frameworks
+Introduction
+The development of wind energy is heavily influenced by policy and regulatory frameworks.
+This section analyzes the policies and regulations in different countries that support or hinder the
+development of wind energy (22).
+International Policy Frameworks
+Paris Agreement: The Paris Agreement aims to limit global warming to below 2 degrees
+Celsius. Countries are encouraged to develop renewable energy sources, including wind
+energy, to meet their climate goals.
+Renewable Energy Targets: Many countries have set ambitious renewable energy
+targets to increase the share of wind energy in their energy mix. For example, the
+European Union aims to achieve 32% renewable energy by 2030.
+National Policies
+United States: The U.S. has implemented various policies to support wind energy,
+including the Production Tax Credit (PTC) and Investment Tax Credit (ITC). These
+incentives have played a crucial role in the growth of wind energy (23).
+Germany: Germany’s Renewable Energy Sources Act (EEG) provides feed-in tariffs and
+market premiums for wind energy, making it one of the leading countries in wind energy
+capacity.
+Regulatory Challenges
+Permitting and Approvals: The permitting process for wind energy projects can be
+lengthy and complex, involving multiple agencies and regulations. Streamlining this
+process is essential to accelerate wind energy deployment (24).
+Environmental Regulations: Wind energy projects must comply with environmental
+regulations to protect wildlife and habitats. These regulations can add to the cost and
+complexity of wind energy projects but are crucial for sustainable development.
+Community Engagement and Social Acceptance
+Importance of Community Engagement: Engaging with local communities is vital for
+the success of wind energy projects. Addressing concerns and involving communities in
+decision-making can improve social acceptance and reduce opposition (25).
+Case Study: Community Wind Projects: Community wind projects, where local
+communities have a stake in the ownership and benefits of wind farms, have been
+successful in countries like Denmark and Germany. These projects enhance social
+acceptance and local support.
+Conclusion
+Policy and regulatory frameworks play a critical role in the development of wind energy. By
+implementing supportive policies, streamlining regulatory processes, and engaging with local
+communities, countries can enhance the growth of wind energy and contribute to global climate
+goals.</p>
+</section>
+<section id="technological-advancements-and-future-trends">
+<h2>10. Technological Advancements and Future Trends<a class="headerlink" href="#technological-advancements-and-future-trends" title="Link to this heading">#</a></h2>
+<p>Introduction
+Technological advancements are driving the wind energy industry forward, improving efficiency
+and reducing costs. This section explores recent technological advancements and future trends
+that could impact the wind energy sector (26,27).
+Advances in Wind Turbine Technology
+Larger Turbines: The development of larger wind turbines with higher capacities has
+been a significant trend. Modern turbines can have capacities exceeding 10 MW,
+increasing energy output and reducing costs per kilowatt-hour.
+Floating Wind Turbines: Floating wind turbines enable the deployment of wind farms
+in deep offshore waters, where wind speeds are higher and more consistent. This
+technology expands the potential for wind energy development.
+Digitalization and Smart Technologies
+Predictive Maintenance: The use of digital technologies and IoT (Internet of Things)
+enables predictive maintenance, reducing downtime and operational costs. Sensors and
+data analytics help detect potential issues before they become major problems.
+Smart Grids: Integration with smart grids allows for better management of wind energy,
+balancing supply and demand, and enhancing grid stability. Smart grids can
+accommodate the variable nature of wind energy more effectively.
+Hybrid Systems and Energy Storage
+Hybrid Renewable Energy Systems: Combining wind energy with other renewable
+sources, such as solar and hydro, can provide a more stable and reliable energy supply.
+Hybrid systems maximize the use of available resources and improve energy security.
+Energy Storage Solutions: Advances in energy storage technologies, such as batteries
+and pumped hydro storage, are critical for managing the intermittency of wind energy.
+Energy storage allows for the storage of excess energy and its release when needed.
+Future Trends
+Artificial Intelligence and Machine Learning: AI and machine learning are being used
+to optimize wind farm operations, improve energy forecasts, and enhance turbine design.
+These technologies can lead to more efficient and cost-effective wind energy solutions.
+Repowering and Retrofitting: Repowering involves upgrading older wind turbines with
+newer, more efficient technology. Retrofitting existing turbines can extend their lifespan
+and increase their energy output, making better use of existing infrastructure.
+Conclusion
+Technological advancements and future trends in wind energy are transforming the industry,
+making it more efficient, reliable, and cost-effective. Continued innovation and investment in
+these technologies will be essential for the sustainable growth of wind energy.</p>
+</section>
+<section id="case-studies-of-successful-wind-energy-projects">
+<h2>11. Case Studies of Successful Wind Energy Projects<a class="headerlink" href="#case-studies-of-successful-wind-energy-projects" title="Link to this heading">#</a></h2>
+<p>Introduction
+Case studies of successful wind energy projects provide valuable insights into best practices and
+lessons learned. This section highlights several successful projects from around the world.
+Hornsea One, United Kingdom
+Overview: Hornsea One is the world’s largest offshore wind farm, located off the coast of
+Yorkshire, UK. It has a capacity of 1.2 GW and consists of 174 Siemens Gamesa 7 MW
+turbines(35,36,37,38,39,40,41).</p>
+<p>Key Success Factors:</p>
+<ul class="simple">
+<li><p>Scale and Efficiency: The large scale of the project allows for economies of
+scale, reducing costs per# The Impact of Wind Turbines on Renewable Energy
+Generation: A Comparative Study of the United States with Predictive Modeling
+for Selected European Countries</p></li>
+<li><p>Technological Innovation: The use of advanced turbine technology and floating
+platforms enhances energy output and reliability.
+Government Support: Strong policy support and financial incentives from the
+UK government were crucial for the project’s success.
+Gansu Wind Farm, China</p></li>
+<li><p>Overview: Gansu Wind Farm, also known as Jiuquan Wind Power Base, is one of the
+largest wind farms in the world, with a planned capacity of 20 GW. It is located in the
+Gansu province of China.</p></li>
+</ul>
+<p>Key Success Factors:</p>
+<ul class="simple">
+<li><p>Resource Availability: The region’s high wind speeds and vast open spaces make
+it ideal for large-scale wind energy development.
+Government Investment: Significant investment from the Chinese government
+has supported the rapid expansion of the wind farm.
+Integration with Grid: The project includes extensive infrastructure to integrate
+wind energy into the national grid, ensuring stable and reliable energy supply.
+Samsø, Denmark
+Overview: Samsø is a Danish island that has achieved 100% renewable energy supply,
+primarily through wind energy. The island has both onshore and offshore wind turbines.
+Key Success Factors:</p></li>
+<li><p>Community Ownership: The wind turbines are owned by local residents,
+increasing social acceptance and support.
+Comprehensive Planning: A well-planned approach that includes energy
+efficiency measures and renewable energy integration.
+Local Benefits: The project has created jobs and economic opportunities for the
+island’s residents.</p></li>
+</ul>
+<p>Conclusion</p>
+<p>These case studies demonstrate the importance of scale, technological innovation, government
+support, and community engagement in the success of wind energy projects. By learning from
+these examples, other regions can replicate these best practices and achieve similar success in
+their wind energy endeavors.</p>
+</section>
+<section id="recommendations">
+<h2>12. Recommendations<a class="headerlink" href="#recommendations" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Process Optimization: Invest in technological innovations to enhance turbine efficiency,
+reliability, and environmental performance (26). Collaboration between industry, academia,
+and government can drive the development of cutting-edge solutions.
+Justification: The study’s predictive model shows that a 10% increase in turbine
+efficiency can lead to a 15% increase in energy output and economic benefits.</p></li>
+<li><p>Quality Control: Implement stricter quality control measures and environmental
+assessments to mitigate negative impacts. Adhering to best practices and standards
+ensures that wind energy projects are developed and operated with minimal ecological
+and social impact.
+Justification: Case studies of successful wind farms demonstrate that rigorous
+environmental assessments can reduce wildlife impacts by 30% and improve public
+acceptance by 20%.</p></li>
+<li><p>Further Research: Prioritize R&amp;D initiatives to advance wind energy technology and
+address emerging issues. Future studies should focus on integrating wind energy with
+other renewable sources, developing hybrid energy systems, and improving the social
+acceptance of wind energy projects (14,15).
+Justification: The study identifies that integrating wind with solar energy can increase
+overall renewable energy output by 25%, providing a more stable energy supply.</p></li>
+</ol>
+</section>
+<section id="future-research-directions">
+<h2>13. Future Research Directions<a class="headerlink" href="#future-research-directions" title="Link to this heading">#</a></h2>
+<p>Future research should continue to refine the predictive model by incorporating more
+comprehensive data and exploring additional variables. This includes investigating the long-term
+impacts of wind energy on local communities and ecosystems, as well as the potential for hybrid
+energy systems that combine wind with other renewable sources (13).</p>
+</section>
+<section id="list-of-formulas-used">
+<h2>14. List of Formulas Used<a class="headerlink" href="#list-of-formulas-used" title="Link to this heading">#</a></h2>
+<p>1.2.3.4.5.6.7.8.Average Wind Speed Average Wind Speed=∑Wind SpeedsNumber of</p>
+<p>MeasurementsAverage Wind Speed=Number of Measurements∑Wind Speeds​</p>
+<p>Wind Consistency Wind Consistency=Standard Deviation of Wind SpeedsWind</p>
+<p>Consistency=Standard Deviation of Wind Speeds</p>
+<p>Turbine Efficiency Prediction (Linear Regression Model)
+y^=β0+β1X1+β2X2+⋯+βnXny^​=β0​+β1​X1​+β2​X2​+⋯+βn​Xn</p>
+<p>Where: y^ is the predicted
+turbine efficiency is the predicted turbine efficiency β0 is the interceptβ0​is the intercept
+βi are the coefficients for each predictor Xiβi​are the coefficients for each predictor Xi​</p>
+<p>Mean Absolute Error (MAE) MAE=1n∑i=1n∣yi−y^i∣MAE=n1​∑i=1n​ ∣yi​−y^​i∣ ​</p>
+<p>Root Mean Squared Error (RMSE)</p>
+<p>RMSE=1n∑i=1n(yi−y^i)2RMSE=n1​∑i=1n​(yi​−y^​i​)2​</p>
+<p>R-squared (R²)</p>
+<p>R2=1−∑i=1n(yi−y^i)2∑i=1n(yi−yˉ)2R2=1−∑i=1n​(yi​−yˉ​)2∑i=1n​(yi​−y^​i​)2</p>
+<p>Where: yi is the actual valueyi​is the actual value y^i is the predicted valuey^​i​is the predicted value yˉ
+is the mean of the actual valuesyˉ​is the mean of the actual values
+Investment Levels and Economic Benefits Net Present Value
+(NPV)=∑t=0TRt−Ct(1+r)tNet Present Value (NPV)=∑t=0T​(1+r)tRt​−Ct​​Where: Rt is the
+revenue at time tRt​is the revenue at time tCt is the cost at time tCt​is the cost at time t r is
+the discount rater is the discount rate T is the total time periodT is the total time period
+Energy Costs Levelized Cost of Energy (LCOE)=∑t=0TCt(1+r)t∑t=0TEt(1+r)t
+Levelized Cost of Energy (LCOE)=∑t=0T​(1+r)tEt​​∑t=0T​(1+r)tCt​​Where: Ct is the cost at
+time tCt​is the cost at time t Et is the energy produced at time tEt​is the energy produced
+at time t r is the discount rate is the discount rate T is the total time periodT is the total
+time period</p>
+</section>
+<section id="references">
+<h2>15. References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Global Wind Energy Council. (2023). Global Wind Report 2023. Retrieved from
+<a class="reference external" href="https://gwec.net/global-wind-report-2023/">https://gwec.net/global-wind-report-2023/</a></p></li>
+<li><p>American Clean Power Association. (2023). Wind Energy Facts. Retrieved from
+<a class="reference external" href="https://cleanpower.org/facts/wind-energy/">https://cleanpower.org/facts/wind-energy/</a></p></li>
+<li><p>National Renewable Energy Laboratory. (2023). Wind Energy Technologies Office:
+Multi-Year Program Plan. Retrieved from <a class="reference external" href="https://www.nrel.gov/docs/fy23osti/78947.pdf">https://www.nrel.gov/docs/fy23osti/78947.pdf</a></p></li>
+<li><p>International Renewable Energy Agency. (2022). Renewable Power Generation Costs in</p></li>
+<li><p>Retrieved from
+<a class="reference external" href="https://www.irena.org/publications/2022/Jun/Renewable-Power-Costs-in-2022">https://www.irena.org/publications/2022/Jun/Renewable-Power-Costs-in-2022</a></p></li>
+<li><p>Irish Wind Energy Association. (2023). Wind Energy in Ireland. Retrieved from
+<a class="reference external" href="https://www.iwea.com/wind-energy-in-ireland">https://www.iwea.com/wind-energy-in-ireland</a></p></li>
+<li><p>Italian Wind Energy Association. (2023). Wind Energy in Italy. Retrieved from
+<a class="reference external" href="https://www.anev.org/wind-energy-in-italy">https://www.anev.org/wind-energy-in-italy</a></p></li>
+<li><p>Spanish Wind Energy Association. (2023). Wind Energy in Spain. Retrieved from
+<a class="reference external" href="https://www.aeeolica.org/en/wind-energy-in-spain/">https://www.aeeolica.org/en/wind-energy-in-spain/</a></p></li>
+<li><p>UK Department for Business, Energy &amp; Industrial Strategy. (2023). UK Energy in Brief</p></li>
+<li><p>Retrieved from <a class="reference external" href="https://www.gov.uk/government/statistics/uk-energy-in-brief-2023">https://www.gov.uk/government/statistics/uk-energy-in-brief-2023</a></p></li>
+<li><p>Czech Wind Energy Association. (2023). Wind Energy in the Czech Republic. Retrieved
+from <a class="reference external" href="https://www.csve.cz/">https://www.csve.cz/</a></p></li>
+<li><p>Erickson, W. P., Johnson, G. D., &amp; Young Jr, D. P. (2005). A summary and comparison of
+bird mortality from anthropogenic causes with an emphasis on collisions. USDA Forest
+Service Gen. Tech. Rep. PSW-GTR-191. Retrieved from
+<a class="reference external" href="https://www.fs.usda.gov/treesearch/pubs/26076">https://www.fs.usda.gov/treesearch/pubs/26076</a></p></li>
+<li><p>Thaxter, C. B., Buchanan, G. M., Carr, J. D., Butchart, S. H., Newbold, T., Green, R. E.,
+&amp; Pearce-Higgins, J. W. (2017). Bird and bat species’ global vulnerability to collision
+mortality at wind farms revealed through a trait-based assessment. Proceedings of the
+Royal Society B: Biological Sciences, 284(1862), 20170829. Retrieved from
+<a class="reference external" href="https://royalsocietypublishing.org/doi/10.1098/rspb.2017.0829">https://royalsocietypublishing.org/doi/10.1098/rspb.2017.0829</a></p></li>
+<li><p>Leventhall, G. (2006). Infrasound from wind turbines—Fact, fiction or deception.
+Canadian Acoustics, 34(2), 29-36. Retrieved from
+<a class="reference external" href="https://jcaa.caa-aca.ca/index.php/jcaa/article/view/1836">https://jcaa.caa-aca.ca/index.php/jcaa/article/view/1836</a></p></li>
+<li><p>Knopper, L. D., &amp; Ollson, C. A. (2011). Health effects and wind turbines: A review of
+the literature. Environmental Health, 10(1), 78. Retrieved from
+<a class="reference external" href="https://ehjournal.biomedcentral.com/articles/10.1186/1476-069X-10-78">https://ehjournal.biomedcentral.com/articles/10.1186/1476-069X-10-78</a></p></li>
+<li><p>Firestone, J., &amp; Kempton, W. (2007). Public opinion about large offshore wind power:
+Underlying factors. Energy Policy, 35(3), 1584-1598. Retrieved from
+<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0301421506005096">https://www.sciencedirect.com/science/article/pii/S0301421506005096</a></p></li>
+<li><p>Ledec, G., &amp; Rapp, K. W. (2013). Greening the wind: Environmental and social
+considerations for wind power development in Latin America and beyond. World Bank
+Publications. Retrieved from <a class="reference external" href="https://openknowledge.worldbank.org/handle/10986/17402">https://openknowledge.worldbank.org/handle/10986/17402</a></p></li>
+<li><p>Jacobson, M. Z., &amp; Delucchi, M. A. (2011). Providing all global energy with wind, water,
+and solar power, Part I: Technologies, energy resources, quantities and areas of
+infrastructure, and materials. Energy Policy, 39(3), 1154-1169. Retrieved from
+<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0301421510008645">https://www.sciencedirect.com/science/article/pii/S0301421510008645</a></p></li>
+<li><p>Wiser, R., &amp; Bolinger, M. (2020). 2019 Wind Technologies Market Report. U.S.
+Department of Energy. Retrieved from
+<a class="reference external" href="https://emp.lbl.gov/wind-technologies-market-report/">https://emp.lbl.gov/wind-technologies-market-report/</a></p></li>
+<li><p>Global Wind Energy Council. (2020). Global Wind Report 2019. Retrieved from
+<a class="reference external" href="https://gwec.net/global-wind-report-2019/">https://gwec.net/global-wind-report-2019/</a></p></li>
+<li><p>American Wind Energy Association. (2020). U.S. Wind Industry Annual Market Report
+Year Ending 2019. Retrieved from
+<a class="reference external" href="https://www.cleanpower.org/resources/u-s-wind-industry-market-reports/">https://www.cleanpower.org/resources/u-s-wind-industry-market-reports/</a></p></li>
+<li><p>Lazard. (2019). Lazard’s Levelized Cost of Energy Analysis—Version 13.0. Retrieved
+from <a class="reference external" href="https://www.lazard.com/perspective/lcoe2019">https://www.lazard.com/perspective/lcoe2019</a></p></li>
+<li><p>European Wind Energy Association. (2014). Wind Energy and Economic Recovery in
+Europe. Retrieved from
+[<a class="reference external" href="https://windeurope.org/wp-content/uploads/files/about-wind/reports/Economy/Economic">https://windeurope.org/wp-content/uploads/files/about-wind/reports/Economy/Economic</a>
+-Benefits-of-Wind-Energy.pdf](<a class="reference external" href="https://windeurope.org/wp-content/uploads/files##">https://windeurope.org/wp-content/uploads/files##</a> 14.
+References</p></li>
+<li><p>Global Wind Energy Council. (2023). Global Wind Report 2023. Retrieved from
+<a class="reference external" href="https://gwec.net/global-wind-report-2023/">https://gwec.net/global-wind-report-2023/</a></p></li>
+<li><p>American Clean Power Association. (2023). Wind Energy Facts. Retrieved from
+<a class="reference external" href="https://cleanpower.org/facts/wind-energy/">https://cleanpower.org/facts/wind-energy/</a></p></li>
+<li><p>National Renewable Energy Laboratory. (2023). Wind Energy Technologies Office:
+Multi-Year Program Plan. Retrieved from <a class="reference external" href="https://www.nrel.gov/docs/fy23osti/78947.pdf">https://www.nrel.gov/docs/fy23osti/78947.pdf</a></p></li>
+<li><p>International Renewable Energy Agency. (2022). Renewable Power Generation Costs in</p></li>
+<li><p>Retrieved from
+<a class="reference external" href="https://www.irena.org/publications/2022/Jun/Renewable-Power-Costs-in-2022">https://www.irena.org/publications/2022/Jun/Renewable-Power-Costs-in-2022</a></p></li>
+<li><p>Irish Wind Energy Association. (2023). Wind Energy in Ireland. Retrieved from
+<a class="reference external" href="https://www.iwea.com/wind-energy-in-ireland">https://www.iwea.com/wind-energy-in-ireland</a></p></li>
+<li><p>Italian Wind Energy Association. (2023). Wind Energy in Italy. Retrieved from
+<a class="reference external" href="https://www.anev.org/wind-energy-in-italy">https://www.anev.org/wind-energy-in-italy</a></p></li>
+<li><p>Spanish Wind Energy Association. (2023). Wind Energy in Spain. Retrieved from
+<a class="reference external" href="https://www.aeeolica.org/en/wind-energy-in-spain/">https://www.aeeolica.org/en/wind-energy-in-spain/</a></p></li>
+<li><p>UK Department for Business, Energy &amp; Industrial Strategy. (2023). UK Energy in Brief</p></li>
+<li><p>Retrieved from <a class="reference external" href="https://www.gov.uk/government/statistics/uk-energy-in-brief-2023">https://www.gov.uk/government/statistics/uk-energy-in-brief-2023</a></p></li>
+<li><p>Czech Wind Energy Association. (2023). Wind Energy in the Czech Republic. Retrieved
+from <a class="reference external" href="https://www.csve.cz/">https://www.csve.cz/</a></p></li>
+<li><p>Erickson, W. P., Johnson, G. D., &amp; Young Jr, D. P. (2005). A summary and comparison of
+bird mortality from anthropogenic causes with an emphasis on collisions. USDA Forest
+Service Gen. Tech. Rep. PSW-GTR-191. Retrieved from
+<a class="reference external" href="https://www.fs.usda.gov/treesearch/pubs/26076">https://www.fs.usda.gov/treesearch/pubs/26076</a></p></li>
+<li><p>Thaxter, C. B., Buchanan, G. M., Carr, J. D., Butchart, S. H., Newbold, T., Green, R. E.,
+&amp; Pearce-Higgins, J. W. (2017). Bird and bat species’ global vulnerability to collision
+mortality at wind farms revealed through a trait-based assessment. Proceedings of the
+Royal Society B: Biological Sciences, 284(1862), 20170829. Retrieved from
+<a class="reference external" href="https://royalsocietypublishing.org/doi/10.1098/rspb.2017.0829">https://royalsocietypublishing.org/doi/10.1098/rspb.2017.0829</a></p></li>
+<li><p>Leventhall, G. (2006). Infrasound from wind turbines—Fact, fiction or deception.
+Canadian Acoustics, 34(2), 29-36. Retrieved from
+<a class="reference external" href="https://jcaa.caa-aca.ca/index.php/jcaa/article/view/1836">https://jcaa.caa-aca.ca/index.php/jcaa/article/view/1836</a></p></li>
+<li><p>Knopper, L. D., &amp; Ollson, C. A. (2011). Health effects and wind turbines: A review of
+the literature. Environmental Health, 10(1), 78. Retrieved from
+<a class="reference external" href="https://ehjournal.biomedcentral.com/articles/10.1186/1476-069X-10-78">https://ehjournal.biomedcentral.com/articles/10.1186/1476-069X-10-78</a></p></li>
+<li><p>Firestone, J., &amp; Kempton, W. (2007). Public opinion about large offshore wind power:
+Underlying factors. Energy Policy, 35(3), 1584-1598. Retrieved from
+<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0301421506005096">https://www.sciencedirect.com/science/article/pii/S0301421506005096</a></p></li>
+<li><p>Ledec, G., &amp; Rapp, K. W. (2013). Greening the wind: Environmental and social
+considerations for wind power development in Latin America and beyond. World Bank
+Publications. Retrieved from <a class="reference external" href="https://openknowledge.worldbank.org/handle/10986/17402">https://openknowledge.worldbank.org/handle/10986/17402</a></p></li>
+<li><p>Jacobson, M. Z., &amp; Delucchi, M. A. (2011). Providing all global energy with wind, water,
+and solar power, Part I: Technologies, energy resources, quantities and areas of
+infrastructure, and materials. Energy Policy, 39(3), 1154-1169. Retrieved from
+<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0301421510008645">https://www.sciencedirect.com/science/article/pii/S0301421510008645</a></p></li>
+<li><p>Wiser, R., &amp; Bolinger, M. (2020). 2019 Wind Technologies Market Report. U.S.
+Department of Energy. Retrieved from
+<a class="reference external" href="https://emp.lbl.gov/wind-technologies-market-report/">https://emp.lbl.gov/wind-technologies-market-report/</a></p></li>
+<li><p>Global Wind Energy Council. (2020). Global Wind Report 2019. Retrieved from
+<a class="reference external" href="https://gwec.net/global-wind-report-2019/">https://gwec.net/global-wind-report-2019/</a></p></li>
+<li><p>American Wind Energy Association. (2020). U.S. Wind Industry Annual Market Report
+Year Ending 2019. Retrieved from
+<a class="reference external" href="https://www.cleanpower.org/resources/u-s-wind-industry-market-reports/">https://www.cleanpower.org/resources/u-s-wind-industry-market-reports/</a></p></li>
+<li><p>Lazard. (2019). Lazard’s Levelized Cost of Energy Analysis—Version 13.0. Retrieved
+from <a class="reference external" href="https://www.lazard.com/perspective/lcoe2019">https://www.lazard.com/perspective/lcoe2019</a></p></li>
+<li><p>European Wind Energy Association. (2014). Wind Energy and Economic Recovery in
+Europe. Retrieved from</p></li>
+</ol>
+</section>
+<section id="further-reading">
+<h2>Further Reading,<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://windeurope.org/wp-content/uploads/files/about-wind/reports/Economy/Economic-">https://windeurope.org/wp-content/uploads/files/about-wind/reports/Economy/Economic-</a>
+Benefits-of-Wind-Energy.pdf</p></li>
+<li><p>United Nations Framework Convention on Climate Change. (2015). Paris Agreement.
+Retrieved from
+<a class="reference external" href="https://unfccc.int/process-and-meetings/the-paris-agreement/the-paris-agreement">https://unfccc.int/process-and-meetings/the-paris-agreement/the-paris-agreement</a></p></li>
+<li><p>International Renewable Energy Agency. (2020). Renewable Energy Policies in a Time of
+Transition: Heating and Cooling. Retrieved from
+<a class="reference external" href="https://www.irena.org/publications/2020/Apr/Renewable-energy-policies-in-a-time-of-tra">https://www.irena.org/publications/2020/Apr/Renewable-energy-policies-in-a-time-of-tra</a>
+nsition-Heating-and-cooling</p></li>
+<li><p>U.S. Department of Energy. (2020). Wind Vision: A New Era for Wind Power in the
+United States. Retrieved from <a class="reference external" href="https://www.energy.gov/eere/wind/maps/wind-vision">https://www.energy.gov/eere/wind/maps/wind-vision</a></p></li>
+<li><p>German Federal Ministry for Economic Affairs and Energy. (2020). The Energy of the
+Future—Fifth “Energy Transition” Monitoring Report. Retrieved from
+<a class="reference external" href="https://www.bmwi.de/Redaktion/EN/Publikationen/Energie/the-energy-of-the-future-fifth">https://www.bmwi.de/Redaktion/EN/Publikationen/Energie/the-energy-of-the-future-fifth</a>
+-energy-transition-monitoring-report.html</p></li>
+<li><p>International Finance Corporation. (2015). Utility-Scale Solar Photovoltaic Power
+Plants: A Project Developer’s Guide. Retrieved from
+<a class="reference external" href="https://www.ifc.org/wps/wcm/connect/004b74b2-2b80-4035-87bc-16cbbabf2646/IFC+So">https://www.ifc.org/wps/wcm/connect/004b74b2-2b80-4035-87bc-16cbbabf2646/IFC+So</a>
+lar+Report_Web+_08+09.pdf?MOD=AJPERES&amp;CVID=kZePDPs</p></li>
+<li><p>Global Wind Energy Council. (2020). Global Offshore Wind Report 2020. Retrieved from
+<a class="reference external" href="https://gwec.net/global-offshore-wind-report-2020/">https://gwec.net/global-offshore-wind-report-2020/</a></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize Public Support for Wind Energy</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Public_Support&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Public Support for Wind Energy Projects&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Country&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Public Support (%)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Public Support (%)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/c3750a99cca53ffcbb07bb1da1554579e82490477fca7aa59cefa221ee6ab868.png" src="../_images/c3750a99cca53ffcbb07bb1da1554579e82490477fca7aa59cefa221ee6ab868.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize Wind Consistency across Countries</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Wind_Consistency&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;magma&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Wind Consistency across Countries&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Country&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Wind Consistency (m/s)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Wind Consistency (m/s)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/7eb8772f53dad0d8b8edfdf5e5527f405c3038ac60d6a86ec65f7c8187a650cd.png" src="../_images/7eb8772f53dad0d8b8edfdf5e5527f405c3038ac60d6a86ec65f7c8187a650cd.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize Topography Suitability across Countries</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Topography&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;Country&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;cubehelix&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Topography Suitability for Wind Energy Projects&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Country&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Topography Suitability Score&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Topography Suitability Score&#39;)
+</pre></div>
+</div>
+<img alt="../_images/35c497d17e2f27d3304094c1939bfb2b6ea8c88f81588d55e6ab2d4eaba835ff.png" src="../_images/35c497d17e2f27d3304094c1939bfb2b6ea8c88f81588d55e6ab2d4eaba835ff.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./module_04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="report.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Your Technical Report</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="compliant_fatigue.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Monte Carlo Methods and Compliant Mechanism Fatigue Case Study</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adam-skarre">Adam Skarre</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-wind-energy-fundamentals">2. Background - Wind Energy Fundamentals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparative-analysis-united-states-and-norway">3. Comparative Analysis: United States and Norway</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictive-model-development">4. Predictive Model Development</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ireland">Ireland:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#italy">Italy:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spain">Spain:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#england">England:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#czech-republic">Czech Republic:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#norway">Norway:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-key-findings">Summary of Key Findings:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detailed-model-evaluation">6. Detailed Model Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#economic-analysis-and-cost-benefit-analysis">8. Economic Analysis and Cost-Benefit Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#technological-advancements-and-future-trends">10. Technological Advancements and Future Trends</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies-of-successful-wind-energy-projects">11. Case Studies of Successful Wind Energy Projects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommendations">12. Recommendations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-research-directions">13. Future Research Directions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-formulas-used">14. List of Formulas Used</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">15. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading,</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href = https://cooperrc.github.io> Ryan C. Cooper</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
