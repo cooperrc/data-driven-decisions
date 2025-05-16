@@ -1,4 +1,4 @@
-# Module_04 - Case studies
+# Case studies
 
 We've explored some different ways of processing, presenting, and
 discussing data. There is a large amount of uncertainty in engineering

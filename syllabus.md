@@ -3,7 +3,6 @@
 ## Monte Carlo Analysis for Technical Communications
 - **GitHub page:** [cooperrc/data-driven-decisions](https://github.com/cooperrc/data-driven-decisions)
 - **ME3256 - Discussions**: [GitHub Discussion](https://github.com/cooperrc/data-driven-decisions/discussions)
-- **JupyterHub Server:** [compmech.uconn.edu](https://compmech.uconn.edu)
 
 **Course Description**: This course explores the integration of Monte Carlo
 analysis—a powerful probabilistic modeling technique—with technical
@@ -61,7 +60,7 @@ By the end of this course, students will be able to:
 ## Course Information
 __Course Title:__ ME3256 - Data Driven Decisions: Monte Carlo Analysis for Technical Communications
 
-__Format:__ Hybrid
+__Format:__Online
 
 __Instructor__: Prof. Ryan C. Cooper __<ryan.c.cooper@uconn.edu>__
 

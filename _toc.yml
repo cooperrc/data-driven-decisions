@@ -22,9 +22,6 @@ chapters:
     - file: module_02/HW_04
     - file: module_02/bus_wait
     - file: module_02/HW_05
-- file: module_03/README
-  sections:
-    - file: module_03/challenger
 - file: module_04/README
   sections:
     - file: module_04/report
