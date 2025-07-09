@@ -1,0 +1,63 @@
+Traceback (most recent call last):
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 173, in wrapped
+    return loop.run_until_complete(inner)
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/ryan/miniconda3/envs/nbdev/lib/python3.10/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Compute I_COM via integration about each COM (oz·in²)
+
+I_com_std = np.trapz(m_lin_std * (x - com_std)**2, x)
+
+I_com_torp = np.trapz(m_lin_torp * (x - com_torp)**2, x)
+
+# Pivot point at 6 inches from the handle knob
+
+pivot_x = length - 6 # inches from handle knob
+
+# Distance from pivot to COM (inches)
+
+r_COM_std_pivot = abs(pivot_x - com_std)
+
+r_COM_torp_pivot = abs(pivot_x - com_torp)
+
+# Moment of inertia about pivot (oz·in²)
+
+I_pivot_std = I_com_std + mass_std * r_COM_std_pivot**2
+
+I_pivot_torp = I_com_torp + mass_torp * r_COM_torp_pivot**2
+
+# Print results
+
+print(f"Pivot point: {pivot_x:.2f} in from tip")
+
+print("Standard Bat:")
+
+print(f" I_pivot: {I_pivot_std:.4f} oz·in²")
+
+print("\nTorpedo Bat:")
+
+print(f" I_pivot: {I_pivot_torp:.4f} oz·in²")
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[5], line 3[0m
+[1;32m      1[0m [38;5;66;03m# Compute I_COM via integration about each COM (oz·in²)[39;00m
+[0;32m----> 3[0m I_com_std [38;5;241m=[39m np[38;5;241m.[39mtrapz(m_lin_std [38;5;241m*[39m (x [38;5;241m-[39m [43mcom_std[49m)[38;5;241m*[39m[38;5;241m*[39m[38;5;241m2[39m, x)
+[1;32m      5[0m I_com_torp [38;5;241m=[39m np[38;5;241m.[39mtrapz(m_lin_torp [38;5;241m*[39m (x [38;5;241m-[39m com_torp)[38;5;241m*[39m[38;5;241m*[39m[38;5;241m2[39m, x)
+[1;32m      7[0m [38;5;66;03m# Pivot point at 6 inches from the handle knob[39;00m
+
+[0;31mNameError[0m: name 'com_std' is not defined
+

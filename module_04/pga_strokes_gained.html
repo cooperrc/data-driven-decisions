@@ -1,0 +1,1142 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The impact of Strokes Gained Metrics on PGA Tour Finishing Position &#8212; Data Driven Decisions</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'module_04/pga_strokes_gained';</script>
+    <link rel="icon" href="../_static/spiderman-favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Wind Turbine Uncertainty in loading analysis" href="turbine_uncertainty.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/datadecisions.svg" class="logo__image only-light" alt="Data Driven Decisions - Home"/>
+    <script>document.write(`<img src="../_static/datadecisions.svg" class="logo__image only-dark" alt="Data Driven Decisions - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Data-Driven Decisions: Monte Carlo Analysis for Technical Communications
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus - Data Driven Decisions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_00/README.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_00/01_writing-w-llms.html">Technical writing and Generative AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_00/HW_00.html">HW_00 - Generative AI writing analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_00/HW_01.html">HW_01 - Generative AI writing analysis and Monte Carlo research</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_01/README.html">Module_01</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/calculate_pi.html">Calculating <span class="math notranslate nohighlight">\(\pi\)</span> with Monte Carlo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/HW_02.html">HW_02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/statistical_significance.html">Statistical Significance in Data</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module_01/HW_03.html">HW_03</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_02/README.html">Module_02 - Engineering Processes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/drop_keys.html">Dropping keys and checking randomly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/HW_04.html">HW_04 - Exercise: failure prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/bus_wait.html">Waiting for the bus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/HW_05.html">HW_05 - Customer wait time</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Case studies</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="report.html">Your Technical Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wind-turbine-impact.html">The Impact of Wind Turbines on Renewable Energy Generation: A Comparative Study of the United States with Predictive Modeling for Selected European Countries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compliant_fatigue.html">Monte Carlo Methods and Compliant Mechanism Fatigue Case Study</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="turbine_reliability.html">Optimized Wind Turbine Reliability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="turbine_uncertainty.html">Wind Turbine Uncertainty in loading analysis</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">The impact of Strokes Gained Metrics on PGA Tour Finishing Position</a></li>
+
+
+
+
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/cooperrc/data-driven-decisions/main?urlpath=tree/module_04/pga_strokes_gained.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/cooperrc/data-driven-decisions/blob/main/module_04/pga_strokes_gained.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cooperrc/data-driven-decisions" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cooperrc/data-driven-decisions/issues/new?title=Issue%20on%20page%20%2Fmodule_04/pga_strokes_gained.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/module_04/pga_strokes_gained.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The impact of Strokes Gained Metrics on PGA Tour Finishing Position</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">The impact of Strokes Gained Metrics on PGA Tour Finishing Position</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jim-bellas">Jim Bellas</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strokes-gained-metrics">Strokes Gained Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tournament-finish-position">Tournament Finish Position</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-analysis">Correlation Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-results">Interpretation of results:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-analysis">Regression Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Interpretation of Results:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Takeaway:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-analysis">Monte Carlo Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-interpretation">Plot Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-observations">Key Observations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-importance">Relative importance:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#elite-player-analysis">4. Elite Player Analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-elite-golfers-abilitities">Examining Elite Golfers Abilitities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finish-position-of-elite-golfers">Finish Position of Elite Golfers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strokes-gained-of-elite-golfers">Strokes Gained of Elite Golfers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implication">Implication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6. Conclusion</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># link to download data</span>
+<span class="c1">#https://www.kaggle.com/code/aashidutt3/eda-pga-tour-golf-data/notebook?select=ASA+All+PGA+Raw+Data+-+Tourn+Level.csv</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">resample</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">spearmanr</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;pga_raw_data.csv&#39;</span><span class="p">)</span>
+
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">,</span> <span class="s1">&#39;sg_ott&#39;</span><span class="p">,</span> <span class="s1">&#39;sg_app&#39;</span><span class="p">,</span> <span class="s1">&#39;sg_arg&#39;</span><span class="p">,</span> <span class="s1">&#39;sg_putt&#39;</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()]</span>
+
+<span class="n">bad_finishes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CUT&#39;</span><span class="p">,</span> <span class="s1">&#39;W/D&#39;</span><span class="p">,</span> <span class="s1">&#39;DQ&#39;</span><span class="p">,</span> <span class="s1">&#39;WD&#39;</span><span class="p">,</span> <span class="s1">&#39;MC&#39;</span><span class="p">,</span> <span class="s1">&#39;DNS&#39;</span><span class="p">,</span> <span class="s1">&#39;DSQ&#39;</span><span class="p">,</span> <span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="s1">&#39;nan&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">bad_finishes</span><span class="p">)]</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">()]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sg_ott&#39;</span><span class="p">,</span> <span class="s1">&#39;sg_app&#39;</span><span class="p">,</span> <span class="s1">&#39;sg_arg&#39;</span><span class="p">,</span> <span class="s1">&#39;sg_putt&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Finish</th>
+      <th>sg_ott</th>
+      <th>sg_app</th>
+      <th>sg_arg</th>
+      <th>sg_putt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>32</td>
+      <td>0.86</td>
+      <td>-0.08</td>
+      <td>-0.13</td>
+      <td>0.20</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>18</td>
+      <td>0.18</td>
+      <td>0.31</td>
+      <td>0.75</td>
+      <td>0.36</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>26</td>
+      <td>-0.12</td>
+      <td>-1.32</td>
+      <td>0.74</td>
+      <td>2.05</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>26</td>
+      <td>0.48</td>
+      <td>1.84</td>
+      <td>-0.01</td>
+      <td>-0.96</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>67</td>
+      <td>-1.04</td>
+      <td>2.00</td>
+      <td>-1.79</td>
+      <td>-0.82</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>36747</th>
+      <td>49</td>
+      <td>-0.39</td>
+      <td>0.26</td>
+      <td>-0.27</td>
+      <td>0.66</td>
+    </tr>
+    <tr>
+      <th>36748</th>
+      <td>33</td>
+      <td>0.66</td>
+      <td>-0.37</td>
+      <td>0.36</td>
+      <td>0.09</td>
+    </tr>
+    <tr>
+      <th>36749</th>
+      <td>42</td>
+      <td>-0.64</td>
+      <td>0.54</td>
+      <td>0.04</td>
+      <td>0.55</td>
+    </tr>
+    <tr>
+      <th>36750</th>
+      <td>4</td>
+      <td>0.28</td>
+      <td>1.23</td>
+      <td>0.76</td>
+      <td>-0.02</td>
+    </tr>
+    <tr>
+      <th>36751</th>
+      <td>75</td>
+      <td>-0.58</td>
+      <td>-0.56</td>
+      <td>0.51</td>
+      <td>-0.22</td>
+    </tr>
+  </tbody>
+</table>
+<p>16606 rows × 5 columns</p>
+</div></div></div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="the-impact-of-strokes-gained-metrics-on-pga-tour-finishing-position">
+<h1>The impact of Strokes Gained Metrics on PGA Tour Finishing Position<a class="headerlink" href="#the-impact-of-strokes-gained-metrics-on-pga-tour-finishing-position" title="Link to this heading">#</a></h1>
+<section id="jim-bellas">
+<h2>Jim Bellas<a class="headerlink" href="#jim-bellas" title="Link to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<p>In professional golf, understanding what aspects of the game most significantly impact tournament performance is crucial for players looking to improve their results. The introduction of “strokes gained” metrics has revolutionized golf analytics by providing more precise measurements of performance across different aspects of the game. This analysis explores how various strokes gained categories relate to tournament finishing positions, with the goal of identifying which aspects of golf performance most strongly predict success.</p>
+<p>#2. Background</p>
+<section id="strokes-gained-metrics">
+<h2>Strokes Gained Metrics<a class="headerlink" href="#strokes-gained-metrics" title="Link to this heading">#</a></h2>
+<p>Strokes gained is a statistical approach developed to measure player performance relative to the field in specific aspects of golf. Unlike traditional statistics like fairways hit or greens in regulation, strokes gained provides a more nuanced understanding of performance by comparing a player’s shots to the average performance of other tour professionals in similar situations.</p>
+<p>The four main strokes gained categories analyzed in this study are:</p>
+<ol class="arabic simple">
+<li><p>Strokes Gained: Off the Tee (sg_ott) - Measures performance from the tee box, including both distance and accuracy.</p></li>
+<li><p>Strokes Gained: Approach (sg_app) - Quantifies performance on approach shots to the green, typically from the fairway or rough.</p></li>
+<li><p>Strokes Gained: Around the Green (sg_arg) - Evaluates short game performance on shots near the green but not on the putting surface.</p></li>
+<li><p>Strokes Gained: Putting (sg_putt) - Measures putting performance on the green.</p></li>
+</ol>
+<p>A positive strokes gained value indicates performance better than the field average, while negative values represent performance below average. For example, a strokes gained: putting value of +2.0 means a player gained two strokes on the field with their putting in that round.</p>
+<p>Example: A player tees off and hits the ball 290 yards in the fairway. On that course the average tour player hits it 280 yards in the fairway. From 280 yards, the average player finishes the hole in 2.88 strokes while from 290 yards the average player finishes the hole in 2.76 strokes. This means that the player has gained 0.12 strokes off the tee.</p>
+</section>
+<section id="tournament-finish-position">
+<h2>Tournament Finish Position<a class="headerlink" href="#tournament-finish-position" title="Link to this heading">#</a></h2>
+<p>In golf tournaments, players are ranked by their total score relative to par, with the lowest total score winning. The “Finish” variable represents a player’s final standing in a tournament, with lower numbers indicating better performance (1st place being the winner).</p>
+<p>#3. Analysis of Strokes Gained Categories</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Correlation analysis</span>
+
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;sg_ott&#39;</span><span class="p">,</span> <span class="s1">&#39;sg_app&#39;</span><span class="p">,</span> <span class="s1">&#39;sg_arg&#39;</span><span class="p">,</span> <span class="s1">&#39;sg_putt&#39;</span><span class="p">]:</span>
+    <span class="n">corr</span><span class="p">,</span> <span class="n">pval</span> <span class="o">=</span> <span class="n">spearmanr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">: Correlation with Finish = </span><span class="si">{</span><span class="n">corr</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> (p=</span><span class="si">{</span><span class="n">pval</span><span class="si">:</span><span class="s2">.3g</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1"># Regression analysis</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;sg_ott&#39;</span><span class="p">,</span> <span class="s1">&#39;sg_app&#39;</span><span class="p">,</span> <span class="s1">&#39;sg_arg&#39;</span><span class="p">,</span> <span class="s1">&#39;sg_putt&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span>
+<span class="n">reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Regression coefficients (impact on finish position):&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">coef</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">reg</span><span class="o">.</span><span class="n">coef_</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">coef</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Monte Carlo</span>
+<span class="n">n_sim</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">{</span><span class="n">col</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">}</span>
+<span class="n">r2_orig</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_sim</span><span class="p">):</span>
+        <span class="n">X_sim</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">X_sim</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">X_sim</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+        <span class="n">r2</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_sim</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">results</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">r2_orig</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original R2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;R^2 after shuffling feature&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Monte Carlo: Impact of Each Strokes Gained Category on Finish&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sg_ott: Correlation with Finish = -0.358 (p=0)
+sg_app: Correlation with Finish = -0.483 (p=0)
+sg_arg: Correlation with Finish = -0.293 (p=0)
+sg_putt: Correlation with Finish = -0.435 (p=0)
+
+Regression coefficients (impact on finish position):
+sg_ott: -14.30
+sg_app: -13.76
+sg_arg: -14.19
+sg_putt: -13.89
+</pre></div>
+</div>
+<img alt="../_images/738b04ee6f648c7137d5ca6f03295c97c81038fbd83ea46e7bcc48ec4f342027.png" src="../_images/738b04ee6f648c7137d5ca6f03295c97c81038fbd83ea46e7bcc48ec4f342027.png" />
+</div>
+</div>
+</section>
+<section id="correlation-analysis">
+<h2>Correlation Analysis<a class="headerlink" href="#correlation-analysis" title="Link to this heading">#</a></h2>
+<section id="results">
+<h3>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>sg_app: Correlation with Finish = -0.483</p></li>
+<li><p>sg_putt: Correlation with Finish = -0.435</p></li>
+<li><p>sg_ott: Correlation with Finish = -0.358</p></li>
+<li><p>sg_arg: Correlation with Finish = -0.293</p></li>
+</ul>
+</section>
+<section id="interpretation-of-results">
+<h3>Interpretation of results:<a class="headerlink" href="#interpretation-of-results" title="Link to this heading">#</a></h3>
+<p>The negative direction of each correlation result indicated that the finish position gets lower as strokes gained increases. This makes sence as a lower finish position indicates a better outcome.</p>
+<p>Statistical significance: All p-values are 0 (or extremely close), meaning these relationships are statistically significant.</p>
+</section>
+<section id="takeaway">
+<h3>Takeaway:<a class="headerlink" href="#takeaway" title="Link to this heading">#</a></h3>
+<p>Players who are better in any strokes gained category tend to finish higher, but approach shots and putting are most strongly associated with better finishes.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="regression-analysis">
+<h2>Regression Analysis<a class="headerlink" href="#regression-analysis" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>Results<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Regression coefficients:</p>
+<ul class="simple">
+<li><p>sg_ott: -14.30</p></li>
+<li><p>sg_arg: -14.19</p></li>
+<li><p>sg_putt: -13.89</p></li>
+<li><p>sg_app: -13.76</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>Interpretation of Results:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>All coefficients are negative, consistent with the correlations. Increasing strokes gained in any category predicts a better (lower) finish position.</p>
+<p>Each coefficient represents the expected change in finish position for a 1-unit increase in that strokes gained category, holding the others constant.</p>
+<p>For example, if a player improves their SG Off The Tee by 1, their predicted finish position improves by about 14 places.</p>
+</section>
+<section id="id3">
+<h3>Takeaway:<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Improvement in any strokes gained category has a large, positive impact on finish position, with all four categories contributing similarly when considered together.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="monte-carlo-analysis">
+<h2>Monte Carlo Analysis<a class="headerlink" href="#monte-carlo-analysis" title="Link to this heading">#</a></h2>
+<p><img alt="Final2 Colab.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA1IAAAIjCAYAAAAJLyrXAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjAsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvlHJYcgAAAAlwSFlzAAAPYQAAD2EBqD+naQAAeW9JREFUeJzt3XlcVGX///H3sC8KuIBAErilKG655RbupubtUmZauWTZXZqaWWabS4tprqFmepfaamll3WZupFlmarncbqmZaCWopUKAss31+8Mv83MElEFwAF/Px2MezlznOtf5nDlzxvlwXec6FmOMEQAAAAAg31ycHQAAAAAAlDQkUgAAAADgIBIpAAAAAHAQiRQAAAAAOIhECgAAAAAcRCIFAAAAAA4ikQIAAAAAB5FIAQAAAICDSKQAAAAAwEEkUgAKVUREhAYNGuTsMCBp+/btatGihXx9fWWxWLRr1y5nh2SnTZs2ioqKcnYY12Tx4sWyWCz66aefnB1KkXHmOT1o0CBFREQ4Zdtwjms55hMmTJDFYnFonY0bN8pisWj58uUF2iZubCRSuGFl/wCyWCz6/vvvcyw3xigsLEwWi0V33nlnkcbyww8/aMKECTp37lyRtH/kyBE98sgjqlq1qry8vOTn56eWLVtq9uzZOn/+fJFssyjFxcXJYrFo2rRpzg7lmu3fv18TJkxQXFxcobabkZGhPn366MyZM5o5c6bee+89hYeH51o3+4dEXo+lS5cWamyFJT09XbNnz1bDhg3l5+engIAA1alTR0OHDtUvv/xiq1fU51dxYbVa9e6776pjx46qWLGi3N3dFRQUpE6dOmnBggVKS0tzdohF7vPPP1eXLl1UsWJFeXh4KDQ0VPfcc4+++eYbh9s6ceKEJkyYUOz+AFHSRURE5Pldc+HCBWeHBzjEzdkBAM7m5eWlDz/8UK1atbIr//bbb/XHH3/I09OzyGP44YcfNHHiRA0aNEgBAQGF2vZXX32lPn36yNPTUwMGDFBUVJTS09P1/fff66mnntK+ffu0YMGCQt0m8m///v2aOHGi2rRpU6h/eT9y5IiOHTumhQsX6qGHHsrXOiNGjFCTJk1ylDdv3rzQ4ipMd911l77++mv169dPDz/8sDIyMvTLL79o5cqVatGihWrVqiWpaM+v4uL8+fPq1auX1qxZoxYtWmjMmDGqVKmSzpw5o2+//VaPPfaYtm7dqrffftvhtg8ePCgXl+L9d1djjB588EEtXrxYDRs21OjRoxUcHKz4+Hh9/vnnat++vTZv3qwWLVrku80TJ05o4sSJioiIUIMGDYou+BtQgwYN9OSTT+Yo9/Dw0MKFC2W1WgvU7vPPP69nnnnmWsMD8o1ECje8rl27atmyZXrjjTfk5vb/T4kPP/xQjRo10l9//eXE6K7N0aNHde+99yo8PFzffPONQkJCbMuGDRumX3/9VV999dU1b8cYowsXLsjb2/ua20LhOHXqlCQ5lDi0bt1ad999dxFFVLi2b9+ulStX6pVXXtGzzz5rt2zOnDkF7n2yWq1KT0+Xl5dXIUR5/TzxxBNas2aNZs2apZEjR9ote/LJJ3X48GGtW7euQG1fjz8mXavp06dr8eLFGjVqlGbMmGE3vOu5557Te++9Z/f9XpqUxO/fm266Sffff3+uy64laXdzcyu1xxnFU/H+ExNwHfTr109///233Y+M9PR0LV++XP379891nZSUFD355JMKCwuTp6enatasqWnTpskYY1fPYrFo+PDhWrFihaKiouTp6ak6depo9erVtjoTJkzQU089JUmqUqWKbYjDpUO93n//fTVq1Eje3t4qX7687r33Xv3+++9X3bepU6cqOTlZb7/9tl0Sla169ep2P7oWLVqkdu3aKSgoSJ6enqpdu7befPPNHOtFRETozjvv1Jo1a9S4cWN5e3vrrbfeyjOO3377TX369FH58uXl4+Oj2267LdcE7vjx43ZDshyRPVTz+++/14gRIxQYGKiAgAA98sgjSk9P17lz5zRgwACVK1dO5cqV09NPP213vC4dLjhz5kyFh4fL29tb0dHR2rt3r922/ve//2nQoEG2oZLBwcF68MEH9ffff+eI688//9SQIUMUGhoqT09PValSRY8++qjS09O1ePFi9enTR5LUtm1b27HfuHHjFff1m2++UevWreXr66uAgAD16NFDBw4csC0fNGiQoqOjJUl9+vSRxWJRmzZtCvS+Xi6/nxFJ+vrrrxUdHa2yZcvKz89PTZo00Ycffpij3v79+9W2bVv5+Pjopptu0tSpU68ax5EjRyRJLVu2zLHM1dVVFSpUkHT18yv7HP3ggw9Up04deXp62s7PnTt3qkuXLvLz81OZMmXUvn17/fjjj1eN7ezZs2ratKkq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R88880yOa40u3+8yZcrYXSvh4eGhpk2bXvX8sFgsWrNmjV5++WWVK1dOH330kYYNG6bw8HD17dvXoWukoqOjVbt2bdvrrKwsrV27Vj179lTVqlVt5SEhIerfv7++//572/mV7Y8//lB0dLQyMjK0adMmuxkSly1bpsjISNWqVcvuPG7Xrp0k2c7j7OvZvvjiC4cuts+OpUyZMnblq1atUmBgoO1x+ayNlx7Ls2fPKjExUa1bt7Z9hq9m6NChdsezdevWysrK0rFjxyRd/BycO3dO/fr1s9tvV1dXNWvWzLbf2Z/rgQMHyt/f39Zex44d7Y7L1fY/v991np6etutwsrKy9Pfff9uGfOVn33ft2qXDhw+rf//++vvvv237lZKSovbt22vTpk2yWq3KysrS+vXr1bNnT4WGhtrWr169urp06WLXZva5O3r0aLvy7AkZLh8Kndv3r7+/v3r06KGPPvrI9j2alZWljz/+WD179pSvr2+e+7R+/Xqlp6dr1KhRdtcoPfzww/Lz88ux/YKet9maNWuW43tmwIABV1ynb9++KleunO1169atJemK23TknBo8eLA8PDwcah/gijxAUmBgoDp06KAPP/xQqampysrKyvOi+2PHjik0NDTHf9qRkZG25Ze6+eabc7RRrlw5nT179qpxHT58WMYY1ahRI9fl7u7uea7r5+cnSfrnn3+uup1smzdv1vjx47VlyxalpqbaLUtMTLT7kVOlSpV8tXns2DE1a9YsR/ml71dh3kvo8vc7O+awsLAc5bkdg9ze61tuuUWffPKJ7fWZM2c0ceJELV261DapQ7bsZOL06dNKSkoq1H3L/mzVrFkzx7LIyEitWbNGKSkpV/zBdCV169ZVhw4drlgnP5+R7OuX8rPvlStXzpFclStXTv/73/+uuq6np6eee+45Pffcc4qPj9e3336r2bNn65NPPpG7u7vef//9q7Yh5fwsnz59WqmpqXm+z1arVb///rvq1KljK3/ggQfk5uamAwcOKDg42G6dw4cP68CBAwoMDMx1+9mfob59++o///mPHnroIT3zzDNq3769evfurbvvvvuKF+BnfxclJyfblbds2dJ27efrr7+e4/qdlStX6uWXX9auXbvsrsPJb5J/+bmW/SM3+7w6fPiwJNkSxstlf0dlf65zO/fyk9w4+l1ntVo1e/ZszZs3T0ePHlVWVpZtWfa1dVeSvV8DBw7Ms05iYqIuXLig8+fPq3r16jmWX1527Ngxubi45CgPDg5WQEBAjv9X8vr+HTBggD7++GN99913uv3227V+/XqdPHlSDzzwwBX3Ka/vFg8PD1WtWjXH9q/lvJWkihUrXvW75nJX+7zlxpFzqiDtAyRSwP/p37+/Hn74YSUkJKhLly6FNk2yq6trruX56XmxWq2yWCz6+uuvc23n8r9AX8rPz0+hoaE5JkrIy5EjR9S+fXvVqlVLM2bMUFhYmDw8PLRq1SrNnDkzx1/ziusMUXm937mVF7T365577tEPP/ygp556Sg0aNFCZMmVktVp1xx13FHja3pLA0c9IflzL+XGpkJAQ3XvvvbrrrrtUp04dffLJJ1q8eHG+ZvAqjM9y79699e6772r27NmaPHmy3TKr1aq6detqxowZua6bneR7e3tr06ZN2rBhg7766iutXr1aH3/8sdq1a6e1a9fm+V5lT/O+d+9eu8kGsv9AJClHUvndd9/pX//6l26//XbNmzdPISEhcnd316JFi3KdECQ3Vzt22Z+H9957L0dyKanQZlfL3v89e/aoZ8+eV63/6quv6oUXXtCDDz6ol156SeXLl5eLi4tGjRqVr89wdp3XX389z2nRy5QpU6B7IuU3ic3rM9u5c2dVqlRJ77//vm6//Xa9//77Cg4OdjhpuZrCOm+LepuOnFPO2CeUfCRSwP/p1auXHnnkEf3444/6+OOP86wXHh6u9evX659//rHrlcqebS6vm55eSV7/eVarVk3GGFWpUkW33HKLw+3eeeedWrBggbZs2XLVewH997//VVpamr788ku7v8xdafhgfoSHh9tmLrvUtbxfRSn7r82XOnTokG0WqbNnzyo2NlYTJ07Uiy++mOd6gYGB8vPzu2oi68gQv+z3Kq/3s2LFigXujcqP/H5Gsoey7t27N9e/xhcld3d31atXT4cPH7YNg3V0GGVgYKB8fHzyfJ9dXFxy9HA+/vjjql69ul588UX5+/vb3cumWrVq2r17t9q3b3/VWFxcXNS+fXu1b99eM2bM0KuvvqrnnntOGzZsyPPHcJcuXeTq6qoPPvhA9913X7728dNPP5WXl5fWrFljN735okWL8rV+fmR/DoKCgq74Qz77c53buZfbMbhcq1atbMM7n3322Tx/EGdbvny52rZtm+OeWufOnVPFihVtr6/0vSxd/GPVlfYrKChIXl5euc78dnlZeHi4rFarDh8+bOutl6STJ0/q3Llz+f6edHV1Vf/+/bV48WJNmTJFK1as0MMPP3zV9+TS75ZLh7Omp6fr6NGjhZ6IXU8FOaeA/OIaKeD/lClTRm+++aYmTJig7t2751mva9euysrK0pw5c+zKZ86cKYvFkmPse35k//i9/LqO3r17y9XVVRMnTszxVzFjTK7TbV/q6aeflq+vrx566CGdPHkyx/IjR45o9uzZkv7/X+Mu3U5iYuI1/7Dq2rWrtm3bpi1bttjKUlJStGDBAkVERNhdA3Et058XlhUrVujPP/+0vd62bZu2bt1qO665vU+SNGvWLLvXLi4u6tmzp/773//qp59+yrGd7PXzOva5CQkJUYMGDbRkyRK7+nv37tXatWvVtWvXq7ZxLfL7GenUqZPKli2ryZMn5/irfGH9dffw4cM6fvx4jvJz585py5YtKleunG0onSPvsXRxPzt16qQvvvjC7jYEJ0+etN28O3s42aVeeOEFjRkzRuPGjbObEv6ee+7Rn3/+qYULF+ZY5/z580pJSZF0ccjo5bJ7PC6fAvtSN998sx588EF9/fXXOb6Xsl3+vru6uspisdgNa4uLi9OKFSvy3I6jOnfuLD8/P7366qvKyMjIsTx7qvRLP9eXXou5bt06u2so8+Lj46OxY8fqwIEDGjt2bK6fsffff1/btm2TdHHfL6+zbNkyu/Neyvtz06hRI1WrVk3Tpk3LMZzy0v1ydXVVhw4dtGLFCp04ccK2/Ndff81xLW32uXv590h2L2a3bt1y3ffcPPDAAzp79qweeeQRJScn53m/pkt16NBBHh4eeuONN+zem7fffluJiYkObb84Keg5BeQXPVLAJa405j1b9+7d1bZtWz333HOKi4tT/fr1tXbtWn3xxRcaNWqU3cQS+dWoUSNJF28cee+998rd3V3du3dXtWrV9PLLL2vcuHGKi4tTz549VbZsWR09elSff/65hg4dqjFjxuTZbrVq1fThhx+qb9++ioyM1IABAxQVFaX09HT98MMPWrZsme3+MJ06dZKHh4e6d+9u+w944cKFCgoKUnx8vMP7lO2ZZ57RRx99pC5dumjEiBEqX768lixZoqNHj+rTTz+1G6c+YMAAffvtt04dSlG9enW1atVKjz76qNLS0jRr1ixVqFBBTz/9tKSLf4W+/fbbNXXqVGVkZOimm27S2rVrdfTo0Rxtvfrqq1q7dq2io6M1dOhQRUZGKj4+XsuWLdP333+vgIAANWjQQK6urpoyZYoSExPl6elpu09Tbl5//XV16dJFzZs315AhQ3T+/HnFxMTI399fEyZMuKZ9/+6773IdjlSvXj3Vq1cv358RPz8/zZw5Uw899JCaNGmi/v37q1y5ctq9e7dSU1O1ZMmSa4pTknbv3q3+/furS5cuat26tcqXL68///xTS5Ys0YkTJzRr1ixb4pfX+XWl3ruXX37Zdv+Zxx57TG5ubnrrrbeUlpZ2xfvlvP7660pMTNSwYcNUtmxZ3X///XrggQf0ySef6N///rc2bNigli1bKisrS7/88os++eQT2/2AJk2apE2bNqlbt24KDw/XqVOnNG/ePFWuXNluspbczJo1S0ePHtXjjz+upUuXqnv37goKCtJff/2lzZs367///a/d9S/dunXTjBkzdMcdd6h///46deqU5s6dq+rVq+f7Oper8fPz05tvvqkHHnhAt956q+69914FBgbq+PHj+uqrr9SyZUtb4jd58mR169ZNrVq10oMPPqgzZ84oJiZGderUyTVZudxTTz2lffv2afr06dqwYYPuvvtuBQcHKyEhQStWrNC2bdv0ww8/SLrYUz9p0iQNHjxYLVq00J49e/TBBx/Y9cRIF78/AwICNH/+fJUtW1a+vr5q1qyZqlSpov/85z/q0qWL6tSpo8GDB+umm27Sn3/+qQ0bNsjPz0///e9/JV28r9HatWvVsmVLPfroo7Y/wkVFRWnXrl22bdWvX18DBw7UggULdO7cOUVHR2vbtm1asmSJevbsqbZt2+b7fW/YsKGioqJsk5zceuutV10nMDBQ48aN08SJE3XHHXfoX//6lw4ePKh58+apSZMm+UrGiqNrOaeAfLlu8wMCxczl93/Jy+XTnxtzcVrfJ554woSGhhp3d3dTo0YN8/rrr9tNhWvMxamVhw0blmubl04nbIwxL730krnpppuMi4tLjqmaP/30U9OqVSvj6+trfH19Ta1atcywYcPMwYMH87Wvhw4dMg8//LCJiIgwHh4epmzZsqZly5YmJibGXLhwwVbvyy+/NPXq1TNeXl62eym98847OeLJ7T250r4dOXLE3H333SYgIMB4eXmZpk2b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SVFmZqZGjBihgIAAVahQQWPHjtXAgQPVs2fPfLW7evVqtWrVyrb+nXfeqSNHjtiWx8XFyWKxaOnSpWrRooW8vLwUFRWlb7/91lZn48aNslgs+uqrr1SvXj15eXnptttu0969ewv7bXAqEilcfxsmX/8ucwAAgFIiPj5e/fr104MPPqgDBw5o48aN6t27t4wxmjJlij744AMtWrRImzdvVlJSklasWJHvtlNSUjR69Gj99NNPio2NlYuLi3r16iWr1WpX76mnntKTTz6pnTt3qnnz5urevbv+/vvvHHWmT5+u7du3KzAwUN27d1dGRkZhvAXFAtdIAQAAACVIfHy8MjMz1bt3b4WHh0uS6tatK0mKiYnRuHHj1KtXL0nSnDlztGrVqny3fdddd9m9fueddxQYGKj9+/crKirKVj58+HBb3TfffFOrV6/W22+/raefftpWZ/z48erYsaMkacmSJapcubI+//xz3XPPPQXY6+KHHikAAACgBKlfv77at2+vunXrqk+fPlq4cKHOnj2rxMREnTx5Uk2bNrXVdXV1VaNGjfLd9uHDh9WvXz9VrVpVfn5+tpvlHj9+3K5e8+bNbc/d3NzUuHFjHThwIM865cuXV82aNXPUKclIpAAAAIASxNXVVevWrdPXX3+t2rVrKyYmRjVr1lRcXNw1t929e3edOXNGCxcu1NatW7V161ZJUnp6+jW3XdqQSAEAAAAljMViUcuWLTVx4kTt3LlTHh4eio2NVaVKlbR9+3ZbvaysLO3YsSNfbf799986ePCgnn/+ebVv316RkZE6e/ZsrnV//PFH2/PMzEz9/PPPioyMzLPO2bNndejQoRx1LBaLbr75Zt18880l6h5SEtdIAQAAACXK1q1bFRsbq06dOikoKEhbt27V6dOnFRkZqccff1yTJ09W9erVVatWLcXExOjs2bP5SlLKlSunChUqaMGCBQoJCdHx48f1zDPP5Fp37ty5qlGjhiIjIzVz5kydPXtWDz74oF2dSZMmqUKFCqpUqZKee+45VaxYMcfsgS4uLgoKCirwe+FMJFIAAADApYr5DXL9/Py0adMmzZo1S0lJSQoPD9f06dPVpUsXdezYUQkJCRowYIBcXV01dOhQde7cOV83unVxcdHSpUs1YsQIRUVFqWbNmnrjjTfUpk2bHHVfe+01vfbaa9q1a5eqV6+uL7/8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119/rR9//FHly5fPdd309HR5eHgoODjYoW16e3vL29u7MMJ32MMPP6xJkyYpLS1N33zzjYYOHaqAgAA9+uijkqSff/5ZQUFBev/99xUWFqYffvhBQ4cOlaurq4YPH15kcdEjBQAAAJQgw4YNk4eHh9auXavo6GjdfPPN6tKli9avX68///xTzz33nK1uRESEXnrpJQ0YMEB+fn4aOnRorkP7vvzyS9WoUUNeXl5q27atlixZIovFonPnzknKObRvwoQJatCggd577z1FRETI399f9957r/755x9bndWrV6tVq1YKCAhQhQoVdOedd+rIkSM59icrK0tZWVl2vUyX8vHxUXBwsMLDwzV48GDVq1dP69atsy1/8MEHNXv2bEVHR6tq1aq6//77NXjwYH322WcFfIfzh0QKAAAAuERKSkqejwsXLuS77vnz5/NV1xFnzpzRmjVr9Nhjj+XoIQoODtZ9992njz/+2C4pmTZtmurXr6+dO3fqhRdeyNHm0aNHdffdd6tnz57avXu3HnnkEbtkLC9HjhzRihUrtHLlSq1cuVLffvutXnvtNbv9HT16tH766SfFxsbKxcVFvXr1ktVqtWvnl19+0c6dO3OUX84Yo++++06//PKLPDw8rlg3MTExz165wsLQPlwfGyY7OwIAKLXm7Zqnxxo85uwwgFKjTJkyeS7r2rWrvvrqK9vroKAgpaam5lo3OjpaGzdutL2OiIjQX3/9laNeXj0xuTl8+LCMMYqMjMx1eWRkpM6ePavTp08rKChIktSuXTs9+eSTtjpxcXF267z11luqWbOmXn/9dUlSzZo1tXfvXr3yyitXjMVqtWrx4sUqW7asJOmBBx5QbGysbb277rrLrv4777yjwMBA7d+/36Hrs+bNm6f//Oc/Sk9PV0ZGhry8vDRixIg86//www/6+OOP7Y5TUaBHCgAAAChhHEm+GjdufMXlBw8eVJMmTezKmjZtetV2IyIibEmUJIWEhOjUqVO214cPH1a/fv1UtWpV+fn5KSIiQpJ0/PjxfMcuSffdd5927dqlzZs3q0uXLnruuefUokWLXOvu3btXPXr00Pjx49WpUyeHtuMoeqQAAACASyQnJ+e5zNXV1e71pYnD5S6fhe7ynqCCqF69uiwWiw4cOKBevXrlWH7gwAGVK1dOgYGBtjJfX99r3m5u3N3d7V5bLBa7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" /></p>
+<section id="plot-interpretation">
+<h3>Plot Interpretation<a class="headerlink" href="#plot-interpretation" title="Link to this heading">#</a></h3>
+<p>Each colored histogram shows the distribution of R² values when one category is shuffled 1000 times.</p>
+<p>The vertical dashed line represents the R² of the original, unshuffled model has an R² of about 0.76.</p>
+</section>
+<section id="key-observations">
+<h3>Key Observations<a class="headerlink" href="#key-observations" title="Link to this heading">#</a></h3>
+<p>All histograms are far to the left of the original R² line, meaning that shuffling any one categories causes a big decrease in model performance. This shows that each strokes gained category is important for predicting finish position.</p>
+</section>
+<section id="relative-importance">
+<h3>Relative importance:<a class="headerlink" href="#relative-importance" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Putting: ~ 0.16</p></li>
+<li><p>Approach: ~ 0.20</p></li>
+<li><p>Off The Tee	Higher: ~ 0.42</p></li>
+<li><p>Around The Green:	~ 0.48</p></li>
+</ol>
+<p>Approach and putting are the most critical. Removing their information causes the biggest loss in model accuracy. Off the tee and around the green still matter, but less so than approach and putting.</p>
+<p>This analysis supports the findings in the correlation analysis that better putting and approach strokes gained are more important to finishing in a better position.</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="elite-player-analysis">
+<h1>4. Elite Player Analysis<a class="headerlink" href="#elite-player-analysis" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sg_cols</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Off the Tee&#39;</span><span class="p">:</span> <span class="s1">&#39;sg_ott&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Approach&#39;</span><span class="p">:</span> <span class="s1">&#39;sg_app&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Around the Green&#39;</span><span class="p">:</span> <span class="s1">&#39;sg_arg&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Putting&#39;</span><span class="p">:</span> <span class="s1">&#39;sg_putt&#39;</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;CUT&#39;</span><span class="p">,</span> <span class="s1">&#39;W/D&#39;</span><span class="p">,</span> <span class="s1">&#39;DQ&#39;</span><span class="p">,</span> <span class="s1">&#39;WD&#39;</span><span class="p">,</span> <span class="s1">&#39;MC&#39;</span><span class="p">,</span> <span class="s1">&#39;DNS&#39;</span><span class="p">,</span> <span class="s1">&#39;DSQ&#39;</span><span class="p">,</span> <span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="s1">&#39;nan&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">])]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">()]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">sg_cols</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()]</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">sg_cols</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">threshold</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.99</span><span class="p">)</span>
+    <span class="n">top1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">]</span>
+    <span class="n">avg_finish</span> <span class="o">=</span> <span class="n">top1</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">n_players</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">top1</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Avg Finish&#39;</span><span class="p">:</span> <span class="n">avg_finish</span><span class="p">,</span> <span class="s1">&#39;Count&#39;</span><span class="p">:</span> <span class="n">n_players</span><span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average Finish Position for Top 1</span><span class="si">% i</span><span class="s2">n Each SG Category:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">stats</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">: Avg Finish = </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;Avg Finish&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> (n=</span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;Count&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+
+<span class="n">labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">avg_finishes</span> <span class="o">=</span> <span class="p">[</span><span class="n">results</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s1">&#39;Avg Finish&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">bars</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">avg_finishes</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#1f77b4&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff7f0e&#39;</span><span class="p">,</span> <span class="s1">&#39;#2ca02c&#39;</span><span class="p">,</span> <span class="s1">&#39;#d62728&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Average Finish Position&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average Finish for Top 1</span><span class="si">% i</span><span class="s1">n Each Strokes Gained Category&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">avg_finishes</span><span class="p">)</span><span class="o">*</span><span class="mf">1.2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">bars</span><span class="p">:</span>
+    <span class="n">yval</span> <span class="o">=</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">yval</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">yval</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;CUT&#39;</span><span class="p">,</span> <span class="s1">&#39;W/D&#39;</span><span class="p">,</span> <span class="s1">&#39;DQ&#39;</span><span class="p">,</span> <span class="s1">&#39;WD&#39;</span><span class="p">,</span> <span class="s1">&#39;MC&#39;</span><span class="p">,</span> <span class="s1">&#39;DNS&#39;</span><span class="p">,</span> <span class="s1">&#39;DSQ&#39;</span><span class="p">,</span> <span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="s1">&#39;nan&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">])]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">isnumeric</span><span class="p">()]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="n">sg_cols</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Off the Tee&#39;</span><span class="p">:</span> <span class="s1">&#39;sg_ott&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Approach&#39;</span><span class="p">:</span> <span class="s1">&#39;sg_app&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Around the Green&#39;</span><span class="p">:</span> <span class="s1">&#39;sg_arg&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Putting&#39;</span><span class="p">:</span> <span class="s1">&#39;sg_putt&#39;</span>
+<span class="p">}</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">sg_cols</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()]</span>
+
+<span class="n">finish_threshold</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">top_finishers</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Finish&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">finish_threshold</span><span class="p">]</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">sg_cols</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">avg_sg</span> <span class="o">=</span> <span class="n">top_finishers</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">results</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">avg_sg</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average Strokes Gained for Top 1% Tournament Finishers:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">avg_sg</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">avg_sg</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">results</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">bars</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#1f77b4&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff7f0e&#39;</span><span class="p">,</span> <span class="s1">&#39;#2ca02c&#39;</span><span class="p">,</span> <span class="s1">&#39;#d62728&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Average Strokes Gained&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top 1% Tournament Finishers: Average Strokes Gained by Category&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">bars</span><span class="p">:</span>
+    <span class="n">yval</span> <span class="o">=</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">yval</span> <span class="o">+</span> <span class="mf">0.02</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">yval</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average Finish Position for Top 1% in Each SG Category:
+Off the Tee: Avg Finish = 16.59 (n=173)
+Approach: Avg Finish = 13.97 (n=170)
+Around the Green: Avg Finish = 25.13 (n=167)
+Putting: Avg Finish = 16.17 (n=174)
+</pre></div>
+</div>
+<img alt="../_images/ff392533d7a2e0de7c4648f4b032a201e6f4f29053569f3e921281bc22a63ed8.png" src="../_images/ff392533d7a2e0de7c4648f4b032a201e6f4f29053569f3e921281bc22a63ed8.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average Strokes Gained for Top 1% Tournament Finishers:
+Off the Tee: 0.68
+Approach: 1.31
+Around the Green: 0.43
+Putting: 1.24
+</pre></div>
+</div>
+<img alt="../_images/35f6a814a21195b01fa61094f0b2508a398bdbd40353618e1980559a2c5926d0.png" src="../_images/35f6a814a21195b01fa61094f0b2508a398bdbd40353618e1980559a2c5926d0.png" />
+</div>
+</div>
+<section id="examining-elite-golfers-abilitities">
+<h2>Examining Elite Golfers Abilitities<a class="headerlink" href="#examining-elite-golfers-abilitities" title="Link to this heading">#</a></h2>
+<p><em>An “Elite” golfer referrs to the top 1% of golfers in the dataset from 2015 to 2022.</em></p>
+<br>
+<section id="finish-position-of-elite-golfers">
+<h3>Finish Position of Elite Golfers<a class="headerlink" href="#finish-position-of-elite-golfers" title="Link to this heading">#</a></h3>
+<p>This first analysis identifies players who excel in a specific strokes gained category and examines how well they finish in tournaments on average:</p>
+<ul class="simple">
+<li><p>Approach: Average finish position of 13.97</p></li>
+<li><p>Putting: Average finish position of 16.17</p></li>
+<li><p>Off the Tee: Average finish position of 16.59</p></li>
+<li><p>Around the Green: Average finish position of 25.13</p></li>
+</ul>
+<br>
+</section>
+<section id="strokes-gained-of-elite-golfers">
+<h3>Strokes Gained of Elite Golfers<a class="headerlink" href="#strokes-gained-of-elite-golfers" title="Link to this heading">#</a></h3>
+<p>The second analysis flips the perspective by examining the strokes gained profile of the top 1% tournament finishers. This reveals how elite tournament performers achieve their success across the four skills:</p>
+<ul class="simple">
+<li><p>Approach: Average of 1.31 strokes gained</p></li>
+<li><p>Putting: Average of 1.24 strokes gained</p></li>
+<li><p>Off the Tee: Average of 0.68 strokes gained</p></li>
+<li><p>Around the Green: Average of 0.43 strokes gained</p></li>
+</ul>
+</section>
+<section id="implication">
+<h3>Implication<a class="headerlink" href="#implication" title="Link to this heading">#</a></h3>
+<p>The consistency between overall elite golfers and elite golfers in each strokes gained category strengthens our confidence in the findings. Both methods point to the same conclusion; approach shots and putting have been the most important skill for elite tournament golfers.</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusion">
+<h1>6. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h1>
+<p>This analysis provides compelling evidence that while all aspects of golf performance contribute to tournament success, approach shots and putting have the strongest relationship with finishing position. Players who excel in these areas typically achieve better tournament results than those who primarily excel in off-the-tee or around-the-green performance.</p>
+<p>The findings suggest several key implications for professional golfers and coaches:</p>
+<p>Average players should consider allocating more practice time to approach shots and putting, as these skills appear to have the strongest relationship with tournament success.</p>
+<p>For players looking to improve their tournament performance, focusing on gaining strokes with approach shots might yield the greatest benefits.</p>
+<p>The consistency of results across different analytical methods (correlation, regression, Monte Carlo analysis, and elite player analysis) strengthens confidence in the most important skill to master being approach shots.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p>Strokes Gained Explanation: <a class="reference external" href="https://shotscope.com/blog/practice-green/stats-and-data/understanding-strokes-gained/">https://shotscope.com/blog/practice-green/stats-and-data/understanding-strokes-gained/</a></p></li>
+<li><p>Background on shot link data: <a class="reference external" href="https://golf.com/gear/pga-tour-shotlink-data-game-changer-you-can-bet-on-it/">https://golf.com/gear/pga-tour-shotlink-data-game-changer-you-can-bet-on-it/</a></p></li>
+<li><p>Shots Gained data: <a class="reference external" href="https://www.kaggle.com/code/aashidutt3/eda-pga-tour-golf-data/code?select=ASA+All+PGA+Raw+Data+-+Tourn+Level.csv">https://www.kaggle.com/code/aashidutt3/eda-pga-tour-golf-data/code?select=ASA+All+PGA+Raw+Data+-+Tourn+Level.csv</a></p></li>
+</ol>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./module_04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="turbine_uncertainty.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Wind Turbine Uncertainty in loading analysis</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">The impact of Strokes Gained Metrics on PGA Tour Finishing Position</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jim-bellas">Jim Bellas</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strokes-gained-metrics">Strokes Gained Metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tournament-finish-position">Tournament Finish Position</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-analysis">Correlation Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-results">Interpretation of results:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#takeaway">Takeaway:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-analysis">Regression Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Interpretation of Results:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Takeaway:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-analysis">Monte Carlo Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-interpretation">Plot Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-observations">Key Observations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-importance">Relative importance:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#elite-player-analysis">4. Elite Player Analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-elite-golfers-abilitities">Examining Elite Golfers Abilitities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finish-position-of-elite-golfers">Finish Position of Elite Golfers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strokes-gained-of-elite-golfers">Strokes Gained of Elite Golfers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implication">Implication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6. Conclusion</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href = https://cooperrc.github.io> Ryan C. Cooper</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

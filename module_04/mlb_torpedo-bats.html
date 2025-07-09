@@ -1,0 +1,1340 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Comparing Physics and Performance of Traditional vs. Torpedo Bats &#8212; Data Driven Decisions</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'module_04/mlb_torpedo-bats';</script>
+    <link rel="icon" href="../_static/spiderman-favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/datadecisions.svg" class="logo__image only-light" alt="Data Driven Decisions - Home"/>
+    <script>document.write(`<img src="../_static/datadecisions.svg" class="logo__image only-dark" alt="Data Driven Decisions - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Data-Driven Decisions: Monte Carlo Analysis for Technical Communications
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus - Data Driven Decisions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_00/README.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_00/01_writing-w-llms.html">Technical writing and Generative AI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_00/HW_00.html">HW_00 - Generative AI writing analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_00/HW_01.html">HW_01 - Generative AI writing analysis and Monte Carlo research</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_01/README.html">Module_01</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/calculate_pi.html">Calculating <span class="math notranslate nohighlight">\(\pi\)</span> with Monte Carlo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/HW_02.html">HW_02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_01/statistical_significance.html">Statistical Significance in Data</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../module_01/HW_03.html">HW_03</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module_02/README.html">Module_02 - Engineering Processes</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/drop_keys.html">Dropping keys and checking randomly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/HW_04.html">HW_04 - Exercise: failure prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/bus_wait.html">Waiting for the bus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../module_02/HW_05.html">HW_05 - Customer wait time</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="README.html">Case studies</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="report.html">Your Technical Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wind-turbine-impact.html">The Impact of Wind Turbines on Renewable Energy Generation: A Comparative Study of the United States with Predictive Modeling for Selected European Countries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compliant_fatigue.html">Monte Carlo Methods and Compliant Mechanism Fatigue Case Study</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="turbine_reliability.html">Optimized Wind Turbine Reliability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="turbine_uncertainty.html">Wind Turbine Uncertainty in loading analysis</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/cooperrc/data-driven-decisions/main?urlpath=tree/module_04/mlb_torpedo-bats.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/cooperrc/data-driven-decisions/blob/main/module_04/mlb_torpedo-bats.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cooperrc/data-driven-decisions" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cooperrc/data-driven-decisions/issues/new?title=Issue%20on%20page%20%2Fmodule_04/mlb_torpedo-bats.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/module_04/mlb_torpedo-bats.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Comparing Physics and Performance of Traditional vs. Torpedo Bats</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-radius-and-mass-distribution-comparison">Maximum Radius and Mass Distribution Comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#swing-speed-comparison">Swing Speed Comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exit-velocity-comparison">Exit Velocity Comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources">Sources</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="comparing-physics-and-performance-of-traditional-vs-torpedo-bats">
+<h1>Comparing Physics and Performance of Traditional vs. Torpedo Bats<a class="headerlink" href="#comparing-physics-and-performance-of-traditional-vs-torpedo-bats" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="introduction">
+<h2>Introduction:<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Recently in Major League Baseball, a new bat design has emerged, being called the
+“Torpedo Bat”. Traditional baseball bats have a continuous taper, with the radius getting
+gradually larger from the handle to the tip. Torpedo bats, as opposed to traditional baseball
+bats, have moved some of the mass from the end of the bat toward the handle. In other
+words, the torpedo bats reach the area of maximum radius sooner than traditional bats and
+then taper off smaller toward the end. This gives the torpedo bats a distinctive “bowling
+pin” shape, with the maximum radius about 6-7 inches from the bats tip. The intent in the
+design of these bats is to move the center of mass of the bat closer to the handle, to account
+for players that typically contact the ball further from the tip of the bat.</p>
+<p>This report focuses on physics in how the differing mass distributions (including
+where the center of mass is located) and contact locations (point at which the ball impacts
+the bat) affect the exit velocity of the baseball after contact. Exit velocity is critical for
+hitters’ performance, as a exit velocity has the greatest impact on a player’s batting average.
+Batting average is a batters’ hits (batting the pitch in play and reaching base safely) divided
+by at bats (plate appearances that result in either a hit or an out, which removes walks from
+the equation). To showcase how much exit velocity has an impact on batting average, we
+can look at the correlation between the two in Major League Baseball. Balls hit at 95 miles
+per hour (MPH) have a batting average of 0.265, whereas balls hit at 96 MPH have a batting
+average of just over 0.300. This jump of 0.035 over just one MPH is big in baseball, where
+batters have an average of 500-600 at bats per season. This means that jumping from 95
+MPH exit velocity to 96 MPH exit velocity translates to approximately 17.5-21 more hits
+each season. With the mass distribution having a great impact on swing speed, and swing
+speed and contact location having the largest impact on exit velocity, this report will be
+looking at how these two types of bats compare to one another.</p>
+</section>
+<section id="maximum-radius-and-mass-distribution-comparison">
+<h2>Maximum Radius and Mass Distribution Comparison<a class="headerlink" href="#maximum-radius-and-mass-distribution-comparison" title="Link to this heading">#</a></h2>
+<p>In order to make a fair comparison between the two bat types (to focus solely on bat
+design), the length of each bat will be kept constant at 34 inches. Also for this analysis, we
+will be considering the maximum diameter of the torpedo bat to be 6 inches from the end
+(opposite of the handle) of the bat, consistent with averages of these bat types. Finally, also
+going with averages across the MLB, the maximum diameter of the traditional versus
+torpedo bats will be considered to be 1.250 inches and 1.305 inches (maximum allowable</p>
+<p>radius per MLB regulations) respectively. Taking all of this in to account, we can model the
+mass distributions of the two bat types as shown in Figure 1 below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Figure 1. Bat Geometry &amp; Radius Profiles</span>
+
+<span class="n">length</span> <span class="o">=</span> <span class="mi">34</span> <span class="c1"># Bat length in inches</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> <span class="c1"># 0 = tip, length = handle knob</span>
+
+<span class="c1"># Standard bat: linear taper from max barrel radius to handle radius</span>
+
+<span class="n">r_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">length</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.25</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">])</span>
+
+<span class="c1"># Torpedo bat: bulge near mid-barrel (6&quot; from tip), then taper</span>
+
+<span class="n">bulge_center</span> <span class="o">=</span> <span class="mi">6</span>
+
+<span class="n">bulge_width</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="n">r_torp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">x</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="n">bulge_center</span> <span class="o">-</span> <span class="n">bulge_width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">bulge_center</span><span class="p">,</span>
+<span class="n">bulge_center</span> <span class="o">+</span> <span class="n">bulge_width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">length</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.00</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">,</span> <span class="mf">1.305</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">,</span>
+<span class="mf">0.50</span><span class="p">])</span>
+
+<span class="c1"># Plot radius profiles</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">r_std</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Standard Bat&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">r_torp</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Torpedo Bat&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Distance from Tip (in)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Radius (in)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bat Radius Profile&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/91568d95f662e961ad1a551e482dedbf5221d8be5c2e5eacf14b0789250c3a86.png" src="../_images/91568d95f662e961ad1a551e482dedbf5221d8be5c2e5eacf14b0789250c3a86.png" />
+</div>
+</div>
+<p>As expected, we see the radius of the torpedo bat peak at six inches from the tip and
+taper off both ways, with the traditional bat peaking at the tip and tapering down to the
+handle. Using this radius distribution, it is now possible to calculate the total mass as well as
+map out the mass distribution of each of the two bat types. We will be considering both bats
+to be made of maple, the most common material for MLB bats to be made of. For this reason,
+the density used in the model will be 0.375 ounces per cubic inch, the average for maple
+bats. Using this density, the mass of the traditional bat is found to be 29.85 ounces, and the
+mass of the torpedo bat is 28.88 ounces – a 0.97 ounce (or 3.3%) reduction from
+traditional. The mass distribution comparison can be seen below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Figure 2: Mass Distributions and COM</span>
+
+<span class="c1"># Material density</span>
+
+<span class="n">density</span> <span class="o">=</span> <span class="mf">0.375</span> <span class="c1"># ounces per cubic inch</span>
+
+<span class="c1"># Cross-sectional areas (in²)</span>
+
+<span class="n">A_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r_std</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">A_torp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r_torp</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c1"># Linear mass distributions (oz per inch)</span>
+
+<span class="n">m_lin_std</span> <span class="o">=</span> <span class="n">density</span> <span class="o">*</span> <span class="n">A_std</span>
+
+<span class="n">m_lin_torp</span> <span class="o">=</span> <span class="n">density</span> <span class="o">*</span> <span class="n">A_torp</span>
+
+<span class="c1"># Integrate to find total mass (oz)</span>
+
+<span class="n">mass_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">m_lin_std</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">mass_torp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">m_lin_torp</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Truncate to 0–28 inches from tip</span>
+
+<span class="n">cutoff</span> <span class="o">=</span> <span class="mi">28</span> <span class="c1"># inches</span>
+
+<span class="n">mask</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">cutoff</span>
+
+<span class="c1"># Compute truncated total mass (optional)</span>
+
+<span class="n">mass_std_trunc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">m_lin_std</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
+
+<span class="n">mass_torp_trunc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">m_lin_torp</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
+
+<span class="c1"># Compute truncated center of mass (inches from tip)</span>
+
+<span class="n">com_std_trunc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">*</span> <span class="n">m_lin_std</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span> <span class="o">/</span><span class="n">mass_std_trunc</span>
+
+<span class="n">com_torp_trunc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">*</span> <span class="n">m_lin_torp</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span> <span class="o">/</span><span class="n">mass_torp_trunc</span>
+
+<span class="c1"># Print center of mass values</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Center of mass (0–28 in) Standard bat: </span><span class="si">{</span><span class="n">com_std_trunc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> in from tip&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Center of mass (0–28 in) Torpedo bat: </span><span class="si">{</span><span class="n">com_torp_trunc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> in from tip&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Center of mass (0–28 in) Standard bat: 10.90 in from tip
+Center of mass (0–28 in) Torpedo bat: 11.41 in from tip
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the mass distributions with COM color-matched</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">line_std</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">m_lin_std</span><span class="p">,</span> 
+                     <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Standard Bat&#39;</span><span class="p">,</span>
+                     <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+                     <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+
+<span class="n">line_torp</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">m_lin_torp</span><span class="p">,</span> 
+                      <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Torpedo Bat&#39;</span><span class="p">,</span> 
+                      <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Retrieve distribution colors</span>
+
+<span class="n">color_std</span> <span class="o">=</span> <span class="n">line_std</span><span class="o">.</span><span class="n">get_color</span><span class="p">()</span>
+
+<span class="n">color_torp</span> <span class="o">=</span> <span class="n">line_torp</span><span class="o">.</span><span class="n">get_color</span><span class="p">()</span>
+
+<span class="c1"># Plot COM and cutoff </span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">com_std_trunc</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_std</span><span class="p">,</span>
+<span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;COM Std (0–28 in)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">com_torp_trunc</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_torp</span><span class="p">,</span>
+<span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;COM Torp (0–28 in)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">cutoff</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> 
+            <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> 
+            <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> 
+            <span class="n">label</span><span class="o">=</span><span class="s1">&#39;COM Cutoff at 28 in&#39;</span><span class="p">)</span>
+
+<span class="c1"># Labels and styling</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Distance from Tip (inches)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Linear Mass Distribution (oz/in)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mass Distribution &amp; Truncated Center of Mass (0–28 in) Comparison&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total mass of standard bat: </span><span class="si">{</span><span class="n">mass_std</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> oz&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total mass of torpedo bat: </span><span class="si">{</span><span class="n">mass_torp</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> oz&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f54be4e0a303c51435e2666a56643e454f78c5d0e0f889c3be6128d81965d602.png" src="../_images/f54be4e0a303c51435e2666a56643e454f78c5d0e0f889c3be6128d81965d602.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total mass of standard bat: 29.85 oz
+Total mass of torpedo bat: 28.88 oz
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we can see where the center of mass (COM) of each bat is based on the mass
+distributions. For these calculations, we disregard the initial six inches from the handle
+know (28-34 on the graph), as this is the region where the bat is held from. Therefore, it
+should not be used to calculate the COM or factor into the future moment of inertia
+calculations. That being said, the truncated COM of the traditional bat sits at 10.90 inches
+from the tip and the torpedo bat COM is 0.51 inches further toward the hands, at 11.41
+inches from the tip.</p>
+</section>
+<section id="swing-speed-comparison">
+<h2>Swing Speed Comparison<a class="headerlink" href="#swing-speed-comparison" title="Link to this heading">#</a></h2>
+<p>Now that the truncated center of mass has been calculated for both the traditional
+and torpedo bats, it can be used to find the moment of inertia (MOI) about the pivot points
+for each bat. The pivot point is six inches from the handle knob, which is the industry
+standard for measuring moment of inertia of a baseball bat.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute I_COM via integration about each COM (oz·in²)</span>
+
+<span class="n">I_com_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">m_lin_std</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">com_std</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">I_com_torp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">m_lin_torp</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">com_torp</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Pivot point at 6 inches from the handle knob</span>
+
+<span class="n">pivot_x</span> <span class="o">=</span> <span class="n">length</span> <span class="o">-</span> <span class="mi">6</span> <span class="c1"># inches from handle knob</span>
+
+<span class="c1"># Distance from pivot to COM (inches)</span>
+
+<span class="n">r_COM_std_pivot</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">pivot_x</span> <span class="o">-</span> <span class="n">com_std</span><span class="p">)</span>
+
+<span class="n">r_COM_torp_pivot</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">pivot_x</span> <span class="o">-</span> <span class="n">com_torp</span><span class="p">)</span>
+
+<span class="c1"># Moment of inertia about pivot (oz·in²)</span>
+
+<span class="n">I_pivot_std</span> <span class="o">=</span> <span class="n">I_com_std</span> <span class="o">+</span> <span class="n">mass_std</span> <span class="o">*</span> <span class="n">r_COM_std_pivot</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">I_pivot_torp</span> <span class="o">=</span> <span class="n">I_com_torp</span> <span class="o">+</span> <span class="n">mass_torp</span> <span class="o">*</span> <span class="n">r_COM_torp_pivot</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c1"># Print results</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pivot point: </span><span class="si">{</span><span class="n">pivot_x</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> in from tip&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Standard Bat:&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; I_pivot: </span><span class="si">{</span><span class="n">I_pivot_std</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> oz·in²&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Torpedo Bat:&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; I_pivot: </span><span class="si">{</span><span class="n">I_pivot_torp</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> oz·in²&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Compute I_COM via integration about each COM (oz·in²)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">I_com_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">m_lin_std</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">com_std</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">I_com_torp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">m_lin_torp</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">com_torp</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># Pivot point at 6 inches from the handle knob</span>
+
+<span class="ne">NameError</span>: name &#39;com_std&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>The MOI is found to be 11257.49 oz·in² for the traditional bat, and 10289.36 oz·in²
+for the torpedo bat. The torpedo bat MOI being lower (a 968.03 oz·in², or 8.6% reduction)
+than traditional is what we expect to see, with more mass being closer to the pivot point.
+These values, along with the researched value for average MLB players torque applied
+about the to the pivot point and the average arc length (angle through which the bats are
+swung through), can now be used to calculate the average swing speeds for each bat type.
+For calculating the swing speed, it will be based on the “sweet spot” location. This is the
+location in which the exit velocity should be peaked, which is located approximately
+halfway between the COM and the tip (opposite of the handle) for each bat.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4. Impact radius (sweet spot halfway to COM)</span>
+
+<span class="n">r_imp_std_in</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">pivot_x</span> <span class="o">-</span> <span class="n">com_std</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">r_imp_torp_in</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">pivot_x</span> <span class="o">-</span> <span class="n">com_torp</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 5. Energy‐based swing model</span>
+
+<span class="n">arc_length_ft</span> <span class="o">=</span> <span class="mf">7.3</span> <span class="c1"># ft</span>
+
+<span class="n">r_imp_std_ft</span> <span class="o">=</span> <span class="n">r_imp_std_in</span> <span class="o">/</span> <span class="mi">12</span>
+
+<span class="n">r_imp_torp_ft</span> <span class="o">=</span> <span class="n">r_imp_torp_in</span> <span class="o">/</span> <span class="mi">12</span>
+
+<span class="n">theta_std</span> <span class="o">=</span> <span class="n">arc_length_ft</span> <span class="o">/</span> <span class="n">r_imp_std_ft</span>
+
+<span class="n">theta_torp</span> <span class="o">=</span> <span class="n">arc_length_ft</span> <span class="o">/</span> <span class="n">r_imp_torp_ft</span>
+
+<span class="c1"># 6. Torque for average swing speed</span>
+
+<span class="n">tau_avg</span> <span class="o">=</span> <span class="mf">10897.03</span> <span class="c1"># in·oz</span>
+
+<span class="c1"># Conversion factors</span>
+
+<span class="n">in_oz_to_lbf_ft</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">16</span> <span class="o">*</span> <span class="mi">12</span><span class="p">)</span> <span class="c1"># in·oz → lbf·ft</span>
+
+<span class="n">oz_in2_to_slug_ft2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">16</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">144</span><span class="p">)</span> <span class="o">/</span> <span class="mf">32.174</span> <span class="c1"># oz·in² → slug·ft²</span>
+
+<span class="n">mph_factor</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.681818</span> <span class="c1"># in/s → mph</span>
+
+<span class="c1"># 7. Compute average speeds</span>
+
+<span class="k">def</span> <span class="nf">speed_mph</span><span class="p">(</span><span class="n">tau_oz_in</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">I_pivot_oz_in2</span><span class="p">,</span> <span class="n">r_imp_in</span><span class="p">):</span>
+
+<span class="c1"># convert units internally</span>
+
+<span class="n">tau_lbf_ft</span> <span class="o">=</span> <span class="n">tau_oz_in</span> <span class="o">*</span> <span class="n">in_oz_to_lbf_ft</span>
+
+<span class="n">I_slug_ft2</span> <span class="o">=</span> <span class="n">I_pivot_oz_in2</span> <span class="o">*</span> <span class="n">oz_in2_to_slug_ft2</span>
+
+<span class="n">omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">tau_lbf_ft</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">/</span> <span class="n">I_slug_ft2</span><span class="p">)</span>
+
+<span class="n">v_in_s</span> <span class="o">=</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">r_imp_in</span>
+
+<span class="k">return</span> <span class="n">v_in_s</span> <span class="o">*</span> <span class="n">mph_factor</span>
+
+<span class="c1"># Calculate average swing speeds</span>
+
+<span class="n">v_std_avg</span> <span class="o">=</span> <span class="n">speed_mph</span><span class="p">(</span><span class="n">tau_avg</span><span class="p">,</span>
+<span class="n">theta_std</span><span class="p">,</span> <span class="n">I_pivot_std</span><span class="p">,</span> <span class="n">r_imp_std_in</span><span class="p">)</span>
+
+<span class="n">v_torp_avg</span> <span class="o">=</span> <span class="n">speed_mph</span><span class="p">(</span><span class="n">tau_avg</span><span class="p">,</span> <span class="n">theta_torp</span><span class="p">,</span> <span class="n">I_pivot_torp</span><span class="p">,</span>
+<span class="n">r_imp_torp_in</span><span class="p">)</span>
+
+<span class="c1"># 8. Output</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average Standard Bat Speed at Sweet Spot: </span><span class="si">{</span><span class="n">v_std_avg</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span>
+<span class="n">mph</span><span class="s2">&quot;)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average Torpedo Bat Speed at Sweet Spot: </span><span class="si">{</span><span class="n">v_torp_avg</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span>
+<span class="n">mph</span><span class="s2">&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">57</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average Standard Bat Speed at Sweet Spot: </span><span class="si">{</span><span class="n">v_std_avg</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span>
+          <span class="o">^</span>
+<span class="ne">SyntaxError</span>: unterminated string literal (detected at line 57)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This gives us that the speed at the sweet spot for the traditional bat is 69.0 MPH, and
+the torpedo bat is 71.8 MPH. This is a noticeable jump of 2.8 MPH (4.1% gain), showcasing
+the swing speed advantages of the torpedo bats. We can further visualize this swing speed
+difference with the bar chart below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Error‐bar analysis over r_imp = COM/2 ± 3 in ---</span>
+
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># build the r_imp ranges</span>
+
+<span class="n">r_std_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">r_imp_std_in</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> 
+                          <span class="n">r_imp_std_in</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span>
+                          <span class="n">n_samples</span><span class="p">)</span>
+
+<span class="n">r_torp_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">r_imp_torp_in</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> 
+                           <span class="n">r_imp_torp_in</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span>
+                           <span class="n">n_samples</span><span class="p">)</span>
+
+<span class="c1"># vectorized speed calls</span>
+
+<span class="n">v_std_samples</span> <span class="o">=</span> <span class="n">speed_mph</span><span class="p">(</span><span class="n">tau_avg</span><span class="p">,</span> 
+                          <span class="n">theta_std</span><span class="p">,</span> 
+                          <span class="n">I_pivot_std</span><span class="p">,</span> 
+                          <span class="n">r_std_range</span><span class="p">)</span>
+
+<span class="n">v_torp_samples</span> <span class="o">=</span> <span class="n">speed_mph</span><span class="p">(</span><span class="n">tau_avg</span><span class="p">,</span> 
+                           <span class="n">theta_torp</span><span class="p">,</span> 
+                           <span class="n">I_pivot_torp</span><span class="p">,</span>
+                           <span class="n">r_torp_range</span><span class="p">)</span>
+
+<span class="c1"># compute statistics</span>
+
+<span class="n">v_std_mean</span><span class="p">,</span> <span class="n">v_std_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">v_std_samples</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">v_std_samples</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># build the r_imp ranges</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">r_std_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">r_imp_std_in</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> 
+<span class="g g-Whitespace">      </span><span class="mi">8</span>                           <span class="n">r_imp_std_in</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>                           <span class="n">n_samples</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">r_torp_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">r_imp_torp_in</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> 
+<span class="g g-Whitespace">     </span><span class="mi">12</span>                            <span class="n">r_imp_torp_in</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>                            <span class="n">n_samples</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="c1"># vectorized speed calls</span>
+
+<span class="ne">NameError</span>: name &#39;r_imp_std_in&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v_torp_mean</span><span class="p">,</span> <span class="n">v_torp_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">v_torp_samples</span><span class="p">),</span>
+<span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">v_torp_samples</span><span class="p">)</span>
+
+<span class="c1"># plot bar chart with error bars</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Standard&#39;</span><span class="p">,</span> <span class="s1">&#39;Torpedo&#39;</span><span class="p">]</span>
+
+<span class="n">means</span> <span class="o">=</span> <span class="p">[</span><span class="n">v_std_mean</span><span class="p">,</span> <span class="n">v_torp_mean</span><span class="p">]</span>
+
+<span class="n">errs</span> <span class="o">=</span> <span class="p">[</span><span class="n">v_std_std</span><span class="p">,</span> <span class="n">v_torp_std</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">means</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">errs</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Swing Speed (mph)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mean Swing Speed ± Std Dev (r_imp = COM/2 ± 3″)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">v_torp_mean</span><span class="p">,</span> <span class="n">v_torp_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">v_torp_samples</span><span class="p">),</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">v_torp_samples</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># plot bar chart with error bars</span>
+
+<span class="ne">NameError</span>: name &#39;v_torp_samples&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>The bar chart shows both the swing speeds of both bats at the “sweet spot”, as well
+as error bars. These error bars showcase the swing speed at +/- 3 inches from the sweet
+spot location, accounting for variability in contact location.</p>
+</section>
+<section id="exit-velocity-comparison">
+<h2>Exit Velocity Comparison<a class="headerlink" href="#exit-velocity-comparison" title="Link to this heading">#</a></h2>
+<p>Using all of the data we have calculated above (bat radius profile, mass distributions,
+swings speeds, etc.), we can finally create a program to model the differences in exit velocities between the two bats. For this, we will be considering the baseball to have a mass
+of 5.125 ounces and the pitch speeds to be 90 MPH, in order to solely focus on bat design
+and performance. A Monte Carlo simulation can be run to model the exit velocities, with
+variations in the contact location, as well as swing speeds (variation is directly related to
+contact location). It also takes into account the variability of coefficient of restitution (e) of
+the ball-bat collision with contact location, using a sampling from a normal distribution to
+reflect this. For the normal distribution of e, the mean is 0.489 and the standard deviation is
+0.009, reflecting averages from maple bat coefficient of restitution data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Simulation parameters</span>
+
+<span class="n">m_ball_oz</span> <span class="o">=</span> <span class="mf">5.125</span> <span class="c1"># ball mass (oz)</span>
+
+<span class="n">pitch_speed_mph</span> <span class="o">=</span> <span class="mi">90</span> <span class="c1"># pitch speed (mph)</span>
+
+<span class="n">N_samples</span> <span class="o">=</span> <span class="mi">10000</span> <span class="c1"># number of Monte Carlo draws</span>
+
+<span class="c1"># --- Sample COR from distribution ---</span>
+
+<span class="n">mean_e</span> <span class="o">=</span> <span class="mf">0.489</span> <span class="c1"># average wood-bat COR from Nathan et al. (2011)</span>
+
+<span class="n">sigma_e</span> <span class="o">=</span> <span class="mf">0.009</span> <span class="c1"># std. dev. from Nathan et al. (2011)</span>
+
+<span class="n">e_samps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mean_e</span><span class="p">,</span> <span class="n">sigma_e</span><span class="p">,</span> <span class="n">N_samples</span><span class="p">)</span>
+
+<span class="n">e_samps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">e_samps</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># ensure 0 ≤ e ≤ 1</span>
+
+<span class="c1"># 2. Unit conversions</span>
+
+<span class="n">mph_to_fps</span> <span class="o">=</span> <span class="mi">5280</span><span class="o">/</span><span class="mi">3600</span> <span class="c1"># ft/s per mph</span>
+
+<span class="n">oz_to_slug</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">16</span><span class="p">)</span> <span class="o">/</span> <span class="mf">32.174</span> <span class="c1"># oz → lbm → slugs</span>
+
+<span class="n">v_pitch</span> <span class="o">=</span> <span class="o">-</span><span class="n">pitch_speed_mph</span> <span class="o">*</span> <span class="n">mph_to_fps</span> <span class="c1"># ft/s (negative = toward bat)</span>
+
+<span class="n">m_ball</span> <span class="o">=</span> <span class="n">m_ball_oz</span> <span class="o">*</span> <span class="n">oz_to_slug</span> <span class="c1"># slug</span>
+
+<span class="c1"># 3. Precompute bat effective masses (slug) at the _mean_ sweet spot</span>
+
+<span class="c1"># (we’ll recompute on the fly for each r_imp_sample below)</span>
+
+<span class="n">m_eff_std</span> <span class="o">=</span> <span class="p">(</span><span class="n">I_pivot_std</span> <span class="o">/</span> <span class="p">(</span><span class="n">r_imp_std_in</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">oz_to_slug</span>
+
+<span class="n">m_eff_torp</span><span class="o">=</span> <span class="p">(</span><span class="n">I_pivot_torp</span> <span class="o">/</span> <span class="p">(</span><span class="n">r_imp_torp_in</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">oz_to_slug</span>
+
+<span class="c1"># 4. Sample contact locations</span>
+
+<span class="n">r_std_samps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">r_imp_std_in</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="n">r_imp_std_in</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="n">N_samples</span><span class="p">)</span>
+
+<span class="n">r_torp_samps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">r_imp_torp_in</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="n">r_imp_torp_in</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="n">N_samples</span><span class="p">)</span>
+
+<span class="c1"># 5. Compute swing speeds (mph → ft/s)</span>
+
+<span class="n">v_std_mph_samps</span> <span class="o">=</span> <span class="n">speed_mph</span><span class="p">(</span><span class="n">tau_avg</span><span class="p">,</span><span class="n">theta_std</span><span class="p">,</span> <span class="n">I_pivot_std</span><span class="p">,</span> <span class="n">r_std_samps</span><span class="p">)</span>
+
+<span class="n">v_torp_mph_samps</span> <span class="o">=</span> <span class="n">speed_mph</span><span class="p">(</span><span class="n">tau_avg</span><span class="p">,</span> <span class="n">theta_torp</span><span class="p">,</span> <span class="n">I_pivot_torp</span><span class="p">,</span><span class="n">r_torp_samps</span><span class="p">)</span>
+
+<span class="n">v_std_samps</span> <span class="o">=</span> <span class="n">v_std_mph_samps</span> <span class="o">*</span> <span class="n">mph_to_fps</span>
+
+<span class="n">v_torp_samps</span> <span class="o">=</span> <span class="n">v_torp_mph_samps</span> <span class="o">*</span> <span class="n">mph_to_fps</span>
+
+<span class="c1"># --- Compute exit velocities with variable e ---</span>
+
+<span class="n">v_exit_std</span> <span class="o">=</span> <span class="p">(</span><span class="n">m_eff_std</span> <span class="o">*</span> <span class="n">v_std_samps</span><span class="o">+</span> <span class="n">m_ball</span> <span class="o">*</span> <span class="n">v_pitch</span><span class="o">+</span> <span class="n">m_eff_std</span> <span class="o">*</span> <span class="n">e_samps</span> <span class="o">*</span> <span class="p">(</span><span class="n">v_std_samps</span> <span class="o">-</span> <span class="n">v_pitch</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">m_eff_std</span> <span class="o">+</span> <span class="n">m_ball</span><span class="p">)</span>
+
+<span class="n">v_exit_torp</span> <span class="o">=</span> <span class="p">(</span><span class="n">m_eff_torp</span> <span class="o">*</span> <span class="n">v_torp_samps</span><span class="o">+</span> <span class="n">m_ball</span> <span class="o">*</span> <span class="n">v_pitch</span><span class="o">+</span> <span class="n">m_eff_torp</span> <span class="o">*</span> <span class="n">e_samps</span> <span class="o">*</span><span class="p">(</span><span class="n">v_torp_samps</span> <span class="o">-</span> <span class="n">v_pitch</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">m_eff_torp</span> <span class="o">+</span> <span class="n">m_ball</span><span class="p">)</span>
+
+<span class="c1"># 7. Back to mph</span>
+
+<span class="n">v_exit_std_mph</span> <span class="o">=</span> <span class="n">v_exit_std</span> <span class="o">/</span> <span class="n">mph_to_fps</span>
+
+<span class="n">v_exit_torp_mph</span> <span class="o">=</span> <span class="n">v_exit_torp</span> <span class="o">/</span> <span class="n">mph_to_fps</span>
+
+<span class="c1"># 8. Plot histograms</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">v_exit_std_mph</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Standard&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">v_exit_torp_mph</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Torpedo&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Exit Velocity (mph)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Monte Carlo Exit Velocity (contact ±3″)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 9. Print mean ± 2σ</span>
+
+<span class="n">std_mu</span><span class="p">,</span> <span class="n">std_sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">v_exit_std_mph</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">v_exit_std_mph</span><span class="p">)</span>
+
+<span class="n">torp_mu</span><span class="p">,</span> <span class="n">torp_sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">v_exit_torp_mph</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">v_exit_torp_mph</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Standard bat exit: </span><span class="si">{</span><span class="n">std_mu</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="mi">2</span><span class="o">*</span><span class="n">std_sigma</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> mph (2σ)&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Torpedo bat exit: </span><span class="si">{</span><span class="n">torp_mu</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> ± </span><span class="si">{</span><span class="mi">2</span><span class="o">*</span><span class="n">torp_sigma</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> mph (2σ)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">25</span><span class="p">],</span> <span class="n">line</span> <span class="mi">33</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="n">m_ball</span> <span class="o">=</span> <span class="n">m_ball_oz</span> <span class="o">*</span> <span class="n">oz_to_slug</span> <span class="c1"># slug</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="c1"># 3. Precompute bat effective masses (slug) at the _mean_ sweet spot</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span> 
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="c1"># (we’ll recompute on the fly for each r_imp_sample below)</span>
+<span class="ne">---&gt; </span><span class="mi">33</span> <span class="n">m_eff_std</span> <span class="o">=</span> <span class="p">(</span><span class="n">I_pivot_std</span> <span class="o">/</span> <span class="p">(</span><span class="n">r_imp_std_in</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">oz_to_slug</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="n">m_eff_torp</span><span class="o">=</span> <span class="p">(</span><span class="n">I_pivot_torp</span> <span class="o">/</span> <span class="p">(</span><span class="n">r_imp_torp_in</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">oz_to_slug</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="c1"># 4. Sample contact locations</span>
+
+<span class="ne">NameError</span>: name &#39;I_pivot_std&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the histogram, we can see that the data for the torpedo bats is shifted right
+(toward higher exit velocities) as compared to the traditional bats. The exit velocities (mean
+± 2σ) for each of the two bats are: 102.4 ± 12.9 mph (traditional), 103.0 ± 13.6 mph
+(torpedo). Although they are close, the 0.6 increase in mean exit velocity shows the effect on
+performance that the torpedo bat brings. We can now take a look at how both exit velocity
+and coefficient of restitution vary with contact location in the figure below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_ss_std</span> <span class="o">=</span> <span class="n">pivot_x</span> <span class="o">-</span> <span class="n">com_std</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="n">x_ss_torp</span> <span class="o">=</span> <span class="n">pivot_x</span> <span class="o">-</span> <span class="n">com_torp</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">e_profile</span><span class="p">(</span><span class="n">x_tip</span><span class="p">,</span> <span class="n">x_center</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">e0</span><span class="o">=</span><span class="mf">0.489</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gaussian COR profile vs. contact-location x_tip (inches from tip).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">e0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">x_tip</span> <span class="o">-</span> <span class="n">x_center</span><span class="p">)</span><span class="o">/</span><span class="n">sigma</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 1) sample your impact‐locations in tip‐coordinates</span>
+
+<span class="n">x_tip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pivot_x</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+
+<span class="c1"># 2) convert to lever arm</span>
+
+<span class="n">r_imp</span> <span class="o">=</span> <span class="n">pivot_x</span> <span class="o">-</span> <span class="n">x_tip</span>
+
+<span class="c1"># 3) get swing speeds</span>
+
+<span class="n">v_std_mph</span> <span class="o">=</span> <span class="n">speed_mph</span><span class="p">(</span><span class="n">tau_avg</span><span class="p">,</span> <span class="n">theta_std</span><span class="p">,</span> <span class="n">I_pivot_std</span><span class="p">,</span> <span class="n">r_imp</span><span class="p">)</span>
+
+<span class="n">v_torp_mph</span> <span class="o">=</span> <span class="n">speed_mph</span><span class="p">(</span><span class="n">tau_avg</span><span class="p">,</span> <span class="n">theta_torp</span><span class="p">,</span> <span class="n">I_pivot_torp</span><span class="p">,</span> <span class="n">r_imp</span><span class="p">)</span>
+
+<span class="n">v_std_fps</span> <span class="o">=</span> <span class="n">v_std_mph</span> <span class="o">*</span> <span class="n">mph_to_fps</span>
+
+<span class="n">v_torp_fps</span> <span class="o">=</span> <span class="n">v_torp_mph</span> <span class="o">*</span> <span class="n">mph_to_fps</span>
+
+<span class="c1"># 4) effective mass (slugs)</span>
+
+<span class="n">m_eff_std</span> <span class="o">=</span> <span class="p">(</span><span class="n">I_pivot_std</span> <span class="o">*</span> <span class="n">oz_in2_to_slug_ft2</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">r_imp</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">m_eff_torp</span> <span class="o">=</span> <span class="p">(</span><span class="n">I_pivot_torp</span> <span class="o">*</span> <span class="n">oz_in2_to_slug_ft2</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">r_imp</span><span class="o">/</span><span class="mi">12</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 5) COR curves</span>
+
+<span class="n">e_std_curve</span> <span class="o">=</span> <span class="n">e_profile</span><span class="p">(</span><span class="n">x_tip</span><span class="p">,</span> <span class="n">x_ss_std</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">e0</span><span class="o">=</span><span class="mf">0.489</span><span class="p">)</span>
+
+<span class="n">e_torp_curve</span> <span class="o">=</span> <span class="n">e_profile</span><span class="p">(</span><span class="n">x_tip</span><span class="p">,</span> <span class="n">x_ss_torp</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">e0</span><span class="o">=</span><span class="mf">0.489</span><span class="p">)</span>
+
+<span class="c1"># 6) exit‐velocity formula (ft/s)</span>
+
+<span class="n">v_exit_std</span> <span class="o">=</span> <span class="p">(</span>
+
+<span class="n">m_eff_std</span> <span class="o">*</span> <span class="n">v_std_fps</span>
+
+<span class="o">+</span> <span class="n">m_ball</span> <span class="o">*</span> <span class="n">v_pitch</span>
+
+<span class="o">+</span> <span class="n">m_eff_std</span> <span class="o">*</span> <span class="n">e_std_curve</span> <span class="o">*</span> <span class="p">(</span><span class="n">v_std_fps</span> <span class="o">-</span> <span class="n">v_pitch</span><span class="p">)</span>
+
+<span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">m_eff_std</span> <span class="o">+</span> <span class="n">m_ball</span><span class="p">)</span>
+
+<span class="n">v_exit_torp</span><span class="o">=</span> <span class="p">(</span>
+
+<span class="n">m_eff_torp</span> <span class="o">*</span> <span class="n">v_torp_fps</span>
+
+<span class="o">+</span> <span class="n">m_ball</span> <span class="o">*</span> <span class="n">v_pitch</span>
+
+<span class="o">+</span> <span class="n">m_eff_torp</span> <span class="o">*</span> <span class="n">e_torp_curve</span> <span class="o">*</span> <span class="p">(</span><span class="n">v_torp_fps</span> <span class="o">-</span> <span class="n">v_pitch</span><span class="p">)</span>
+
+<span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">m_eff_torp</span> <span class="o">+</span> <span class="n">m_ball</span><span class="p">)</span>
+
+<span class="c1"># back to mph</span>
+
+<span class="n">v_exit_std_mph</span> <span class="o">=</span> <span class="n">v_exit_std</span> <span class="o">/</span> <span class="n">mph_to_fps</span>
+
+<span class="n">v_exit_torp_mph</span> <span class="o">=</span> <span class="n">v_exit_torp</span> <span class="o">/</span> <span class="n">mph_to_fps</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_tip</span><span class="p">,</span> <span class="n">v_exit_std_mph</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> 
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Traditional Bat&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_tip</span><span class="p">,</span> <span class="n">v_exit_torp_mph</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> 
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Torpedo Bat&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pivot_x</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Distance from Pivot Point (inches)&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Exit Velocity (mph)&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Exit Velocity vs Impact Location</span><span class="se">\n</span><span class="s1">(with location-dependent COR)&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">30</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">x_ss_std</span> <span class="o">=</span> <span class="n">pivot_x</span> <span class="o">-</span> <span class="n">com_std</span><span class="o">/</span><span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">x_ss_torp</span> <span class="o">=</span> <span class="n">pivot_x</span> <span class="o">-</span> <span class="n">com_torp</span><span class="o">/</span><span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">def</span> <span class="nf">e_profile</span><span class="p">(</span><span class="n">x_tip</span><span class="p">,</span> <span class="n">x_center</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">e0</span><span class="o">=</span><span class="mf">0.489</span><span class="p">):</span>
+
+<span class="ne">NameError</span>: name &#39;pivot_x&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>From this, it is apparent that the torpedo bat’s curve sits ~1 inch closer to the pivot
+point than the traditional bat’s curve, matching its slightly more inward sweet spot. Also, its
+maximum exit velocity at that peak is noticeably higher (By about 3.5 MPH), reflecting the
+lower moment of inertia you built into the torpedo design. This tells us that if you can
+consistently hit the torpedo bat’s sweet spot, you’ll get a measurable boost in exit velocity.</p>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>Torpedo bats weigh 28.88 oz versus 29.85 oz for traditional bats (−3.3%), with the
+center of mass shifting from 10.90 inches to 11.41 inches from the tip and moment of inertia
+about a 6 inch pivot dropping by 8.6% (11,257.5 → 10,289.4 oz·in²) . This mass
+redistribution boosts sweet-spot swing speed from 69.0 mph to 71.8 mph (+4.1%) and
+raises mean exit velocity under a 90 MPH pitch by 0.6 MPH (102.4 → 103.0 mph) . This
+boost in exit velocity is crucial for players, as stated in the introduction, as any increase can
+have a great enhancement on players performance metrics. To wrap up, if a player is precise
+in their contact location, the torpedo bats can give a significant boost to player’s hitting
+success.</p>
+</section>
+<section id="sources">
+<h2>Sources<a class="headerlink" href="#sources" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://sports.yahoo.com/mlb/article/how-to-assess-the-impact-of-a-torpedo-bat-">https://sports.yahoo.com/mlb/article/how-to-assess-the-impact-of-a-torpedo-bat-</a>
+these-are-the-stats-to-look-at-
+211347005.html?guccounter=1&amp;guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&amp;guce_referrer_sig=AQAAAAl3NQzBYIJ_3ACKX9TRlv19lImSI141GTuUgw8YiN
+K9Yu0N8RvjWMj9KWVfZ5-
+3pTQADO68rAda37hd1ih8Sqh8mgMqLRDRo9JggwbsdmTLYGNlWkKbZu8z-
+cdGr1VQW4vIQyhFqGLBi31-NRWkCDJZlS6DTNqD9dUAu5S3Lwd5</p></li>
+<li><p><a class="reference external" href="https://blogs.fangraphs.com/the-physics-of-the-torpedo-bat/">https://blogs.fangraphs.com/the-physics-of-the-torpedo-bat/</a></p></li>
+<li><p><a class="reference external" href="https://winreality.com/blog/exit-velo-by-">https://winreality.com/blog/exit-velo-by-</a>
+age/#:~:text=Simply%20put%2C%20the%20harder%20a,300.</p></li>
+<li><p><a class="reference external" href="https://pebblehunting.substack.com/p/imagine-an-enormous-bat-barrel">https://pebblehunting.substack.com/p/imagine-an-enormous-bat-barrel</a></p></li>
+<li><p><a class="reference external" href="https://www.physics.usyd.edu.au/~cross/baseball.html">https://www.physics.usyd.edu.au/~cross/baseball.html</a></p></li>
+<li><p><a class="reference external" href="https://baseballrulesacademy.com/official-rule/mlb/3-02-1-10-">https://baseballrulesacademy.com/official-rule/mlb/3-02-1-10-</a>
+bat/#google_vignette</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./module_04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-radius-and-mass-distribution-comparison">Maximum Radius and Mass Distribution Comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#swing-speed-comparison">Swing Speed Comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exit-velocity-comparison">Exit Velocity Comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources">Sources</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href = https://cooperrc.github.io> Ryan C. Cooper</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
