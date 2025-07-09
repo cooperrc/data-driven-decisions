@@ -5,3 +5,4 @@ scipy
 pandas
 nltk
 scikit-learn
+seaborn
