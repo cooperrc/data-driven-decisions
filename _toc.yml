@@ -29,3 +29,4 @@ chapters:
     - file: module_04/compliant_fatigue
     - file: module_04/turbine_reliability
     - file: module_04/turbine_uncertainty
+    - file: module_04/pga_strokes_gained
